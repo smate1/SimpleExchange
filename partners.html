@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ua">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>SimpleExchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header__top">
+        <a class="header__logo" href="./index.html">
+          <img src="./images/logo.svg" alt="logo">
+        </a>
+        <nav class="header__nav">
+          <ul class="header__list">
+            <li class="header__item">
+              <a class="header__link" href="./partners.html">Партнерам</a>
+            </li>
+            <li class="header__item">
+              <a class="header__link" href="./rules.html">Правила</a>
+            </li>
+            <li class="header__item">
+              <a class="header__link" href="./contacts.html">Контакти</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header__right">
+          <div class="header__language-wrapper">
+            <div class="header__language-selector">
+              <div class="header__language-current">
+                <span class="header__language-text">UA</span>
+                <img src="./images/dropdown-arrow.svg" alt="dropdown" class="header__language-arrow">
+              </div>
+              <div class="header__language-dropdown">
+                <div class="header__language-option" data-value="en">
+                  <span class="header__language-option-text">English</span>
+                </div>
+                <div class="header__language-option" data-value="ru">
+                  <span class="header__language-option-text">Русский</span>
+                </div>
+                <div class="header__language-option" data-value="es">
+                  <span class="header__language-option-text">Español</span>
+                </div>
+                <div class="header__language-option" data-value="ua">
+                  <span class="header__language-option-text">Українська</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="header__user-dropdown">
+            <div class="header__user-selector">
+              <div class="header__user-current">
+                <div class="header__user-avatar">
+                  <span class="header__user-avatar-text">D</span>
+                </div>
+                <span class="header__user-email">desi...@proton.me</span>
+                <img src="./images/dropdown-arrow.svg" alt="dropdown" class="header__user-arrow">
+              </div>
+              <div class="header__user-dropdown-menu">
+                <div class="header__user-option" data-value="applications">
+                  <span class="header__user-option-text">Мої заявки</span>
+                  <span class="header__user-option-badge">0</span>
+                </div>
+                <div class="header__user-option" data-value="details">
+                  <span class="header__user-option-text">Мої реквізити</span>
+                </div>
+                <div class="header__user-option" data-value="partners">
+                  <span class="header__user-option-text">Партнерам</span>
+                </div>
+                <div class="header__user-option" data-value="profile">
+                  <span class="header__user-option-text">Профіль</span>
+                </div>
+                <div class="header__user-divider"></div>
+                <div class="header__user-option" data-value="logout">
+                  <span class="header__user-option-text">Вийти</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="partners">
+    <div class="container">
+      <div class="partners__inner">
+        <h3 class="partners__title">
+          Партнёрская программа
+        </h3>
+        <p class="partners__description">
+          Присоединяйтесь к Exchange.io и зарабатывайте до 30% чистой прибыли с каждой сделки ваших приглашённых
+          пользователей.
+        </p>
+        <ul class="partners__list">
+          <li class="partners__item">
+            <h4 class="partners__item-title">
+              Как начать
+            </h4>
+            <p class="partners__item-description">
+              1.1. Зарегистрируйтесь на Exchange.io
+            </p>
+            <p class="partners__item-description">
+              1.2. Получите персональную реферальную ссылку в кабинете
+            </p>
+            <p class="partners__item-description">
+              1.3. Приглашайте друзей, клиентов, подписчиков
+            </p>
+          </li>
+          <li class="partners__item">
+            <h4 class="partners__item-title">
+              Условия начисления
+            </h4>
+            <p class="partners__item-description">
+              Комиссия в размере <strong>30%</strong> начисляется от нашей чистой прибыли за каждую операцию
+              привлечённого клиента.
+              Минимальная сумма для вывода — <strong>20 USDT (TRC-20)</strong>. Выплаты доступны на внешние кошельки.
+            </p>
+          </li>
+          <li class="partners__item">
+            <h4 class="partners__item-title">
+              Важно знать
+            </h4>
+            <p class="partners__item-description">
+              Cookie-связь клиента сохраняется даже без регистрации
+            </p>
+            <p class="partners__item-description">
+              Партнёр видит статистику в личном кабинете
+            </p>
+            <p class="partners__item-description">
+              Сервис Exchange.io оставляет за собой право изменить условия партнёрства
+            </p>
+          </li>
+          <li class="partners__item">
+            <h4 class="partners__item-title">
+              Что запрещено
+            </h4>
+            <p class="partners__item-description">
+              Спам-рассылка или фрод-трафик
+            </p>
+            <p class="partners__item-description">
+              Манипуляции с cookie или подделка регистрации
+            </p>
+            <p class="partners__item-description">
+              Мошеннические действия и недобросовестная реклама
+            </p>
+          </li>
+          <li class="partners__item">
+            <h4 class="partners__item-title">
+              Поддержка и контакты
+            </h4>
+            <p class="partners__item-description">
+              Если у вас возникли вопросы или предложения по партнёрству — напишите нам в
+              <a href="https://t.me/@simple"><strong>онлайн-чат</strong></a> или через <a
+                href="https://t.me/@simple"><strong>форму обратной связи</strong></a>.
+            </p>
+          </li>
+        </ul>
+        <button class="partners__button">
+          Присоединиться
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" style="margin-top: 145px;">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__left">
+          <h6 class="footer__title">
+            SimpleExchange — сервіс швидкого та зручного обміну
+          </h6>
+          <p class="footer__schedule">
+            Графік роботи оператора:
+            <span>з 9:00 до 22:00</span>
+          </p>
+          <div class="footer__copy">
+            ©Всі права захищені
+            SimpleExchange 2025
+          </div>
+        </div>
+        <div class="footer__call">
+          <h6 class="footer__title">
+            Ми на зв'язку
+          </h6>
+          <a class="footer__email" href="mailto:Simple-Exchange@gmail.com">
+            info@simpleexchange.com
+          </a>
+          <a class="footer__telegram" href="https://t.me/@simple">
+            @simple
+          </a>
+        </div>
+        <div class="footer__nav">
+          <h6 class="footer__title">
+            Направлення по сайту
+          </h6>
+          <ul class="footer__list">
+            <li class="footer__item">
+              <a class="footer__link" href="./index.html">
+                Головна
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./partners.html">
+                Правила
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./aml.html">
+                AML
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./contacts.html">
+                Контакти
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./cookies.html">
+                Cookies
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./partners.html">
+                Партнерам
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__partners">
+          <h6 class="footer__title">
+            Партнери
+          </h6>
+          <img src="./images/partner-1.png" alt="">
+          <img src="./images/partner-2.svg" alt="">
+          <img src="./images/partner-3.png" alt="">
+          <img src="./images/partner-4.svg" alt="">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Попап авторизації -->
+  <div class="auth-modal" id="authModal">
+    <div class="auth-modal__overlay"></div>
+    <div class="auth-modal__content">
+      <button class="auth-modal__close" id="authModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="auth-modal__header">
+        <h2 class="auth-modal__title">Авторизація</h2>
+        <p class="auth-modal__subtitle">Увійти в свій особистий кабінет</p>
+      </div>
+
+      <form class="auth-modal__form" id="authForm">
+        <div class="auth-modal__field">
+          <label class="auth-modal__label" for="authEmail">Електронна пошта</label>
+          <input type="email" id="authEmail" class="auth-modal__input" placeholder="Введіть вашу електронну пошту"
+            required>
+        </div>
+
+        <div class="auth-modal__field">
+          <label class="auth-modal__label" for="authPassword">Пароль</label>
+          <input type="password" id="authPassword" class="auth-modal__input" placeholder="Введіть ваш пароль" required>
+        </div>
+
+        <div class="auth-modal__options">
+          <label class="auth-modal__checkbox">
+            <input type="checkbox" id="authRemember">
+            <span class="auth-modal__checkbox-custom"></span>
+            <span class="auth-modal__checkbox-text">Запам'ятати мої дані</span>
+          </label>
+          <div class="auth-modal__links">
+            <a href="#" class="auth-modal__forgot">Забули пароль?</a>
+          </div>
+        </div>
+
+        <button type="submit" class="auth-modal__submit">
+          Увійти
+        </button>
+      </form>
+
+      <div class="auth-modal__footer">
+        <p class="auth-modal__register-text">
+          Не маєте аккаунт?
+          <a href="#" class="auth-modal__register-link" id="showRegisterModal">Ви можете зареєструвати аккаунт</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Попап реєстрації -->
+  <div class="register-modal" id="registerModal">
+    <div class="register-modal__overlay"></div>
+    <div class="register-modal__content">
+      <button class="register-modal__close" id="registerModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="register-modal__header">
+        <h2 class="register-modal__title">Реєстрація</h2>
+        <p class="register-modal__subtitle">Створити свій особистий кабінет</p>
+      </div>
+
+      <form class="register-modal__form" id="registerForm">
+        <div class="register-modal__field">
+          <label class="register-modal__label" for="registerEmail">Електронна пошта</label>
+          <input type="email" id="registerEmail" class="register-modal__input"
+            placeholder="Введіть вашу електронну пошту" required>
+        </div>
+
+        <div class="register-modal__field">
+          <label class="register-modal__label" for="registerPassword">Створіть пароль</label>
+          <input type="password" id="registerPassword" class="register-modal__input" placeholder="Введіть пароль"
+            required>
+          <div class="register-modal__error" id="passwordError" style="display: none;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 1C4.13 1 1 4.13 1 8s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zM7.5 11.5h1v1h-1v-1zM7.5 5.5h1v4h-1v-4z"
+                fill="#dc3545" />
+            </svg>
+            <span>Паролі не співпадають, спробуйте ще раз</span>
+          </div>
+        </div>
+
+        <div class="register-modal__field">
+          <label class="register-modal__label" for="registerPasswordConfirm">Повторіть пароль</label>
+          <input type="password" id="registerPasswordConfirm" class="register-modal__input"
+            placeholder="Повторіть пароль" required>
+        </div>
+
+        <button type="submit" class="register-modal__submit">
+          Створити акаунт
+        </button>
+      </form>
+
+      <div class="register-modal__footer">
+        <p class="register-modal__login-text">
+          Вже зареєстровані? Ви можете <a href="#" class="register-modal__login-link" id="showAuthModal">увійти</a> в
+          аккаунт
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Попап відновлення паролю -->
+  <div class="forgot-modal" id="forgotModal">
+    <div class="forgot-modal__overlay"></div>
+    <div class="forgot-modal__content">
+      <button class="forgot-modal__close" id="forgotModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="forgot-modal__header">
+        <h2 class="forgot-modal__title">Відновити пароль</h2>
+        <p class="forgot-modal__subtitle">Змінити пароль від вашого особистого кабінету</p>
+      </div>
+
+      <form class="forgot-modal__form" id="forgotForm">
+        <div class="forgot-modal__field">
+          <label class="forgot-modal__label" for="forgotEmail">Електронна пошта</label>
+          <input type="email" id="forgotEmail" class="forgot-modal__input" placeholder="Введіть вашу електронну пошту"
+            required>
+        </div>
+
+        <button type="submit" class="forgot-modal__submit">
+          Продовжити
+        </button>
+      </form>
+
+      <div class="forgot-modal__footer">
+        <p class="forgot-modal__back-text">
+          <a href="#" class="forgot-modal__back-link" id="showAuthModalFromForgot">Повернутися до авторизації</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Попап зміни паролю -->
+  <div class="change-password-modal" id="changePasswordModal">
+    <div class="change-password-modal__overlay"></div>
+    <div class="change-password-modal__content">
+      <button class="change-password-modal__close" id="changePasswordModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="change-password-modal__header">
+        <h2 class="change-password-modal__title">Створити новий пароль</h2>
+        <p class="change-password-modal__subtitle">Введіть новий пароль для вашого облікового запису</p>
+      </div>
+
+      <form class="change-password-modal__form" id="changePasswordForm">
+        <div class="change-password-modal__field">
+          <label class="change-password-modal__label" for="newPassword">Введіть новий пароль</label>
+          <input type="password" id="newPassword" class="change-password-modal__input"
+            placeholder="Введіть новий пароль" required>
+        </div>
+
+        <div class="change-password-modal__field">
+          <label class="change-password-modal__label" for="confirmNewPassword">Введіть новий пароль ще раз</label>
+          <input type="password" id="confirmNewPassword" class="change-password-modal__input"
+            placeholder="Введіть новий пароль ще раз" required>
+        </div>
+
+        <button type="submit" class="change-password-modal__submit">
+          Створити пароль
+        </button>
+      </form>
+
+      <div class="change-password-modal__footer">
+        <p class="change-password-modal__back-text">
+          <a href="#" class="change-password-modal__back-link" id="showAuthModalFromChangePassword">Скасувати</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Плашка з уведомленням про cookies -->
+  <div class="cookie-notice" id="cookieNotice">
+    <div class="cookie-notice__content">
+      <div class="cookie-notice__text">
+        <h3 class="cookie-notice__title">Cookies файли</h3>
+        <p class="cookie-notice__description">
+          Наш сайт використовує файли cookies для покращення вашого досвіду та аналізу трафіку.
+          Продовжуючи використовувати сайт, Ви погоджуєтесь з нашою
+          <a href="#" class="cookie-notice__link">політикою використання файлів cookies</a>.
+        </p>
+      </div>
+      <button class="cookie-notice__close" id="cookieNoticeClose" aria-label="Закрити повідомлення">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

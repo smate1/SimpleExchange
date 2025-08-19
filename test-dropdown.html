@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест Dropdown</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    body {
+      padding: 20px;
+      background: #f1f3f8;
+    }
+
+    .test-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="test-container">
+    <h1>Тест Dropdown меню користувача</h1>
+
+    <div class="header__user-dropdown">
+      <div class="header__user-selector">
+        <div class="header__user-current">
+          <div class="header__user-avatar">
+            <span class="header__user-avatar-text">D</span>
+          </div>
+          <span class="header__user-email">desi...@proton.me</span>
+          <img src="./images/dropdown-arrow.svg" alt="dropdown" class="header__user-arrow">
+        </div>
+        <div class="header__user-dropdown-menu">
+          <div class="header__user-option" data-value="applications">
+            <span class="header__user-option-text">Мої заявки</span>
+            <span class="header__user-option-badge">0</span>
+          </div>
+          <div class="header__user-option" data-value="details">
+            <span class="header__user-option-text">Мої реквізити</span>
+          </div>
+          <div class="header__user-option" data-value="partners">
+            <span class="header__user-option-text">Партнерам</span>
+          </div>
+          <div class="header__user-option" data-value="profile">
+            <span class="header__user-option-text">Профіль</span>
+          </div>
+          <div class="header__user-divider"></div>
+          <div class="header__user-option" data-value="logout">
+            <span class="header__user-option-text">Вийти</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 20px;">Клікніть на профіль користувача, щоб відкрити dropdown меню.</p>
+  </div>
+
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

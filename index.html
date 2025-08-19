@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="SimpleExchange - автоматичний обмін криптовалют. Швидкий та безпечний обмін USDT на BTC та інші валюти." />
+  <meta name="keywords" content="обмін криптовалют, USDT, BTC, обмінник" />
+  <title>SimpleExchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header__top">
+        <a class="header__logo" href="./index.html">
+          <img src="./images/logo.svg" alt="logo">
+        </a>
+        <nav class="header__nav">
+          <ul class="header__list">
+            <li class="header__item">
+              <a class="header__link" href="./partners.html">Партнерам</a>
+            </li>
+            <li class="header__item">
+              <a class="header__link" href="./rules.html">Правила</a>
+            </li>
+            <li class="header__item">
+              <a class="header__link" href="./contacts.html">Контакти</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header__right">
+          <div class="header__language-wrapper">
+            <div class="header__language-selector">
+              <div class="header__language-current">
+                <span class="header__language-text">UA</span>
+                <img src="./images/dropdown-arrow.svg" alt="dropdown" class="header__language-arrow">
+              </div>
+              <div class="header__language-dropdown">
+                <div class="header__language-option" data-value="en">
+                  <span class="header__language-option-text">English</span>
+                </div>
+                <div class="header__language-option" data-value="ru">
+                  <span class="header__language-option-text">Русский</span>
+                </div>
+                <div class="header__language-option" data-value="es">
+                  <span class="header__language-option-text">Español</span>
+                </div>
+                <div class="header__language-option" data-value="ua">
+                  <span class="header__language-option-text">Українська</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="header__burger" type="button">
+            <span class="header__burger-line"></span>
+            <span class="header__burger-line"></span>
+            <span class="header__burger-line"></span>
+          </button>
+          <button class="header__button" style="display: none;">Увійти</button>
+          <div class="header__user-dropdown">
+            <div class="header__user-selector">
+              <div class="header__user-current">
+                <div class="header__user-avatar">
+                  <span class="header__user-avatar-text">D</span>
+                </div>
+                <span class="header__user-email">desi...@proton.me</span>
+                <img src="./images/dropdown-arrow.svg" alt="dropdown" class="header__user-arrow">
+              </div>
+              <div class="header__user-dropdown-menu">
+                <div class="header__user-option" data-value="applications">
+                  <span class="header__user-option-text">Мої заявки</span>
+                  <span class="header__user-option-badge">0</span>
+                </div>
+                <div class="header__user-option" data-value="details">
+                  <span class="header__user-option-text">Мої реквізити</span>
+                </div>
+                <div class="header__user-option" data-value="partners">
+                  <span class="header__user-option-text">Партнерам</span>
+                </div>
+                <div class="header__user-option" data-value="profile">
+                  <span class="header__user-option-text">Профіль</span>
+                </div>
+                <div class="header__user-divider"></div>
+                <div class="header__user-option" data-value="logout">
+                  <span class="header__user-option-text">Вийти</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Мобільне меню -->
+  <div class="mobile-menu">
+    <div class="mobile-menu__header">
+      <a class="mobile-menu__logo" href="./index.html">
+        <img src="./images/logo.svg" alt="logo">
+      </a>
+      <div class="mobile-menu__controls">
+        <div class="mobile-menu__language-wrapper">
+          <div class="mobile-menu__language-selector">
+            <div class="mobile-menu__language-current">
+              <span class="mobile-menu__language-text">UA</span>
+              <img src="./images/dropdown-arrow.svg" alt="dropdown" class="mobile-menu__language-arrow">
+            </div>
+            <div class="mobile-menu__language-dropdown">
+              <div class="mobile-menu__language-option" data-value="en">
+                <span class="mobile-menu__language-option-text">English</span>
+              </div>
+              <div class="mobile-menu__language-option" data-value="ru">
+                <span class="mobile-menu__language-option-text">Русский</span>
+              </div>
+              <div class="mobile-menu__language-option" data-value="es">
+                <span class="mobile-menu__language-option-text">Español</span>
+              </div>
+              <div class="mobile-menu__language-option" data-value="ua">
+                <span class="mobile-menu__language-option-text">Українська</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="header__burger header__burger--close" type="button">
+          <span class="header__burger-line"></span>
+          <span class="header__burger-line"></span>
+          <span class="header__burger-line"></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu__user">
+      <div class="mobile-menu__avatar">
+        <span class="mobile-menu__avatar-text">D</span>
+      </div>
+      <div class="mobile-menu__user-info">
+        <div class="mobile-menu__email">Design.change99@gmail.com</div>
+        <a href="./profile.html" class="mobile-menu__account">Мій аккаунт</a>
+      </div>
+    </div>
+    <nav class="mobile-menu__nav">
+      <ul class="mobile-menu__list">
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="./partners.html">Партнерам</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="./rules.html">Правила</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="./contacts.html">Контакти</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="./profile.html">Профіль</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__footer">
+      <button class="mobile-menu__logout">Вийти</button>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+      <div class="header__inner">
+        <div class="header__content">
+          <h1 class="header__title">Автоматичний
+            обмін Tether USDT
+            на Bitcoin BTC</h1>
+          <p class="header__text">
+            Меняйте свои средства быстро и безопасно. Наш сервис предлагает мгновенные транзакции и удобный интерфейс.
+          </p>
+          <form class="header__form">
+            <input class="header__input" type="text" placeholder="Знайти заявку">
+            <button class="header__form-btn">
+              <img src="./images/search.svg" alt="search">
+            </button>
+          </form>
+        </div>
+        <div class="header__popup">
+          <div class="popup__tabs">
+            <button class="popup__tab active">
+              Купити
+            </button>
+            <button class="popup__tab">
+              Продати
+            </button>
+          </div>
+          <div class="popup__content">
+            <div class="popup__wrapper">
+              <label class="popup__send">
+                <div class="popup__send-wrapper">
+                  <span class="popup__send-text">
+                    Ви відправляєте
+                  </span>
+                  <input class="popup__send-input" type="number" placeholder="1000" value="1000">
+                </div>
+
+                <div class="popup__select-wrapper">
+                  <div class="popup__select-icon">
+                    <img src="./images/usdt.svg" alt="USDT" class="popup__select-currency-icon">
+                  </div>
+                  <img src="./images/dropdown-arrow.svg" alt="dropdown" class="popup__select-arrow">
+                  <div class="currency__overlay">
+                    <div class="currency__search">
+                      <div class="currency__search-wrapper">
+                        <input type="text" class="currency__search-input" placeholder="Пошук валюти...">
+                        <svg class="currency__search-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                          viewBox="0 0 28 28" fill="none">
+                          <path
+                            d="M25.1191 23.8809L19.6427 18.4056C21.2299 16.5 22.0214 14.0558 21.8525 11.5814C21.6836 9.10709 20.5672 6.79313 18.7357 5.12091C16.9041 3.4487 14.4984 2.54697 12.0189 2.60332C9.53944 2.65967 7.17715 3.66976 5.42345 5.42345C3.66976 7.17715 2.65967 9.53944 2.60332 12.0189C2.54697 14.4984 3.4487 16.9041 5.12091 18.7357C6.79313 20.5672 9.10709 21.6836 11.5814 21.8525C14.0558 22.0214 16.5 21.2299 18.4056 19.6427L23.8809 25.1191C23.9622 25.2004 24.0588 25.2649 24.165 25.3088C24.2712 25.3528 24.385 25.3755 24.5 25.3755C24.615 25.3755 24.7288 25.3528 24.835 25.3088C24.9413 25.2649 25.0378 25.2004 25.1191 25.1191C25.2004 25.0378 25.2649 24.9413 25.3088 24.835C25.3528 24.7288 25.3755 24.615 25.3755 24.5C25.3755 24.385 25.3528 24.2712 25.3088 24.165C25.2649 24.0588 25.2004 23.9622 25.1191 23.8809ZM4.37501 12.25C4.37501 10.6925 4.83687 9.16993 5.70218 7.87489C6.5675 6.57985 7.79741 5.57049 9.23637 4.97445C10.6753 4.37841 12.2587 4.22246 13.7863 4.52632C15.3139 4.83018 16.7171 5.5802 17.8185 6.68154C18.9198 7.78288 19.6698 9.18607 19.9737 10.7137C20.2775 12.2413 20.1216 13.8247 19.5256 15.2636C18.9295 16.7026 17.9202 17.9325 16.6251 18.7978C15.3301 19.6631 13.8075 20.125 12.25 20.125C10.1621 20.1227 8.16044 19.2923 6.6841 17.8159C5.20775 16.3396 4.37732 14.3379 4.37501 12.25Z"
+                            fill="#202941" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="currency__list">
+                      <div class="currency__item" data-value="usdt-trc20">
+                        <div class="currency__left">
+                          <img src="./images/usdt.svg" alt="">
+                          <p class="currency__text">Tether TRC20 (USDT)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 232.123
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="usdt-erc20">
+                        <div class="currency__left">
+                          <img src="./images/usdt.svg" alt="">
+                          <p class="currency__text">Tether ERC20 (USDT)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 20.923
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="btc">
+                        <div class="currency__left">
+                          <img src="./images/btc.svg" alt="">
+                          <p class="currency__text">Bitcoin (BTC)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 32
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="trx">
+                        <div class="currency__left">
+                          <img src="./images/trc.svg" alt="">
+                          <p class="currency__text">Tron (TRX)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 9.123.994
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="eth">
+                        <div class="currency__left">
+                          <img src="./images/eth.svg" alt="">
+                          <p class="currency__text">Ethereum (ETH)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 213
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="bnb">
+                        <div class="currency__left">
+                          <img src="./images/bnb.svg" alt="">
+                          <p class="currency__text">Binance (BNB)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 0
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+              <button class="popup__swap">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="44" height="44" rx="22" fill="#202941" />
+                  <circle cx="22.5" cy="22.5" r="0.5" fill="#202941" />
+                  <path
+                    d="M30.0307 27.0307L27.0307 30.0307C26.89 30.1714 26.6991 30.2505 26.5001 30.2505C26.3011 30.2505 26.1102 30.1714 25.9695 30.0307C25.8287 29.8899 25.7497 29.6991 25.7497 29.5001C25.7497 29.301 25.8287 29.1102 25.9695 28.9694L27.6898 27.2501H14.5001C14.3012 27.2501 14.1104 27.171 13.9698 27.0304C13.8291 26.8897 13.7501 26.699 13.7501 26.5001C13.7501 26.3011 13.8291 26.1104 13.9698 25.9697C14.1104 25.8291 14.3012 25.7501 14.5001 25.7501H27.6898L25.9695 24.0307C25.8287 23.8899 25.7497 23.6991 25.7497 23.5001C25.7497 23.301 25.8287 23.1102 25.9695 22.9694C26.1102 22.8287 26.3011 22.7496 26.5001 22.7496C26.6991 22.7496 26.89 22.8287 27.0307 22.9694L30.0307 25.9694C30.1005 26.0391 30.1558 26.1218 30.1935 26.2128C30.2313 26.3039 30.2507 26.4015 30.2507 26.5001C30.2507 26.5986 30.2313 26.6962 30.1935 26.7873C30.1558 26.8783 30.1005 26.961 30.0307 27.0307ZM16.9695 21.0307C17.1102 21.1714 17.3011 21.2505 17.5001 21.2505C17.6991 21.2505 17.89 21.1714 18.0307 21.0307C18.1715 20.8899 18.2505 20.6991 18.2505 20.5001C18.2505 20.301 18.1715 20.1102 18.0307 19.9694L16.3104 18.2501H29.5001C29.699 18.2501 29.8898 18.171 30.0304 18.0304C30.1711 17.8897 30.2501 17.699 30.2501 17.5001C30.2501 17.3011 30.1711 17.1104 30.0304 16.9697C29.8898 16.8291 29.699 16.7501 29.5001 16.7501H16.3104L18.0307 15.0307C18.1715 14.8899 18.2505 14.6991 18.2505 14.5001C18.2505 14.301 18.1715 14.1102 18.0307 13.9694C17.89 13.8287 17.6991 13.7496 17.5001 13.7496C17.3011 13.7496 17.1102 13.8287 16.9695 13.9694L13.9695 16.9694C13.8997 17.0391 13.8444 17.1218 13.8067 17.2128C13.7689 17.3039 13.7495 17.4015 13.7495 17.5001C13.7495 17.5986 13.7689 17.6962 13.8067 17.7873C13.8444 17.8783 13.8997 17.961 13.9695 18.0307L16.9695 21.0307Z"
+                    fill="white" />
+                </svg>
+              </button>
+              <label class="popup__receive">
+                <div class="popup__recieve-wrapper">
+                  <span class="popup__receive-text">
+                    Ви отримуєте
+                  </span>
+                  <input class="popup__receive-input" type="number" placeholder="43,72">
+                </div>
+                <div class="popup__select-wrapper">
+                  <div class="popup__select-icon">
+                    <img src="./images/uah.svg" alt="UAH" class="popup__select-currency-icon">
+                  </div>
+                  <img src="./images/dropdown-arrow.svg" alt="dropdown" class="popup__select-arrow">
+                  <div class="currency__overlay">
+                    <div class="currency__search">
+                      <div class="currency__search-wrapper">
+                        <input type="text" class="currency__search-input" placeholder="Пошук">
+                        <svg class="currency__search-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                          viewBox="0 0 28 28" fill="none">
+                          <path
+                            d="M25.1191 23.8809L19.6427 18.4056C21.2299 16.5 22.0214 14.0558 21.8525 11.5814C21.6836 9.10709 20.5672 6.79313 18.7357 5.12091C16.9041 3.4487 14.4984 2.54697 12.0189 2.60332C9.53944 2.65967 7.17715 3.66976 5.42345 5.42345C3.66976 7.17715 2.65967 9.53944 2.60332 12.0189C2.54697 14.4984 3.4487 16.9041 5.12091 18.7357C6.79313 20.5672 9.10709 21.6836 11.5814 21.8525C14.0558 22.0214 16.5 21.2299 18.4056 19.6427L23.8809 25.1191C23.9622 25.2004 24.0588 25.2649 24.165 25.3088C24.2712 25.3528 24.385 25.3755 24.5 25.3755C24.615 25.3755 24.7288 25.3528 24.835 25.3088C24.9413 25.2649 25.0378 25.2004 25.1191 25.1191C25.2004 25.0378 25.2649 24.9413 25.3088 24.835C25.3528 24.7288 25.3755 24.615 25.3755 24.5C25.3755 24.385 25.3528 24.2712 25.3088 24.165C25.2649 24.0588 25.2004 23.9622 25.1191 23.8809ZM4.37501 12.25C4.37501 10.6925 4.83687 9.16993 5.70218 7.87489C6.5675 6.57985 7.79741 5.57049 9.23637 4.97445C10.6753 4.37841 12.2587 4.22246 13.7863 4.52632C15.3139 4.83018 16.7171 5.5802 17.8185 6.68154C18.9198 7.78288 19.6698 9.18607 19.9737 10.7137C20.2775 12.2413 20.1216 13.8247 19.5256 15.2636C18.9295 16.7026 17.9202 17.9325 16.6251 18.7978C15.3301 19.6631 13.8075 20.125 12.25 20.125C10.1621 20.1227 8.16044 19.2923 6.6841 17.8159C5.20775 16.3396 4.37732 14.3379 4.37501 12.25Z"
+                            fill="#202941" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="currency__list">
+                      <div class="currency__item" data-value="usdt-trc20">
+                        <div class="currency__left">
+                          <img src="./images/usdt.svg" alt="">
+                          <p class="currency__text">Tether TRC20 (USDT)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 232.123
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="usdt-erc20">
+                        <div class="currency__left">
+                          <img src="./images/usdt.svg" alt="">
+                          <p class="currency__text">Tether ERC20 (USDT)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 20.923
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="btc">
+                        <div class="currency__left">
+                          <img src="./images/btc.svg" alt="">
+                          <p class="currency__text">Bitcoin (BTC)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 32
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="trx">
+                        <div class="currency__left">
+                          <img src="./images/trc.svg" alt="">
+                          <p class="currency__text">Tron (TRX)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 9.123.994
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="eth">
+                        <div class="currency__left">
+                          <img src="./images/eth.svg" alt="">
+                          <p class="currency__text">Ethereum (ETH)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 213
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="bnb">
+                        <div class="currency__left">
+                          <img src="./images/bnb.svg" alt="">
+                          <p class="currency__text">Binance (BNB)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 0
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div class="popup__form-error" id="cardError" role="alert" aria-live="polite">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
+                aria-hidden="true">
+                <path
+                  d="M7.5 1.40625C6.29477 1.40625 5.11661 1.76364 4.1145 2.43323C3.11238 3.10282 2.33133 4.05454 1.87011 5.16802C1.40889 6.28151 1.28821 7.50676 1.52334 8.68883C1.75847 9.8709 2.33884 10.9567 3.19107 11.8089C4.0433 12.6612 5.1291 13.2415 6.31117 13.4767C7.49324 13.7118 8.71849 13.5911 9.83198 13.1299C10.9455 12.6687 11.8972 11.8876 12.5668 10.8855C13.2364 9.88339 13.5938 8.70523 13.5938 7.5C13.592 5.88436 12.9495 4.33538 11.807 3.19295C10.6646 2.05052 9.11564 1.40796 7.5 1.40625ZM7.03125 4.6875C7.03125 4.56318 7.08064 4.44395 7.16855 4.35604C7.25645 4.26814 7.37568 4.21875 7.5 4.21875C7.62432 4.21875 7.74355 4.26814 7.83146 4.35604C7.91937 4.44395 7.96875 4.56318 7.96875 4.6875V7.96875C7.96875 8.09307 7.91937 8.2123 7.83146 8.30021C7.74355 8.38811 7.62432 8.4375 7.5 8.4375C7.37568 8.4375 7.25645 8.38811 7.16855 8.30021C7.08064 8.2123 7.03125 8.09307 7.03125 7.96875V4.6875ZM7.5 10.7812C7.36094 10.7812 7.225 10.74 7.10937 10.6628C6.99374 10.5855 6.90362 10.4757 6.8504 10.3472C6.79718 10.2187 6.78326 10.0773 6.81039 9.94095C6.83752 9.80456 6.90448 9.67927 7.00282 9.58094C7.10115 9.48261 7.22644 9.41564 7.36283 9.38851C7.49922 9.36138 7.6406 9.3753 7.76908 9.42852C7.89756 9.48174 8.00737 9.57186 8.08463 9.68749C8.16189 9.80312 8.20313 9.93906 8.20313 10.0781C8.20313 10.2646 8.12905 10.4434 7.99719 10.5753C7.86533 10.7072 7.68648 10.7812 7.5 10.7812Z"
+                  fill="#FD6B6B" />
+              </svg>
+              <span>Сума має бути не менше 36,72</span>
+            </div>
+            <div class="popup__rate">
+              <p class="popup__rate-text">
+                1 USDT = 41.123 UAH
+                <span>60</span>
+              </p>
+              <p class="popup__rate-commission">
+                Комісія за обробку платежу <span>1,5 USDT</span>
+              </p>
+            </div>
+            <div class="popup__details">
+              <p class="popup__details-text">
+                Реквізити
+              </p>
+              <div class="popup__form">
+                <div class="popup__form-columns">
+                  <div class="popup__form-left">
+                    <div class="popup__form-field">
+                      <div class="floating-label-wrapper">
+                        <input class="popup__form-input popup__form-card" type="text" id="cardNumberInput"
+                          name="cardNumber" placeholder=" " maxlength="23" autocomplete="cc-number"
+                          pattern="[0-9\s]{13,19}" aria-describedby="cardError" value="4441 2200 0000 0010"
+                          inputmode="numeric">
+                        <label for="cardNumberInput" class="floating-label">Номер банківської карти</label>
+                      </div>
+                      <div class="popup__form-error" id="cardError" role="alert" aria-live="polite">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
+                          aria-hidden="true">
+                          <path
+                            d="M7.5 1.40625C6.29477 1.40625 5.11661 1.76364 4.1145 2.43323C3.11238 3.10282 2.33133 4.05454 1.87011 5.16802C1.40889 6.28151 1.28821 7.50676 1.52334 8.68883C1.75847 9.8709 2.33884 10.9567 3.19107 11.8089C4.0433 12.6612 5.1291 13.2415 6.31117 13.4767C7.49324 13.7118 8.71849 13.5911 9.83198 13.1299C10.9455 12.6687 11.8972 11.8876 12.5668 10.8855C13.2364 9.88339 13.5938 8.70523 13.5938 7.5C13.592 5.88436 12.9495 4.33538 11.807 3.19295C10.6646 2.05052 9.11564 1.40796 7.5 1.40625ZM7.03125 4.6875C7.03125 4.56318 7.08064 4.44395 7.16855 4.35604C7.25645 4.26814 7.37568 4.21875 7.5 4.21875C7.62432 4.21875 7.74355 4.26814 7.83146 4.35604C7.91937 4.44395 7.96875 4.56318 7.96875 4.6875V7.96875C7.96875 8.09307 7.91937 8.2123 7.83146 8.30021C7.74355 8.38811 7.62432 8.4375 7.5 8.4375C7.37568 8.4375 7.25645 8.38811 7.16855 8.30021C7.08064 8.2123 7.03125 8.09307 7.03125 7.96875V4.6875ZM7.5 10.7812C7.36094 10.7812 7.225 10.74 7.10937 10.6628C6.99374 10.5855 6.90362 10.4757 6.8504 10.3472C6.79718 10.2187 6.78326 10.0773 6.81039 9.94095C6.83752 9.80456 6.90448 9.67927 7.00282 9.58094C7.10115 9.48261 7.22644 9.41564 7.36283 9.38851C7.49922 9.36138 7.6406 9.3753 7.76908 9.42852C7.89756 9.48174 8.00737 9.57186 8.08463 9.68749C8.16189 9.80312 8.20313 9.93906 8.20313 10.0781C8.20313 10.2646 8.12905 10.4434 7.99719 10.5753C7.86533 10.7072 7.68648 10.7812 7.5 10.7812Z"
+                            fill="#FD6B6B" />
+                        </svg>
+                        <span>Поле обов'язкове до заповнення</span>
+                      </div>
+                    </div>
+                    <div class="popup__form-field">
+                      <div class="floating-label-wrapper">
+                        <input class="popup__form-input" type="text" id="fullName" name="fullName" placeholder=" "
+                          required>
+                        <label for="fullName" class="floating-label">ПІБ</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="popup__form-right">
+                    <div class="popup__form-field">
+                      <div class="floating-label-wrapper">
+                        <input class="popup__form-input popup__form-address" type="text" id="address" name="address"
+                          placeholder=" " required>
+                        <label for="address" class="floating-label">Адреса відправлення</label>
+                      </div>
+                    </div>
+                    <div class="popup__form-field">
+                      <div class="floating-label-wrapper">
+                        <input class="popup__form-input" type="email" id="email" name="email" placeholder=" " required>
+                        <label for="email" class="floating-label">Email</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="popup__form-field popup__form-phone">
+                  <div class="floating-label-wrapper">
+                    <input class="popup__form-input" type="number" id="phone" name="phone" placeholder=" " required>
+                    <label for="phone" class="floating-label">Номер телефону</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="popup__description">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M11.5 2C9.62108 2 7.78435 2.55717 6.22209 3.60104C4.65982 4.64491 3.44218 6.12861 2.72315 7.86451C2.00412 9.6004 1.81598 11.5105 2.18254 13.3534C2.5491 15.1962 3.45389 16.8889 4.78249 18.2175C6.11109 19.5461 7.80383 20.4509 9.64664 20.8175C11.4895 21.184 13.3996 20.9959 15.1355 20.2769C16.8714 19.5578 18.3551 18.3402 19.399 16.7779C20.4428 15.2156 21 13.3789 21 11.5C20.9973 8.98126 19.9956 6.56644 18.2146 4.78542C16.4336 3.0044 14.0187 2.00266 11.5 2ZM11.1346 6.38461C11.3514 6.38461 11.5633 6.4489 11.7436 6.56935C11.9239 6.6898 12.0644 6.86099 12.1473 7.06129C12.2303 7.26158 12.252 7.48198 12.2097 7.69462C12.1674 7.90725 12.063 8.10257 11.9097 8.25587C11.7564 8.40917 11.5611 8.51356 11.3485 8.55586C11.1358 8.59816 10.9154 8.57645 10.7151 8.49348C10.5148 8.41052 10.3436 8.27002 10.2232 8.08976C10.1028 7.9095 10.0385 7.69757 10.0385 7.48077C10.0385 7.19005 10.154 6.91124 10.3595 6.70567C10.5651 6.5001 10.8439 6.38461 11.1346 6.38461ZM12.2308 16.6154C11.8431 16.6154 11.4714 16.4614 11.1973 16.1873C10.9232 15.9132 10.7692 15.5415 10.7692 15.1538V11.5C10.5754 11.5 10.3895 11.423 10.2525 11.286C10.1155 11.1489 10.0385 10.963 10.0385 10.7692C10.0385 10.5754 10.1155 10.3895 10.2525 10.2525C10.3895 10.1155 10.5754 10.0385 10.7692 10.0385C11.1569 10.0385 11.5286 10.1924 11.8027 10.4665C12.0768 10.7406 12.2308 11.1124 12.2308 11.5V15.1538C12.4246 15.1538 12.6105 15.2308 12.7475 15.3679C12.8845 15.5049 12.9615 15.6908 12.9615 15.8846C12.9615 16.0784 12.8845 16.2643 12.7475 16.4013C12.6105 16.5384 12.4246 16.6154 12.2308 16.6154Z"
+                  fill="#202941" />
+              </svg>
+              <p class="popup__description-text">
+                Якщо сума обміну перевищує 500$, потрібно пройти реєстрацію та верифікацію особи на нашому сайті
+              </p>
+            </div>
+            <div class="popup__description">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M11.5 2C9.62108 2 7.78435 2.55717 6.22209 3.60104C4.65982 4.64491 3.44218 6.12861 2.72315 7.86451C2.00412 9.6004 1.81598 11.5105 2.18254 13.3534C2.5491 15.1962 3.45389 16.8889 4.78249 18.2175C6.11109 19.5461 7.80383 20.4509 9.64664 20.8175C11.4895 21.184 13.3996 20.9959 15.1355 20.2769C16.8714 19.5578 18.3551 18.3402 19.399 16.7779C20.4428 15.2156 21 13.3789 21 11.5C20.9973 8.98126 19.9956 6.56644 18.2146 4.78542C16.4336 3.0044 14.0187 2.00266 11.5 2ZM11.1346 6.38461C11.3514 6.38461 11.5633 6.4489 11.7436 6.56935C11.9239 6.6898 12.0644 6.86099 12.1473 7.06129C12.2303 7.26158 12.252 7.48198 12.2097 7.69462C12.1674 7.90725 12.063 8.10257 11.9097 8.25587C11.7564 8.40917 11.5611 8.51356 11.3485 8.55586C11.1358 8.59816 10.9154 8.57645 10.7151 8.49348C10.5148 8.41052 10.3436 8.27002 10.2232 8.08976C10.1028 7.9095 10.0385 7.69757 10.0385 7.48077C10.0385 7.19005 10.154 6.91124 10.3595 6.70567C10.5651 6.5001 10.8439 6.38461 11.1346 6.38461ZM12.2308 16.6154C11.8431 16.6154 11.4714 16.4614 11.1973 16.1873C10.9232 15.9132 10.7692 15.5415 10.7692 15.1538V11.5C10.5754 11.5 10.3895 11.423 10.2525 11.286C10.1155 11.1489 10.0385 10.963 10.0385 10.7692C10.0385 10.5754 10.1155 10.3895 10.2525 10.2525C10.3895 10.1155 10.5754 10.0385 10.7692 10.0385C11.1569 10.0385 11.5286 10.1924 11.8027 10.4665C12.0768 10.7406 12.2308 11.1124 12.2308 11.5V15.1538C12.4246 15.1538 12.6105 15.2308 12.7475 15.3679C12.8845 15.5049 12.9615 15.6908 12.9615 15.8846C12.9615 16.0784 12.8845 16.2643 12.7475 16.4013C12.6105 16.5384 12.4246 16.6154 12.2308 16.6154Z"
+                  fill="#202941" />
+              </svg>
+              <p class="popup__description-text">
+                Пожалуйста, убедитесь, что вывод производится в рамках сети TRC-20, в пр отивном случае, средства не
+                зачислятся на наш кошелек. Требуется 12 подтверждений от сети.
+                При переводе средств просим Вас учитывать комиссию сети.
+              </p>
+            </div>
+            <label class="popup__agree popup__agree-first">
+              <input class="popup__agree-input" type="checkbox" checked>
+              <p class="popup__agree-text">
+                Я згоден з <a href="#">регламентом сервісу</a> та правилами <a href="#">AML перевірки</a>
+              </p>
+            </label>
+            <label class="popup__agree">
+              <input class="popup__agree-input" type="checkbox">
+              <p class="popup__agree-text">
+                Запам'ятати мої дані
+              </p>
+            </label>
+            <div class="popup__error-message popup__error-general">
+              <span>Ошибка! Указанные данные недействительны.</span>
+            </div>
+            <button class="popup__button">
+              Створити замовлення
+            </button>
+          </div>
+        </div>
+        <div class="header__popup incative">
+          <div class="popup__tabs">
+            <button class="popup__tab active">
+              Купити
+            </button>
+            <button class="popup__tab">
+              Продати
+            </button>
+          </div>
+          <div class="popup__content">
+            <div class="popup__wrapper">
+              <label class="popup__send">
+                <div class="popup__send-wrapper">
+                  <span class="popup__send-text">
+                    Ви відправляєте
+                  </span>
+                  <input class="popup__send-input" type="number" placeholder="1000">
+                </div>
+                <div class="popup__select-wrapper">
+
+                  <div class="popup__select-icon">
+                    <img src="./images/usdt.svg" alt="USDT" class="popup__select-currency-icon">
+                  </div>
+                  <img src="./images/dropdown-arrow.svg" alt="dropdown" class="popup__select-arrow">
+                  <div class="currency__overlay">
+                    <div class="currency__search">
+                      <div class="currency__search-wrapper">
+                        <input type="text" class="currency__search-input" placeholder="Пошук валюти...">
+                        <svg class="currency__search-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                          viewBox="0 0 28 28" fill="none">
+                          <path
+                            d="M25.1191 23.8809L19.6427 18.4056C21.2299 16.5 22.0214 14.0558 21.8525 11.5814C21.6836 9.10709 20.5672 6.79313 18.7357 5.12091C16.9041 3.4487 14.4984 2.54697 12.0189 2.60332C9.53944 2.65967 7.17715 3.66976 5.42345 5.42345C3.66976 7.17715 2.65967 9.53944 2.60332 12.0189C2.54697 14.4984 3.4487 16.9041 5.12091 18.7357C6.79313 20.5672 9.10709 21.6836 11.5814 21.8525C14.0558 22.0214 16.5 21.2299 18.4056 19.6427L23.8809 25.1191C23.9622 25.2004 24.0588 25.2649 24.165 25.3088C24.2712 25.3528 24.385 25.3755 24.5 25.3755C24.615 25.3755 24.7288 25.3528 24.835 25.3088C24.9413 25.2649 25.0378 25.2004 25.1191 25.1191C25.2004 25.0378 25.2649 24.9413 25.3088 24.835C25.3528 24.7288 25.3755 24.615 25.3755 24.5C25.3755 24.385 25.3528 24.2712 25.3088 24.165C25.2649 24.0588 25.2004 23.9622 25.1191 23.8809ZM4.37501 12.25C4.37501 10.6925 4.83687 9.16993 5.70218 7.87489C6.5675 6.57985 7.79741 5.57049 9.23637 4.97445C10.6753 4.37841 12.2587 4.22246 13.7863 4.52632C15.3139 4.83018 16.7171 5.5802 17.8185 6.68154C18.9198 7.78288 19.6698 9.18607 19.9737 10.7137C20.2775 12.2413 20.1216 13.8247 19.5256 15.2636C18.9295 16.7026 17.9202 17.9325 16.6251 18.7978C15.3301 19.6631 13.8075 20.125 12.25 20.125C10.1621 20.1227 8.16044 19.2923 6.6841 17.8159C5.20775 16.3396 4.37732 14.3379 4.37501 12.25Z"
+                            fill="#202941" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="currency__list">
+                      <div class="currency__item" data-value="usdt-trc20">
+                        <div class="currency__left">
+                          <img src="./images/usdt.svg" alt="">
+                          <p class="currency__text">Tether TRC20 (USDT)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 232.123
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="usdt-erc20">
+                        <div class="currency__left">
+                          <img src="./images/usdt.svg" alt="">
+                          <p class="currency__text">Tether ERC20 (USDT)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 20.923
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="btc">
+                        <div class="currency__left">
+                          <img src="./images/btc.svg" alt="">
+                          <p class="currency__text">Bitcoin (BTC)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 32
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="trx">
+                        <div class="currency__left">
+                          <img src="./images/trc.svg" alt="">
+                          <p class="currency__text">Tron (TRX)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 9.123.994
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="eth">
+                        <div class="currency__left">
+                          <img src="./images/eth.svg" alt="">
+                          <p class="currency__text">Ethereum (ETH)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 213
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="bnb">
+                        <div class="currency__left">
+                          <img src="./images/bnb.svg" alt="">
+                          <p class="currency__text">Binance (BNB)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 0
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+              <button class="popup__swap">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="44" height="44" rx="22" fill="#202941" />
+                  <circle cx="22.5" cy="22.5" r="0.5" fill="#202941" />
+                  <path
+                    d="M30.0307 27.0307L27.0307 30.0307C26.89 30.1714 26.6991 30.2505 26.5001 30.2505C26.3011 30.2505 26.1102 30.1714 25.9695 30.0307C25.8287 29.8899 25.7497 29.6991 25.7497 29.5001C25.7497 29.301 25.8287 29.1102 25.9695 28.9694L27.6898 27.2501H14.5001C14.3012 27.2501 14.1104 27.171 13.9698 27.0304C13.8291 26.8897 13.7501 26.699 13.7501 26.5001C13.7501 26.3011 13.8291 26.1104 13.9698 25.9697C14.1104 25.8291 14.3012 25.7501 14.5001 25.7501H27.6898L25.9695 24.0307C25.8287 23.8899 25.7497 23.6991 25.7497 23.5001C25.7497 23.301 25.8287 23.1102 25.9695 22.9694C26.1102 22.8287 26.3011 22.7496 26.5001 22.7496C26.6991 22.7496 26.89 22.8287 27.0307 22.9694L30.0307 25.9694C30.1005 26.0391 30.1558 26.1218 30.1935 26.2128C30.2313 26.3039 30.2507 26.4015 30.2507 26.5001C30.2507 26.5986 30.2313 26.6962 30.1935 26.7873C30.1558 26.8783 30.1005 26.961 30.0307 27.0307ZM16.9695 21.0307C17.1102 21.1714 17.3011 21.2505 17.5001 21.2505C17.6991 21.2505 17.89 21.1714 18.0307 21.0307C18.1715 20.8899 18.2505 20.6991 18.2505 20.5001C18.2505 20.301 18.1715 20.1102 18.0307 19.9694L16.3104 18.2501H29.5001C29.699 18.2501 29.8898 18.171 30.0304 18.0304C30.1711 17.8897 30.2501 17.699 30.2501 17.5001C30.2501 17.3011 30.1711 17.1104 30.0304 16.9697C29.8898 16.8291 29.699 16.7501 29.5001 16.7501H16.3104L18.0307 15.0307C18.1715 14.8899 18.2505 14.6991 18.2505 14.5001C18.2505 14.301 18.1715 14.1102 18.0307 13.9694C17.89 13.8287 17.6991 13.7496 17.5001 13.7496C17.3011 13.7496 17.1102 13.8287 16.9695 13.9694L13.9695 16.9694C13.8997 17.0391 13.8444 17.1218 13.8067 17.2128C13.7689 17.3039 13.7495 17.4015 13.7495 17.5001C13.7495 17.5986 13.7689 17.6962 13.8067 17.7873C13.8444 17.8783 13.8997 17.961 13.9695 18.0307L16.9695 21.0307Z"
+                    fill="white" />
+                </svg>
+              </button>
+              <label class="popup__receive">
+                <div class="popup__recieve-wrapper">
+                  <span class="popup__receive-text">
+                    Ви отримуєте
+                  </span>
+                  <input class="popup__receive-input" type="number" placeholder="43,72">
+                </div>
+                <div class="popup__select-wrapper">
+
+
+                  <div class="popup__select-icon">
+                    <img src="./images/uah.svg" alt="UAH" class="popup__select-currency-icon">
+                  </div>
+                  <img src="./images/dropdown-arrow.svg" alt="dropdown" class="popup__select-arrow">
+                  <div class="currency__overlay">
+                    <div class="currency__search">
+                      <div class="currency__search-wrapper">
+                        <input type="text" class="currency__search-input" placeholder="Пошук">
+                        <svg class="currency__search-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
+                          viewBox="0 0 28 28" fill="none">
+                          <path
+                            d="M25.1191 23.8809L19.6427 18.4056C21.2299 16.5 22.0214 14.0558 21.8525 11.5814C21.6836 9.10709 20.5672 6.79313 18.7357 5.12091C16.9041 3.4487 14.4984 2.54697 12.0189 2.60332C9.53944 2.65967 7.17715 3.66976 5.42345 5.42345C3.66976 7.17715 2.65967 9.53944 2.60332 12.0189C2.54697 14.4984 3.4487 16.9041 5.12091 18.7357C6.79313 20.5672 9.10709 21.6836 11.5814 21.8525C14.0558 22.0214 16.5 21.2299 18.4056 19.6427L23.8809 25.1191C23.9622 25.2004 24.0588 25.2649 24.165 25.3088C24.2712 25.3528 24.385 25.3755 24.5 25.3755C24.615 25.3755 24.7288 25.3528 24.835 25.3088C24.9413 25.2649 25.0378 25.2004 25.1191 25.1191C25.2004 25.0378 25.2649 24.9413 25.3088 24.835C25.3528 24.7288 25.3755 24.615 25.3755 24.5C25.3755 24.385 25.3528 24.2712 25.3088 24.165C25.2649 24.0588 25.2004 23.9622 25.1191 23.8809ZM4.37501 12.25C4.37501 10.6925 4.83687 9.16993 5.70218 7.87489C6.5675 6.57985 7.79741 5.57049 9.23637 4.97445C10.6753 4.37841 12.2587 4.22246 13.7863 4.52632C15.3139 4.83018 16.7171 5.5802 17.8185 6.68154C18.9198 7.78288 19.6698 9.18607 19.9737 10.7137C20.2775 12.2413 20.1216 13.8247 19.5256 15.2636C18.9295 16.7026 17.9202 17.9325 16.6251 18.7978C15.3301 19.6631 13.8075 20.125 12.25 20.125C10.1621 20.1227 8.16044 19.2923 6.6841 17.8159C5.20775 16.3396 4.37732 14.3379 4.37501 12.25Z"
+                            fill="#202941" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="currency__list">
+                      <div class="currency__item" data-value="usdt-trc20">
+                        <div class="currency__left">
+                          <img src="./images/usdt.svg" alt="">
+                          <p class="currency__text">Tether TRC20 (USDT)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 232.123
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="usdt-erc20">
+                        <div class="currency__left">
+                          <img src="./images/usdt.svg" alt="">
+                          <p class="currency__text">Tether ERC20 (USDT)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 20.923
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="btc">
+                        <div class="currency__left">
+                          <img src="./images/btc.svg" alt="">
+                          <p class="currency__text">Bitcoin (BTC)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 32
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="trx">
+                        <div class="currency__left">
+                          <img src="./images/trc.svg" alt="">
+                          <p class="currency__text">Tron (TRX)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 9.123.994
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="eth">
+                        <div class="currency__left">
+                          <img src="./images/eth.svg" alt="">
+                          <p class="currency__text">Ethereum (ETH)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 213
+                        </div>
+                      </div>
+                      <div class="currency__item" data-value="bnb">
+                        <div class="currency__left">
+                          <img src="./images/bnb.svg" alt="">
+                          <p class="currency__text">Binance (BNB)</p>
+                        </div>
+                        <div class="currency__reserve">
+                          Резерв: 0
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div class="popup__rate">
+              <p class="popup__rate-text">
+                1 USDT = 41.123 UAH
+                <span>60</span>
+              </p>
+              <p class="popup__rate-commission">
+                Комісія за обробку платежу <span>1,5 USDT</span>
+              </p>
+            </div>
+            <div class="popup__details">
+              <p class="popup__details-text">
+                Реквізити
+              </p>
+              <form class="popup__form">
+                <div class="floating-label-wrapper">
+                  <input class="popup__form-input" type="text" placeholder=" " maxlength="23" id="cardNumberInput"
+                    autocomplete="cc-number">
+                  <label for="cardNumberInput" class="floating-label">Банківська карта</label>
+                </div>
+                <div class="floating-label-wrapper">
+                  <input class="popup__form-input" type="text" placeholder=" ">
+                  <label class="floating-label">Адреса Tether</label>
+                </div>
+              </form>
+            </div>
+            <div class="popup__description">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M11.5 2C9.62108 2 7.78435 2.55717 6.22209 3.60104C4.65982 4.64491 3.44218 6.12861 2.72315 7.86451C2.00412 9.6004 1.81598 11.5105 2.18254 13.3534C2.5491 15.1962 3.45389 16.8889 4.78249 18.2175C6.11109 19.5461 7.80383 20.4509 9.64664 20.8175C11.4895 21.184 13.3996 20.9959 15.1355 20.2769C16.8714 19.5578 18.3551 18.3402 19.399 16.7779C20.4428 15.2156 21 13.3789 21 11.5C20.9973 8.98126 19.9956 6.56644 18.2146 4.78542C16.4336 3.0044 14.0187 2.00266 11.5 2ZM11.1346 6.38461C11.3514 6.38461 11.5633 6.4489 11.7436 6.56935C11.9239 6.6898 12.0644 6.86099 12.1473 7.06129C12.2303 7.26158 12.252 7.48198 12.2097 7.69462C12.1674 7.90725 12.063 8.10257 11.9097 8.25587C11.7564 8.40917 11.5611 8.51356 11.3485 8.55586C11.1358 8.59816 10.9154 8.57645 10.7151 8.49348C10.5148 8.41052 10.3436 8.27002 10.2232 8.08976C10.1028 7.9095 10.0385 7.69757 10.0385 7.48077C10.0385 7.19005 10.154 6.91124 10.3595 6.70567C10.5651 6.5001 10.8439 6.38461 11.1346 6.38461ZM12.2308 16.6154C11.8431 16.6154 11.4714 16.4614 11.1973 16.1873C10.9232 15.9132 10.7692 15.5415 10.7692 15.1538V11.5C10.5754 11.5 10.3895 11.423 10.2525 11.286C10.1155 11.1489 10.0385 10.963 10.0385 10.7692C10.0385 10.5754 10.1155 10.3895 10.2525 10.2525C10.3895 10.1155 10.5754 10.0385 10.7692 10.0385C11.1569 10.0385 11.5286 10.1924 11.8027 10.4665C12.0768 10.7406 12.2308 11.1124 12.2308 11.5V15.1538C12.4246 15.1538 12.6105 15.2308 12.7475 15.3679C12.8845 15.5049 12.9615 15.6908 12.9615 15.8846C12.9615 16.0784 12.8845 16.2643 12.7475 16.4013C12.6105 16.5384 12.4246 16.6154 12.2308 16.6154Z"
+                  fill="#202941" />
+              </svg>
+              <p class="popup__description-text">
+                Якщо сума обміну перевищує 500$, потрібно пройти реєстрацію та верифікацію особи на нашому сайті
+              </p>
+            </div>
+            <div class="popup__description">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M11.5 2C9.62108 2 7.78435 2.55717 6.22209 3.60104C4.65982 4.64491 3.44218 6.12861 2.72315 7.86451C2.00412 9.6004 1.81598 11.5105 2.18254 13.3534C2.5491 15.1962 3.45389 16.8889 4.78249 18.2175C6.11109 19.5461 7.80383 20.4509 9.64664 20.8175C11.4895 21.184 13.3996 20.9959 15.1355 20.2769C16.8714 19.5578 18.3551 18.3402 19.399 16.7779C20.4428 15.2156 21 13.3789 21 11.5C20.9973 8.98126 19.9956 6.56644 18.2146 4.78542C16.4336 3.0044 14.0187 2.00266 11.5 2ZM11.1346 6.38461C11.3514 6.38461 11.5633 6.4489 11.7436 6.56935C11.9239 6.6898 12.0644 6.86099 12.1473 7.06129C12.2303 7.26158 12.252 7.48198 12.2097 7.69462C12.1674 7.90725 12.063 8.10257 11.9097 8.25587C11.7564 8.40917 11.5611 8.51356 11.3485 8.55586C11.1358 8.59816 10.9154 8.57645 10.7151 8.49348C10.5148 8.41052 10.3436 8.27002 10.2232 8.08976C10.1028 7.9095 10.0385 7.69757 10.0385 7.48077C10.0385 7.19005 10.154 6.91124 10.3595 6.70567C10.5651 6.5001 10.8439 6.38461 11.1346 6.38461ZM12.2308 16.6154C11.8431 16.6154 11.4714 16.4614 11.1973 16.1873C10.9232 15.9132 10.7692 15.5415 10.7692 15.1538V11.5C10.5754 11.5 10.3895 11.423 10.2525 11.286C10.1155 11.1489 10.0385 10.963 10.0385 10.7692C10.0385 10.5754 10.1155 10.3895 10.2525 10.2525C10.3895 10.1155 10.5754 10.0385 10.7692 10.0385C11.1569 10.0385 11.5286 10.1924 11.8027 10.4665C12.0768 10.7406 12.2308 11.1124 12.2308 11.5V15.1538C12.4246 15.1538 12.6105 15.2308 12.7475 15.3679C12.8845 15.5049 12.9615 15.6908 12.9615 15.8846C12.9615 16.0784 12.8845 16.2643 12.7475 16.4013C12.6105 16.5384 12.4246 16.6154 12.2308 16.6154Z"
+                  fill="#202941" />
+              </svg>
+              <p class="popup__description-text">
+                Пожалуйста, убедитесь, что вывод производится в рамках сети TRC-20, в пр отивном случае, средства не
+                зачислятся на наш кошелек. Требуется 12 подтверждений от сети.
+                При переводе средств просим Вас учитывать комиссию сети.
+              </p>
+            </div>
+            <label class="popup__agree popup__agree-first">
+              <input class="popup__agree-input" type="checkbox">
+              <p class="popup__agree-text">
+                Я згоден з <a href="#">регламентом сервісу</a> та правилами <a href="#">AML перевірки</a>
+              </p>
+            </label>
+            <label class="popup__agree">
+              <input class="popup__agree-input" type="checkbox">
+              <p class="popup__agree-text">
+                Запам'ятати мої дані
+              </p>
+            </label>
+            <button class="popup__button" style="margin-top: 20px;">
+              Створити замовлення
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__left">
+          <h6 class="footer__title">
+            SimpleExchange — сервіс швидкого та зручного обміну
+          </h6>
+          <p class="footer__schedule">
+            Графік роботи оператора:
+            <span>з 9:00 до 22:00</span>
+          </p>
+          <div class="footer__copy">
+            ©Всі права захищені
+            SimpleExchange 2025
+          </div>
+        </div>
+        <div class="footer__call">
+          <h6 class="footer__title">
+            Ми на зв'язку
+          </h6>
+          <a class="footer__email" href="mailto:info@simpleexchange.com" aria-label="Написати на email">
+            info@simpleexchange.com
+          </a>
+          <a class="footer__telegram" href="https://t.me/@simple" target="_blank" rel="noopener"
+            aria-label="Написати в Telegram">
+            @simple
+          </a>
+        </div>
+        <div class="footer__nav">
+          <h6 class="footer__title">
+            Направлення по сайту
+          </h6>
+          <ul class="footer__list">
+            <li class="footer__item">
+              <a class="footer__link" href="./index.html">
+                Головна
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./rules.html">
+                Правила
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./aml.html">
+                AML
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./contacts.html">
+                Контакти
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./cookies.html">
+                Cookies
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./partners.html">
+                Партнерам
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__partners">
+          <h6 class="footer__title">
+            Партнери
+          </h6>
+          <img src="./images/partner-1.png" alt="">
+          <img src="./images/partner-2.svg" alt="">
+          <img src="./images/partner-3.png" alt="">
+          <img src="./images/partner-4.svg" alt="">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Попап авторизації -->
+  <div class="auth-modal" id="authModal">
+    <div class="auth-modal__overlay"></div>
+    <div class="auth-modal__content">
+      <button class="auth-modal__close" id="authModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="auth-modal__header">
+        <h2 class="auth-modal__title">Авторизація</h2>
+        <p class="auth-modal__subtitle">Увійти в свій особистий кабінет</p>
+      </div>
+
+      <form class="auth-modal__form" id="authForm">
+        <div class="auth-modal__field">
+          <input type="email" id="authEmail" class="auth-modal__input" placeholder="Електронна пошта" required>
+        </div>
+
+        <div class="auth-modal__field">
+          <input type="password" id="authPassword" class="auth-modal__input" placeholder="Пароль" required>
+        </div>
+
+        <div class="auth-modal__options">
+          <label class="auth-modal__checkbox">
+            <input type="checkbox" id="authRemember">
+            <span class="auth-modal__checkbox-custom"></span>
+            <span class="auth-modal__checkbox-text">Запам'ятати мої дані</span>
+          </label>
+          <div class="auth-modal__links">
+            <a href="#" class="auth-modal__forgot">Забули пароль?</a>
+          </div>
+        </div>
+
+        <button type="submit" class="auth-modal__submit">
+          Увійти
+        </button>
+      </form>
+
+      <div class="auth-modal__footer">
+        <p class="auth-modal__register-text">
+          Не маєте аккаунт?
+          <a href="#" class="auth-modal__register-link" id="showRegisterModal">Ви можете зареєструвати аккаунт</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Попап реєстрації -->
+  <div class="register-modal" id="registerModal">
+    <div class="register-modal__overlay"></div>
+    <div class="register-modal__content">
+      <button class="register-modal__close" id="registerModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="register-modal__header">
+        <h2 class="register-modal__title">Реєстрація</h2>
+        <p class="register-modal__subtitle">Створити свій особистий кабінет</p>
+      </div>
+
+      <form class="register-modal__form" id="registerForm">
+        <div class="register-modal__field">
+          <input type="email" id="registerEmail" class="register-modal__input" placeholder="Електронна пошта" required>
+        </div>
+
+        <div class="register-modal__field">
+          <input type="password" id="registerPassword" class="register-modal__input" placeholder="Створіть пароль"
+            required>
+          <div class="register-modal__error" id="passwordError" style="display: none;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 1C4.13 1 1 4.13 1 8s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zM7.5 11.5h1v1h-1v-1zM7.5 5.5h1v4h-1v-4z"
+                fill="#dc3545" />
+            </svg>
+            <span>Паролі не співпадають, спробуйте ще раз</span>
+          </div>
+        </div>
+
+        <div class="register-modal__field">
+          <input type="password" id="registerPasswordConfirm" class="register-modal__input"
+            placeholder="Повторіть пароль" required>
+        </div>
+
+        <button type="submit" class="register-modal__submit">
+          Створити акаунт
+        </button>
+      </form>
+
+      <div class="register-modal__footer">
+        <p class="register-modal__login-text">
+          Вже зареєстровані? Ви можете <a href="#" class="register-modal__login-link" id="showAuthModal">увійти</a> в
+          аккаунт
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Попап відновлення паролю -->
+  <div class="forgot-modal" id="forgotModal">
+    <div class="forgot-modal__overlay"></div>
+    <div class="forgot-modal__content">
+      <button class="forgot-modal__close" id="forgotModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="forgot-modal__header">
+        <h2 class="forgot-modal__title">Відновити пароль</h2>
+        <p class="forgot-modal__subtitle">Змінити пароль від вашого особистого кабінету</p>
+      </div>
+
+      <form class="forgot-modal__form" id="forgotForm">
+        <div class="forgot-modal__field">
+          <input type="email" id="forgotEmail" class="forgot-modal__input" placeholder="Електронна пошта" required>
+        </div>
+
+        <button type="submit" class="forgot-modal__submit">
+          Продовжити
+        </button>
+      </form>
+
+      <div class="forgot-modal__footer">
+        <p class="forgot-modal__back-text">
+          <a href="#" class="forgot-modal__back-link" id="showAuthModalFromForgot">Повернутися до авторизації</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Попап зміни паролю -->
+  <div class="change-password-modal" id="changePasswordModal">
+    <div class="change-password-modal__overlay"></div>
+    <div class="change-password-modal__content">
+      <button class="change-password-modal__close" id="changePasswordModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="change-password-modal__header">
+        <h2 class="change-password-modal__title">Створити новий пароль</h2>
+        <p class="change-password-modal__subtitle">Введіть новий пароль для вашого облікового запису</p>
+      </div>
+
+      <form class="change-password-modal__form" id="changePasswordForm">
+        <div class="change-password-modal__field">
+          <input type="password" id="newPassword" class="change-password-modal__input"
+            placeholder="Введіть новий пароль" required>
+        </div>
+
+        <div class="change-password-modal__field">
+          <input type="password" id="confirmNewPassword" class="change-password-modal__input"
+            placeholder="Введіть новий пароль ще раз" required>
+        </div>
+
+        <button type="submit" class="change-password-modal__submit">
+          Створити пароль
+        </button>
+      </form>
+
+      <div class="change-password-modal__footer">
+        <p class="change-password-modal__back-text">
+          <a href="#" class="change-password-modal__back-link" id="showAuthModalFromChangePassword">Скасувати</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Попап зміни комісії мережі TRX TRC20 -->
+  <div class="commission-modal" id="commissionModal">
+    <div class="commission-modal__overlay"></div>
+    <div class="commission-modal__content">
+      <button class="commission-modal__close" id="commissionModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="commission-modal__header">
+        <h2 class="commission-modal__title">Змінити комісію мережі TRX TRC20</h2>
+        <p class="commission-modal__subtitle">Комісія мережі впливає на швидкість обробки транзакції виплати</p>
+      </div>
+
+      <div class="commission__dots">
+        <img class="commission__dots-img" src="./images/dot.svg" alt="">
+        <img class="commission__dots-img line" src="./images/line.svg" alt="">
+        <img class="commission__dots-img" src="./images/dot-inactive.svg" alt="">
+        <img class="commission__dots-img line" src="./images/line.svg" alt="">
+        <img class="commission__dots-img" src="./images/dot-inactive.svg" alt="">
+      </div>
+      <div class="commission__numbers">
+        <div class="commission__number">1.0 USDT</div>
+        <div class="commission__number">1.5 USDT</div>
+        <div class="commission__number">2.0 USDT</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Плашка з уведомленням про cookies -->
+  <div class="cookie-notice" id="cookieNotice">
+    <div class="cookie-notice__content">
+      <div class="cookie-notice__text">
+        <h3 class="cookie-notice__title">Cookies файли</h3>
+        <p class="cookie-notice__description">
+          Наш сайт використовує файли cookies для покращення вашого досвіду та аналізу трафіку.
+          Продовжуючи використовувати сайт, Ви погоджуєтесь з нашою
+          <a href="#" class="cookie-notice__link">політикою використання файлів cookies</a>.
+        </p>
+      </div>
+      <button class="cookie-notice__close" id="cookieNoticeClose" aria-label="Закрити повідомлення">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Модальне вікно з повідомленням -->
+  <div class="notification-modal" id="notificationModal">
+    <div class="notification-modal__overlay"></div>
+    <div class="notification-modal__content">
+      <button class="notification-modal__close" id="notificationModalClose">
+        <div class="notification-modal__close-icon"></div>
+      </button>
+
+      <div class="notification-modal__header">
+        <h2 class="notification-modal__title">Уведомление</h2>
+      </div>
+
+      <div class="notification-modal__body">
+        <p class="notification-modal__message">
+          В связи с высокой загрузкой сети ВТС заявки могут обрабатываться в течении 60 минут.
+        </p>
+      </div>
+
+      <div class="notification-modal__footer">
+        <button class="notification-modal__button" id="notificationModalOk">
+          Хорошо
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
