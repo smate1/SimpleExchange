@@ -13,7 +13,7 @@ window.isValidEmail = isValidEmail
 function updateCurrencyIcon(selectElement, iconContainer) {
 	const selectedValue = selectElement.value
 	const iconPath = `./uploads/SimpleExchange/images/${selectedValue}.svg`
-	const iconImg = iconContainer.querySelector('.popup__select-currency-icon')
+	const iconImg = iconContainer.querySelector('.swapper__select-currency-icon')
 
 	if (iconImg) {
 		iconImg.src = iconPath
@@ -23,15 +23,15 @@ function updateCurrencyIcon(selectElement, iconContainer) {
 
 // Функція для роботи з currency overlay
 function initCurrencyOverlay() {
-	const selectWrappers = document.querySelectorAll('.popup__select-wrapper')
+	const selectWrappers = document.querySelectorAll('.swapper__select-wrapper')
 	console.log('Знайдено selectWrappers:', selectWrappers.length)
 
 	selectWrappers.forEach((wrapper, index) => {
 		const overlay = wrapper.querySelector('.currency__overlay')
-		const arrow = wrapper.querySelector('.popup__select-arrow')
+		const arrow = wrapper.querySelector('.swapper__select-arrow')
 		const searchInput = wrapper.querySelector('.currency__search-input')
 		const currencyItems = wrapper.querySelectorAll('.currency__item')
-		const iconContainer = wrapper.querySelector('.popup__select-icon')
+		const iconContainer = wrapper.querySelector('.swapper__select-icon')
 
 		console.log(`Wrapper ${index}:`, {
 			overlay: !!overlay,
@@ -67,8 +67,8 @@ function initCurrencyOverlay() {
 					console.log('Закриваємо інший overlay')
 					// Повертаємо стрілки інших wrapper'ів
 					const otherArrow = ol
-						.closest('.popup__select-wrapper')
-						?.querySelector('.popup__select-arrow')
+						.closest('.swapper__select-wrapper')
+						?.querySelector('.swapper__select-arrow')
 					if (otherArrow) {
 						otherArrow.style.transform = 'translateY(-50%) rotate(0deg)'
 					}
@@ -160,7 +160,7 @@ function initCurrencyOverlay() {
 				// Оновлюємо іконку
 				if (iconContainer && icon) {
 					const iconImg = iconContainer.querySelector(
-						'.popup__select-currency-icon'
+						'.swapper__select-currency-icon'
 					)
 					if (iconImg) {
 						iconImg.src = icon.src
@@ -190,9 +190,9 @@ function initCurrencyOverlay() {
 
 // Функція для роботи з кнопкою swap
 function initSwapButton() {
-	const swapButton = document.querySelector('.popup__swap')
-	const sendWrapper = document.querySelector('.popup__send')
-	const receiveWrapper = document.querySelector('.popup__receive')
+	const swapButton = document.querySelector('.swapper__swap')
+	const sendWrapper = document.querySelector('.swapper__send')
+	const receiveWrapper = document.querySelector('.swapper__receive')
 
 	if (!swapButton || !sendWrapper || !receiveWrapper) {
 		console.log('Не знайдено елементи для swap функціональності')
@@ -215,11 +215,11 @@ function initSwapButton() {
 		const isCurrentlySwapped = swapButton.classList.contains('swapped')
 
 		// Отримуємо поточні значення
-		const sendInput = sendWrapper.querySelector('.popup__send-input')
-		const receiveInput = receiveWrapper.querySelector('.popup__receive-input')
-		const sendIcon = sendWrapper.querySelector('.popup__select-currency-icon')
+		const sendInput = sendWrapper.querySelector('.swapper__send-input')
+		const receiveInput = receiveWrapper.querySelector('.swapper__receive-input')
+		const sendIcon = sendWrapper.querySelector('.swapper__select-currency-icon')
 		const receiveIcon = receiveWrapper.querySelector(
-			'.popup__select-currency-icon'
+			'.swapper__select-currency-icon'
 		)
 
 		// Зберігаємо поточні значення
@@ -282,7 +282,7 @@ function initSwapButton() {
 
 // Функція для оновлення курсу обміну
 function updateExchangeRate() {
-	const rateText = document.querySelector('.popup__rate-text')
+	const rateText = document.querySelector('.swapper__rate-text')
 	if (!rateText) return
 
 	// Тут можна додати логіку для отримання реального курсу
@@ -301,9 +301,9 @@ function updateExchangeRate() {
 
 // Функція для перерахунку суми отримання
 function recalculateReceiveAmount() {
-	const sendInput = document.querySelector('.popup__send-input')
-	const receiveInput = document.querySelector('.popup__receive-input')
-	const rateText = document.querySelector('.popup__rate-text')
+	const sendInput = document.querySelector('.swapper__send-input')
+	const receiveInput = document.querySelector('.swapper__receive-input')
+	const rateText = document.querySelector('.swapper__rate-text')
 
 	if (!sendInput || !receiveInput || !rateText) return
 
@@ -339,20 +339,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Простий тест для перевірки
 	console.log(
-		'Тест: Знайдено popup__select-wrapper:',
-		document.querySelectorAll('.popup__select-wrapper').length
+		'Тест: Знайдено swapper__select-wrapper:',
+		document.querySelectorAll('.swapper__select-wrapper').length
 	)
 	console.log(
 		'Тест: Знайдено currency__overlay:',
 		document.querySelectorAll('.currency__overlay').length
 	)
 
-	// Знаходимо всі popup__select
-	const currencySelects = document.querySelectorAll('.popup__select')
+	// Знаходимо всі swapper__select
+	const currencySelects = document.querySelectorAll('.swapper__select')
 
 	currencySelects.forEach(select => {
-		const wrapper = select.closest('.popup__select-wrapper')
-		const iconContainer = wrapper?.querySelector('.popup__select-icon')
+		const wrapper = select.closest('.swapper__select-wrapper')
+		const iconContainer = wrapper?.querySelector('.swapper__select-icon')
 
 		if (iconContainer) {
 			// Встановлюємо початкову іконку
@@ -375,14 +375,14 @@ document.addEventListener('DOMContentLoaded', function () {
 	initBuySellTabs()
 
 	// Додаємо обробник для автоматичного перерахунку
-	const sendInput = document.querySelector('.popup__send-input')
+	const sendInput = document.querySelector('.swapper__send-input')
 	if (sendInput) {
 		sendInput.addEventListener('input', recalculateReceiveAmount)
 	}
 
 	// Простий тестовий обробник кліку
 	document
-		.querySelectorAll('.popup__select-wrapper')
+		.querySelectorAll('.swapper__select-wrapper')
 		.forEach((wrapper, index) => {
 			console.log(`Додано обробник для wrapper ${index}`)
 		})
@@ -417,17 +417,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Функція для роботи з кастомним dropdown вибору мови
 function initLanguageDropdown() {
-	const languageSelector = document.querySelector('.header__language-selector')
-	const languageCurrent = document.querySelector('.header__language-current')
-	const languageDropdown = document.querySelector('.header__language-dropdown')
-	const languageOptions = document.querySelectorAll('.header__language-option')
-	const languageText = document.querySelector('.header__language-text')
+	const languageSelector = document.querySelector('.main__language-selector')
+	const languageCurrent = document.querySelector('.main__language-current')
+	const languageDropdown = document.querySelector('.main__language-dropdown')
+	const languageOptions = document.querySelectorAll('.main__language-option')
+	const languageText = document.querySelector('.main__language-text')
 
 	if (!languageSelector) return
 
 	// Відкриття/закриття dropdown при кліку
 	languageCurrent.addEventListener('click', e => {
 		e.stopPropagation()
+
+		// Закриваємо user dropdown якщо він відкритий
+		const userSelector = document.querySelector('.main__user-selector')
+		if (userSelector && userSelector.classList.contains('active')) {
+			userSelector.classList.remove('active')
+		}
+
 		languageSelector.classList.toggle('active')
 	})
 
@@ -438,12 +445,19 @@ function initLanguageDropdown() {
 		}
 	})
 
+	// Закриття dropdown при натисканні Escape
+	document.addEventListener('keydown', e => {
+		if (e.key === 'Escape' && languageSelector.classList.contains('active')) {
+			languageSelector.classList.remove('active')
+		}
+	})
+
 	// Обробка вибору мови
 	languageOptions.forEach(option => {
 		option.addEventListener('click', () => {
 			const value = option.getAttribute('data-value')
 			const text = option.querySelector(
-				'.header__language-option-text'
+				'.main__language-option-text'
 			)?.textContent
 
 			// Оновлюємо відображуваний текст
@@ -473,7 +487,7 @@ function initLanguageDropdown() {
 
 	// Встановлюємо початковий активний стан для української мови
 	const ukrainianOption = document.querySelector(
-		'.header__language-option[data-value="ua"]'
+		'.main__language-option[data-value="ua"]'
 	)
 	if (ukrainianOption) {
 		ukrainianOption.classList.add('active')
@@ -489,14 +503,14 @@ function changeLanguage(languageCode) {
 
 // Функція для роботи з табами купити/продати
 function initBuySellTabs() {
-	const tabs = document.querySelectorAll('.popup__tab')
-	const sendWrapper = document.querySelector('.popup__send')
-	const receiveWrapper = document.querySelector('.popup__receive')
-	const sendInput = document.querySelector('.popup__send-input')
-	const receiveInput = document.querySelector('.popup__receive-input')
-	const rateText = document.querySelector('.popup__rate-text')
-	const commissionText = document.querySelector('.popup__rate-commission')
-	const buttonText = document.querySelector('.popup__button')
+	const tabs = document.querySelectorAll('.swapper__tab')
+	const sendWrapper = document.querySelector('.swapper__send')
+	const receiveWrapper = document.querySelector('.swapper__receive')
+	const sendInput = document.querySelector('.swapper__send-input')
+	const receiveInput = document.querySelector('.swapper__receive-input')
+	const rateText = document.querySelector('.swapper__rate-text')
+	const commissionText = document.querySelector('.swapper__rate-commission')
+	const buttonText = document.querySelector('.swapper__button')
 
 	if (!tabs.length) {
 		console.log('Таби не знайдено')
@@ -510,13 +524,15 @@ function initBuySellTabs() {
 	function updateTabContent(tabType) {
 		if (tabType === 'buy') {
 			// Таб "Купити" - користувач відправляє криптовалюту, отримує фіат
-			sendWrapper.querySelector('.popup__send-text').textContent =
+			sendWrapper.querySelector('.swapper__send-text').textContent =
 				'Ви відправляєте'
-			receiveWrapper.querySelector('.popup__receive-text').textContent =
+			receiveWrapper.querySelector('.swapper__receive-text').textContent =
 				'Ви отримуєте'
 
 			// Встановлюємо криптовалюту як відправляєму валюту (якщо ще не встановлена)
-			const sendIcon = sendWrapper.querySelector('.popup__select-currency-icon')
+			const sendIcon = sendWrapper.querySelector(
+				'.swapper__select-currency-icon'
+			)
 			if (
 				sendIcon &&
 				!sendIcon.src.includes('usdt.svg') &&
@@ -528,7 +544,7 @@ function initBuySellTabs() {
 
 			// Встановлюємо фіат як отримувану валюту
 			const receiveIcon = receiveWrapper.querySelector(
-				'.popup__select-currency-icon'
+				'.swapper__select-currency-icon'
 			)
 			if (receiveIcon && !receiveIcon.src.includes('uah.svg')) {
 				receiveIcon.src = './images/uah.svg'
@@ -552,13 +568,15 @@ function initBuySellTabs() {
 			}
 		} else {
 			// Таб "Продати" - користувач відправляє фіат, отримує криптовалюту
-			sendWrapper.querySelector('.popup__send-text').textContent =
+			sendWrapper.querySelector('.swapper__send-text').textContent =
 				'Ви відправляєте'
-			receiveWrapper.querySelector('.popup__receive-text').textContent =
+			receiveWrapper.querySelector('.swapper__receive-text').textContent =
 				'Ви отримуєте'
 
 			// Встановлюємо фіат як відправляєму валюту
-			const sendIcon = sendWrapper.querySelector('.popup__select-currency-icon')
+			const sendIcon = sendWrapper.querySelector(
+				'.swapper__select-currency-icon'
+			)
 			if (sendIcon && !sendIcon.src.includes('uah.svg')) {
 				sendIcon.src = './images/uah.svg'
 				sendIcon.alt = 'UAH'
@@ -566,7 +584,7 @@ function initBuySellTabs() {
 
 			// Встановлюємо криптовалюту як отримувану валюту
 			const receiveIcon = receiveWrapper.querySelector(
-				'.popup__select-currency-icon'
+				'.swapper__select-currency-icon'
 			)
 			if (
 				receiveIcon &&
@@ -678,7 +696,7 @@ function initBuySellTabs() {
 // Анімоване кільце-таймер біля курсу
 function initRateTimer(options) {
 	const { durationSeconds = 60 } = options || {}
-	const rateSpan = document.querySelector('.popup__rate-text span')
+	const rateSpan = document.querySelector('.swapper__rate-text span')
 	if (!rateSpan) return
 
 	// Очищаємо попередній таймер, якщо він існує
@@ -861,7 +879,7 @@ function initAuthModal() {
 	authModal = document.getElementById('authModal')
 	authModalClose = document.getElementById('authModalClose')
 	authForm = document.getElementById('authForm')
-	loginButton = document.querySelector('.header__button')
+	loginButton = document.querySelector('.main__button')
 
 	if (!authModal || !authModalClose || !authForm || !loginButton) {
 		console.log('Не знайдено елементи для попапу авторизації')
@@ -2011,7 +2029,7 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 	// Функція для отримання поточного значення комісії з DOM
 	function getCurrentCommissionFromDOM() {
 		const commissionSpan = document.querySelector(
-			'.popup__rate-commission span'
+			'.swapper__rate-commission span'
 		)
 		if (commissionSpan) {
 			const text = commissionSpan.textContent
@@ -2204,7 +2222,7 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 	commissionModalConfirm.addEventListener('click', () => {
 		// Оновлюємо текст комісії в основному попапі
 		const commissionSpans = document.querySelectorAll(
-			'.popup__rate-commission span'
+			'.swapper__rate-commission span'
 		)
 		commissionSpans.forEach(span => {
 			span.textContent = `${currentCommission} USDT`
@@ -2259,7 +2277,7 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 	// Додаємо обробник для span з комісією
 	function initCommissionSpanHandlers() {
 		const commissionSpans = document.querySelectorAll(
-			'.popup__rate-commission span'
+			'.swapper__rate-commission span'
 		)
 		commissionSpans.forEach(span => {
 			span.style.cursor = 'pointer'
@@ -2283,7 +2301,7 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 				if (node.nodeType === 1) {
 					// Element node
 					const commissionSpans = node.querySelectorAll
-						? node.querySelectorAll('.popup__rate-commission span')
+						? node.querySelectorAll('.swapper__rate-commission span')
 						: []
 					commissionSpans.forEach(span => {
 						if (!span.hasAttribute('data-commission-handler')) {
@@ -2309,10 +2327,10 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 
 // Функція для роботи з dropdown меню користувача
 function initUserDropdown() {
-	const userSelector = document.querySelector('.header__user-selector')
-	const userCurrent = document.querySelector('.header__user-current')
-	const userDropdownMenu = document.querySelector('.header__user-dropdown-menu')
-	const userOptions = document.querySelectorAll('.header__user-option')
+	const userSelector = document.querySelector('.main__user-selector')
+	const userCurrent = document.querySelector('.main__user-current')
+	const userDropdownMenu = document.querySelector('.main__user-dropdown-menu')
+	const userOptions = document.querySelectorAll('.main__user-option')
 
 	if (!userSelector) {
 		console.log('Dropdown меню користувача не знайдено')
@@ -2322,6 +2340,13 @@ function initUserDropdown() {
 	// Відкриття/закриття dropdown при кліку
 	userCurrent.addEventListener('click', e => {
 		e.stopPropagation()
+
+		// Закриваємо language dropdown якщо він відкритий
+		const languageSelector = document.querySelector('.main__language-selector')
+		if (languageSelector && languageSelector.classList.contains('active')) {
+			languageSelector.classList.remove('active')
+		}
+
 		userSelector.classList.toggle('active')
 	})
 
@@ -2334,8 +2359,17 @@ function initUserDropdown() {
 
 	// Закриття dropdown при натисканні Escape
 	document.addEventListener('keydown', e => {
-		if (e.key === 'Escape' && userSelector.classList.contains('active')) {
-			userSelector.classList.remove('active')
+		if (e.key === 'Escape') {
+			if (userSelector.classList.contains('active')) {
+				userSelector.classList.remove('active')
+			}
+			// Також закриваємо language dropdown якщо він відкритий
+			const languageSelector = document.querySelector(
+				'.main__language-selector'
+			)
+			if (languageSelector && languageSelector.classList.contains('active')) {
+				languageSelector.classList.remove('active')
+			}
 		}
 	})
 
@@ -2407,10 +2441,10 @@ function initUserDropdown() {
 
 	// Функція для заміни dropdown на кнопку "Увійти" (при виході)
 	function replaceUserDropdownWithLoginButton() {
-		const userDropdown = document.querySelector('.header__user-dropdown')
+		const userDropdown = document.querySelector('.main__user-dropdown')
 		if (userDropdown) {
 			const loginButton = document.createElement('button')
-			loginButton.className = 'header__button'
+			loginButton.className = 'main__button'
 			loginButton.textContent = 'Увійти'
 
 			// Додаємо обробник для кнопки "Увійти"
@@ -2430,36 +2464,36 @@ function initUserDropdown() {
 
 	// Функція для заміни кнопки "Увійти" на dropdown меню користувача (при авторизації)
 	function replaceLoginButtonWithUserDropdown() {
-		const loginButton = document.querySelector('.header__button')
+		const loginButton = document.querySelector('.main__button')
 		if (loginButton) {
 			const userDropdown = document.createElement('div')
-			userDropdown.className = 'header__user-dropdown'
+			userDropdown.className = 'main__user-dropdown'
 			userDropdown.innerHTML = `
-				<div class="header__user-selector">
-					<div class="header__user-current">
-						<div class="header__user-avatar">
-							<span class="header__user-avatar-text">D</span>
+				<div class="main__user-selector">
+					<div class="main__user-current">
+						<div class="main__user-avatar">
+							<span class="main__user-avatar-text">D</span>
 						</div>
-						<span class="header__user-email">desi...@proton.me</span>
-						<img src="./images/dropdown-arrow.svg" alt="dropdown" class="header__user-arrow">
+						<span class="main__user-email">desi...@proton.me</span>
+						<img src="./images/dropdown-arrow.svg" alt="dropdown" class="main__user-arrow">
 					</div>
-					<div class="header__user-dropdown-menu">
-						<div class="header__user-option" data-value="applications">
-							<span class="header__user-option-text">Мої заявки</span>
-							<span class="header__user-option-badge">0</span>
+					<div class="main__user-dropdown-menu">
+						<div class="main__user-option" data-value="applications">
+							<span class="main__user-option-text">Мої заявки</span>
+							<span class="main__user-option-text">0</span>
 						</div>
-						<div class="header__user-option" data-value="details">
-							<span class="header__user-option-text">Мої реквізити</span>
+						<div class="main__user-option" data-value="details">
+							<span class="main__user-option-text">Мої реквізити</span>
 						</div>
-						<div class="header__user-option" data-value="partners">
-							<span class="header__user-option-text">Партнерам</span>
+						<div class="main__user-option" data-value="partners">
+							<span class="main__user-option-text">Партнерам</span>
 						</div>
-						<div class="header__user-option" data-value="profile">
-							<span class="header__user-option-text">Профіль</span>
+						<div class="main__user-option" data-value="profile">
+							<span class="main__user-option-text">Профіль</span>
 						</div>
-						<div class="header__user-divider"></div>
-						<div class="header__user-option" data-value="logout">
-							<span class="header__user-option-text">Вийти</span>
+						<div class="main__user-divider"></div>
+						<div class="main__user-option" data-value="logout">
+							<span class="main__user-option-text">Вийти</span>
 						</div>
 					</div>
 				</div>
@@ -2528,14 +2562,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Функція для ініціалізації бургер меню
 function initBurgerMenu() {
-	const burgerButton = document.querySelector('.header__burger')
+	const burgerButton = document.querySelector('.main__burger')
 	const mobileMenu = document.querySelector('.mobile-menu')
 	const mobileMenuClose = document.querySelector('.mobile-menu__close')
 	const mobileMenuLinks = document.querySelectorAll('.mobile-menu__link')
 	const mobileMenuLogout = document.querySelector('.mobile-menu__logout')
-	const mobileMenuBurger = document.querySelector(
-		'.mobile-menu .header__burger'
-	)
+	const mobileMenuBurger = document.querySelector('.mobile-menu .main__burger')
 
 	if (!burgerButton || !mobileMenu) {
 		console.log('Елементи бургер меню не знайдено')
@@ -2617,7 +2649,7 @@ function initBurgerMenu() {
 				!element.classList.contains('mobile-menu__logout') &&
 				!element.classList.contains('mobile-menu__account') &&
 				!element.classList.contains('mobile-menu__link') &&
-				!element.classList.contains('header__burger')
+				!element.classList.contains('main__burger')
 			) {
 				closeMobileMenu()
 			}
@@ -2640,7 +2672,7 @@ function initBurgerMenu() {
 		// Перевіряємо, чи клік був на порожню область (не на інтерактивні елементи)
 		if (
 			e.target === mobileMenu ||
-			e.target.classList.contains('mobile-menu__header') ||
+			e.target.classList.contains('mobile-menu__main') ||
 			e.target.classList.contains('mobile-menu__user') ||
 			e.target.classList.contains('mobile-menu__nav') ||
 			e.target.classList.contains('mobile-menu__footer')
@@ -2760,9 +2792,7 @@ function initMobileLanguageDropdown() {
 			mobileLanguageSelector.classList.remove('active')
 
 			// Синхронізуємо з десктопним вибором мови
-			const desktopLanguageText = document.querySelector(
-				'.header__language-text'
-			)
+			const desktopLanguageText = document.querySelector('.main__language-text')
 			if (desktopLanguageText) {
 				desktopLanguageText.textContent = value.toUpperCase()
 			}
@@ -2845,4 +2875,287 @@ function initNotificationModal() {
 // Ініціалізація модального вікна повідомлення при завантаженні сторінки
 document.addEventListener('DOMContentLoaded', () => {
 	initNotificationModal()
+	initAddAccountModal()
 })
+
+// Функція для роботи з модальним вікном додавання рахунку
+function initAddAccountModal() {
+	const addAccountModal = document.getElementById('addAccountModal')
+	const addAccountModalClose = document.getElementById('addAccountModalClose')
+	const addAccountForm = document.getElementById('addAccountForm')
+	const addAccountStatus = document.getElementById('accountStatus')
+	const addAccountModalOverlay = addAccountModal?.querySelector(
+		'.add-account-modal__overlay'
+	)
+
+	if (!addAccountModal) {
+		console.log('Модальне вікно додавання рахунку не знайдено')
+		return
+	}
+
+	// Ініціалізуємо вибір валюти в попапі
+	initAddAccountCurrencySelector()
+
+	// Функція для відкриття модального вікна
+	function openAddAccountModal() {
+		addAccountModal.classList.add('active')
+		document.body.classList.add('no-scroll')
+		console.log('Модальне вікно додавання рахунку відкрито')
+	}
+
+	// Функція для закриття модального вікна
+	function closeAddAccountModal() {
+		addAccountModal.classList.remove('active')
+		document.body.classList.remove('no-scroll')
+		// Скидаємо форму та статус
+		if (addAccountForm) {
+			addAccountForm.reset()
+		}
+		if (addAccountStatus) {
+			addAccountStatus.style.display = 'none'
+		}
+		console.log('Модальне вікно додавання рахунку закрито')
+	}
+
+	// Функція для ініціалізації вибору валюти
+	function initAddAccountCurrencySelector() {
+		const selectWrapper = addAccountModal.querySelector(
+			'.add-account-modal__select-wrapper'
+		)
+		if (!selectWrapper) {
+			console.log('Select wrapper не знайдено')
+			return
+		}
+
+		const dropdown = selectWrapper.querySelector(
+			'.add-account-modal__currency-dropdown'
+		)
+		const arrow = selectWrapper.querySelector(
+			'.add-account-modal__select-arrow'
+		)
+		const searchInput = selectWrapper.querySelector(
+			'.add-account-modal__currency-search-input'
+		)
+		const currencyItems = selectWrapper.querySelectorAll(
+			'.add-account-modal__currency-item'
+		)
+		const iconImg = selectWrapper.querySelector(
+			'.add-account-modal__currency-icon'
+		)
+		const selectedText = selectWrapper.querySelector(
+			'.add-account-modal__select-text'
+		)
+
+		console.log('Знайдено елементи:', {
+			selectWrapper: !!selectWrapper,
+			dropdown: !!dropdown,
+			arrow: !!arrow,
+			searchInput: !!searchInput,
+			currencyItems: currencyItems.length,
+			iconImg: !!iconImg,
+			selectedText: !!selectedText,
+		})
+
+		// Відкриття/закриття dropdown при кліку на wrapper
+		selectWrapper.addEventListener('click', e => {
+			e.preventDefault()
+			e.stopPropagation()
+
+			const isActive = dropdown.classList.contains('active')
+
+			// Закриваємо всі інші dropdown
+			document
+				.querySelectorAll('.add-account-modal__currency-dropdown.active')
+				.forEach(dd => {
+					if (dd !== dropdown) {
+						dd.classList.remove('active')
+						// Повертаємо стрілки інших wrapper'ів
+						const otherWrapper = dd.closest(
+							'.add-account-modal__select-wrapper'
+						)
+						if (otherWrapper) {
+							otherWrapper.classList.remove('active')
+						}
+					}
+				})
+
+			// Переключаємо поточний dropdown
+			if (isActive) {
+				dropdown.classList.remove('active')
+				selectWrapper.classList.remove('active')
+			} else {
+				dropdown.classList.add('active')
+				selectWrapper.classList.add('active')
+			}
+
+			// Фокус на пошукове поле при відкритті
+			if (!isActive && searchInput) {
+				setTimeout(() => searchInput.focus(), 100)
+			}
+		})
+
+		// Запобігаємо закриттю dropdown при кліку всередині нього
+		dropdown.addEventListener('click', e => {
+			e.stopPropagation()
+		})
+
+		// Пошук валют
+		if (searchInput) {
+			searchInput.addEventListener('input', e => {
+				const searchTerm = e.target.value.toLowerCase()
+				currencyItems.forEach(item => {
+					const text = item
+						.querySelector('.add-account-modal__currency-item-text')
+						.textContent.toLowerCase()
+					if (text.includes(searchTerm)) {
+						item.style.display = 'flex'
+					} else {
+						item.style.display = 'none'
+					}
+				})
+			})
+		}
+
+		// Вибір валюти
+		currencyItems.forEach(item => {
+			item.addEventListener('click', () => {
+				const value = item.dataset.value
+				const text = item.dataset.text
+				const iconSrc = item.dataset.icon
+
+				// Видаляємо виділення з усіх елементів
+				currencyItems.forEach(i => i.classList.remove('selected'))
+
+				// Додаємо виділення до поточного елемента
+				item.classList.add('selected')
+
+				// Оновлюємо іконку та текст
+				if (iconImg) {
+					iconImg.src = iconSrc
+					iconImg.alt = value.toUpperCase()
+				}
+				if (selectedText) {
+					selectedText.textContent = text
+				}
+
+				// Закриваємо dropdown
+				dropdown.classList.remove('active')
+				selectWrapper.classList.remove('active')
+
+				// Зберігаємо вибрану валюту в localStorage
+				localStorage.setItem(
+					'selectedCurrency',
+					JSON.stringify({ value, text, icon: iconSrc })
+				)
+
+				console.log('Вибрано валюту:', { value, text })
+			})
+		})
+
+		// Відновлюємо вибрану валюту при завантаженні
+		const savedCurrency = localStorage.getItem('selectedCurrency')
+		if (savedCurrency && iconImg && selectedText) {
+			try {
+				const currency = JSON.parse(savedCurrency)
+				iconImg.src = currency.icon
+				iconImg.alt = currency.value.toUpperCase()
+				selectedText.textContent = currency.text
+
+				// Знаходимо та виділяємо відповідний елемент валюти
+				currencyItems.forEach(item => {
+					if (item.dataset.value === currency.value) {
+						item.classList.add('selected')
+					}
+				})
+			} catch (e) {
+				console.log('Помилка відновлення валюти:', e)
+			}
+		} else {
+			// Якщо немає збереженої валюти, виділяємо першу (USDT TRC20)
+			if (currencyItems.length > 0) {
+				currencyItems[0].classList.add('selected')
+			}
+		}
+
+		// Закриття dropdown при кліку поза ним
+		document.addEventListener('click', e => {
+			if (!selectWrapper.contains(e.target)) {
+				dropdown.classList.remove('active')
+				selectWrapper.classList.remove('active')
+			}
+		})
+
+		// Закриття dropdown при натисканні Escape
+		document.addEventListener('keydown', e => {
+			if (e.key === 'Escape' && dropdown.classList.contains('active')) {
+				dropdown.classList.remove('active')
+				selectWrapper.classList.remove('active')
+			}
+		})
+	}
+
+	// Обробник відправки форми
+	if (addAccountForm) {
+		addAccountForm.addEventListener('submit', function (e) {
+			e.preventDefault()
+
+			const formData = new FormData(this)
+			const accountNumber = formData.get('accountNumber')
+			const accountComment = formData.get('accountComment')
+			const selectedCurrencyText = document.getElementById(
+				'selectedCurrencyText'
+			)
+
+			// Валідація форми
+			if (!accountNumber || accountNumber.trim() === '') {
+				alert('Будь ласка, введіть номер рахунку')
+				return
+			}
+
+			if (!selectedCurrencyText || !selectedCurrencyText.textContent) {
+				alert('Будь ласка, виберіть валюту')
+				return
+			}
+
+			// Тут можна додати додаткову валідацію та відправку даних на сервер
+			console.log('Дані форми:', {
+				accountNumber: accountNumber.trim(),
+				accountComment: accountComment ? accountComment.trim() : '',
+				currency: selectedCurrencyText.textContent,
+			})
+
+			// Показуємо статус успіху
+			if (addAccountStatus) {
+				addAccountStatus.style.display = 'block'
+			}
+
+			// Закриваємо модальне вікно через 2 секунди
+			setTimeout(() => {
+				closeAddAccountModal()
+			}, 2000)
+		})
+	}
+
+	// Закриття при кліку на кнопку закриття
+	if (addAccountModalClose) {
+		addAccountModalClose.addEventListener('click', closeAddAccountModal)
+	}
+
+	// Закриття при кліку на overlay
+	if (addAccountModalOverlay) {
+		addAccountModalOverlay.addEventListener('click', closeAddAccountModal)
+	}
+
+	// Закриття при натисканні Escape
+	document.addEventListener('keydown', e => {
+		if (e.key === 'Escape' && addAccountModal.classList.contains('active')) {
+			closeAddAccountModal()
+		}
+	})
+
+	// Робимо функції глобальними для використання в інших місцях
+	window.openAddAccountModal = openAddAccountModal
+	window.closeAddAccountModal = closeAddAccountModal
+
+	console.log('Модальне вікно додавання рахунку ініціалізовано')
+}
