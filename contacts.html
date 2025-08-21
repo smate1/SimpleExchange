@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="SimpleExchange - автоматичний обмін криптовалют. Швидкий та безпечний обмін USDT на BTC та інші валюти." />
+  <meta name="keywords" content="обмін криптовалют, USDT, BTC, обмінник" />
+  <title>SimpleExchange</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <header class="main">
+    <div class="container">
+      <div class="main__top">
+        <a class="main__logo" href="./index.html">
+          <img src="./images/logo.svg" alt="logo">
+        </a>
+        <nav class="main__nav">
+          <ul class="main__list">
+            <li class="main__item">
+              <a class="main__link" href="./partners.html">Партнерам</a>
+            </li>
+            <li class="main__item">
+              <a class="main__link" href="./rules.html">Правила</a>
+            </li>
+            <li class="main__item">
+              <a class="main__link" href="./contacts.html">Контакти</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="main__right">
+          <div class="main__language-wrapper">
+            <div class="main__language-selector">
+              <div class="main__language-current">
+                <span class="main__language-text">UA</span>
+                <img src="./images/dropdown-arrow.svg" alt="dropdown" class="main__language-arrow">
+              </div>
+              <div class="main__language-dropdown">
+                <div class="main__language-option" data-value="en">
+                  <span class="main__language-option-text">English</span>
+                </div>
+                <div class="main__language-option" data-value="ru">
+                  <span class="main__language-option-text">Русский</span>
+                </div>
+                <div class="main__language-option" data-value="es">
+                  <span class="main__language-option-text">Español</span>
+                </div>
+                <div class="main__language-option" data-value="ua">
+                  <span class="main__language-option-text">Українська</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="main__burger" type="button">
+            <span class="main__burger-line"></span>
+            <span class="main__burger-line"></span>
+            <span class="main__burger-line"></span>
+          </button>
+          <button class="main__button" style="display: none;">Увійти</button>
+          <div class="main__user-dropdown">
+            <div class="main__user-selector">
+              <div class="main__user-current">
+                <div class="main__user-avatar">
+                  <span class="main__user-avatar-text">D</span>
+                </div>
+                <span class="main__user-email">desi...@proton.me</span>
+                <img src="./images/dropdown-arrow.svg" alt="dropdown" class="main__user-arrow">
+              </div>
+              <div class="main__user-dropdown-menu">
+                <div class="main__user-option" data-value="applications">
+                  <span class="main__user-option-text">Мої заявки</span>
+                  <span class="main__user-option-badge">0</span>
+                </div>
+                <div class="main__user-option" data-value="details">
+                  <span class="main__user-option-text">Мої реквізити</span>
+                </div>
+                <div class="main__user-option" data-value="add-account" onclick="openAddAccountModal()">
+                  <span class="main__user-option-text">Додати рахунок</span>
+                </div>
+                <div class="main__user-option" data-value="partners">
+                  <span class="main__user-option-text">Партнерам</span>
+                </div>
+                <div class="main__user-option" data-value="profile">
+                  <span class="main__user-option-text">Профіль</span>
+                </div>
+                <div class="main__user-divider"></div>
+                <div class="main__user-option" data-value="logout">
+                  <span class="main__user-option-text">Вийти</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Мобільне меню -->
+  <div class="mobile-menu">
+    <div class="mobile-menu__main">
+      <a class="mobile-menu__logo" href="./index.html">
+        <img src="./images/logo.svg" alt="logo">
+      </a>
+      <div class="mobile-menu__controls">
+        <div class="mobile-menu__language-wrapper">
+          <div class="mobile-menu__language-selector">
+            <div class="mobile-menu__language-current">
+              <span class="mobile-menu__language-text">UA</span>
+              <img src="./images/dropdown-arrow.svg" alt="dropdown" class="mobile-menu__language-arrow">
+            </div>
+            <div class="mobile-menu__language-dropdown">
+              <div class="mobile-menu__language-option" data-value="en">
+                <span class="mobile-menu__language-option-text">English</span>
+              </div>
+              <div class="mobile-menu__language-option" data-value="ru">
+                <span class="mobile-menu__language-option-text">Русский</span>
+              </div>
+              <div class="mobile-menu__language-option" data-value="es">
+                <span class="mobile-menu__language-option-text">Español</span>
+              </div>
+              <div class="mobile-menu__language-option" data-value="ua">
+                <span class="mobile-menu__language-option-text">Українська</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="main__burger main__burger--close" type="button">
+          <span class="main__burger-line"></span>
+          <span class="main__burger-line"></span>
+          <span class="main__burger-line"></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu__user">
+      <div class="mobile-menu__avatar">
+        <span class="mobile-menu__avatar-text">D</span>
+      </div>
+      <div class="mobile-menu__user-info">
+        <div class="mobile-menu__email">Design.change99@gmail.com</div>
+        <a href="./profile.html" class="mobile-menu__account">Мій аккаунт</a>
+      </div>
+    </div>
+    <nav class="mobile-menu__nav">
+      <ul class="mobile-menu__list">
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="./partners.html">Партнерам</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="./rules.html">Правила</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="./contacts.html">Контакти</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="./profile.html">Профіль</a>
+        </li>
+
+      </ul>
+    </nav>
+    <div class="mobile-menu__footer">
+      <button class="mobile-menu__logout">Вийти</button>
+    </div>
+  </div>
+
+  <main>
+    <div class="container"">
+      <div class="contacts">
+        <div class="contacts__top">
+          <h2 class="contacts__title">
+            Свяжитесь с нами
+          </h2>
+          <p class="contacts__text">
+            Мы всегда рады ответить на ваши вопросы и выслушать предложения по улучшению нашего сервиса.
+          </p>
+          <p class="contacts__text contacts__text-bottom">
+            По вопросам партнёрства, подключения мониторинга или добавления новых валют вы можете связаться с нами через
+            форму или
+            любым другим удобным для вас способом.
+          </p>
+        </div>
+        <form class="contacts__form" action="/send-form" method="post">
+          <div class="contacts__form-wrapper">
+            <div class="contacts__form-label">
+              <label for="name">Имя</label>
+              <input class="contacts__form-input" type="text" id="name" name="name" required>
+            </div>
+            <div class="contacts__form-label">
+              <label for="email">Email</label>
+              <input class="contacts__form-input" type="email" id="email" name="email" required>
+            </div>
+          </div>
+          <div class="contacts__form-label">
+            <label for="message">Сообщение</label>
+            <textarea class="contacts__form-textarea" id="message" name="message"
+              required style="resize: none;"></textarea>
+          </div>
+          <span class="contacts__from-thank">Спасибо, мы скоро ответим вам</span>
+          <button class="contacts__form-btn" type="submit">Отправить</button>
+        </form>
+        <div class="contact__thank">
+          <span class="contact__thank-text">Спасибо, мы скоро ответим вам</span>
+        </div>
+        <div class="contacts__more">
+          <h3 class="contacts__more-title">
+            Другие наши контакты
+          </h3>
+          <div class="contacts__inner">
+            <div class="contacts__left">
+              <a class="contacts__email" href="mailto:support@exchange.io">
+                <img src="./images/email.svg" alt="email">
+                <div class="contacts__email-info">
+                  <span class="contacts__email-text">Email:</span>
+                  <span class="contacts__email-value">support@exchange.io</span>
+                </div>
+              </a>
+              <a class="contacts__telegram" href="https://t.me/exchange_io" target="_blank" rel="noopener"
+                aria-label="Написать в Telegram">
+                <img src="./images/telegram.svg" alt="telegram">
+                <div class="contacts__telegram-info">
+                  <span class="contacts__telegram-text">Telegram:</span>
+                  <span class="contacts__telegram-value">@exchange_io</span>
+                </div>
+              </a>
+            </div>
+            <div class="contacts__right">
+              <a class="contacts__chat-btn" href="#">
+                <img src="./images/chat.svg" alt="chat.svg">
+                <span class="contacts__chat-text">Написать в чат</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__left">
+          <h6 class="footer__title">
+            SimpleExchange — сервіс швидкого та зручного обміну
+          </h6>
+          <p class="footer__schedule">
+            Графік роботи оператора:
+            <span>з 9:00 до 22:00</span>
+          </p>
+          <div class="footer__copy">
+            ©Всі права захищені
+            SimpleExchange 2025
+          </div>
+        </div>
+        <div class="footer__call">
+          <h6 class="footer__title">
+            Ми на зв'язку
+          </h6>
+          <a class="footer__email" href="mailto:info@simpleexchange.com" aria-label="Написати на email">
+            info@simpleexchange.com
+          </a>
+          <a class="footer__telegram" href="https://t.me/@simple" target="_blank" rel="noopener"
+            aria-label="Написати в Telegram">
+            @simple
+          </a>
+        </div>
+        <div class="footer__nav">
+          <h6 class="footer__title">
+            Направлення по сайту
+          </h6>
+          <ul class="footer__list">
+            <li class="footer__item">
+              <a class="footer__link" href="./index.html">
+                Головна
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./rules.html">
+                Правила
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./aml.html">
+                AML
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./contacts.html">
+                Контакти
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./cookies.html">
+                Cookies
+              </a>
+            </li>
+            <li class="footer__item">
+              <a class="footer__link" href="./partners.html">
+                Партнерам
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__partners">
+          <h6 class="footer__title">
+            Партнери
+          </h6>
+          <img src="./images/partner-1.png" alt="">
+          <img src="./images/partner-2.svg" alt="">
+          <img src="./images/partner-3.png" alt="">
+          <img src="./images/partner-4.svg" alt="">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Попап авторизації -->
+  <div class="auth-modal" id="authModal">
+    <div class="auth-modal__overlay"></div>
+    <div class="auth-modal__content">
+      <button class="auth-modal__close" id="authModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="auth-modal__main">
+        <h2 class="auth-modal__title">Авторизація</h2>
+        <p class="auth-modal__subtitle">Увійти в свій особистий кабінет</p>
+      </div>
+
+      <form class="auth-modal__form" id="authForm">
+        <div class="auth-modal__field">
+          <input type="email" id="authEmail" class="auth-modal__input" placeholder="Електронна пошта" required>
+        </div>
+
+        <div class="auth-modal__field">
+          <input type="password" id="authPassword" class="auth-modal__input" placeholder="Пароль" required>
+        </div>
+
+        <div class="auth-modal__options">
+          <label class="auth-modal__checkbox">
+            <input type="checkbox" id="authRemember">
+            <span class="auth-modal__checkbox-custom"></span>
+            <span class="auth-modal__checkbox-text">Запам'ятати мої дані</span>
+          </label>
+          <div class="auth-modal__links">
+            <a href="#" class="auth-modal__forgot">Забули пароль?</a>
+          </div>
+        </div>
+
+        <button type="submit" class="auth-modal__submit">
+          Увійти
+        </button>
+      </form>
+
+      <div class="auth-modal__footer">
+        <p class="auth-modal__register-text">
+          Не маєте аккаунт?
+          <a href="#" class="auth-modal__register-link" id="showRegisterModal">Ви можете зареєструвати аккаунт</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Попап реєстрації -->
+  <div class="register-modal" id="registerModal">
+    <div class="register-modal__overlay"></div>
+    <div class="register-modal__content">
+      <button class="register-modal__close" id="registerModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="register-modal__main">
+        <h2 class="register-modal__title">Реєстрація</h2>
+        <p class="register-modal__subtitle">Створити свій особистий кабінет</p>
+      </div>
+
+      <form class="register-modal__form" id="registerForm">
+        <div class="register-modal__field">
+          <input type="email" id="registerEmail" class="register-modal__input" placeholder="Електронна пошта" required>
+        </div>
+
+        <div class="register-modal__field">
+          <input type="password" id="registerPassword" class="register-modal__input" placeholder="Створіть пароль"
+            required>
+          <div class="register-modal__error" id="passwordError" style="display: none;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 1C4.13 1 1 4.13 1 8s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zM7.5 11.5h1v1h-1v-1zM7.5 5.5h1v4h-1v-4z"
+                fill="#dc3545" />
+            </svg>
+            <span>Паролі не співпадають, спробуйте ще раз</span>
+          </div>
+        </div>
+
+        <div class="register-modal__field">
+          <input type="password" id="registerPasswordConfirm" class="register-modal__input"
+            placeholder="Повторіть пароль" required>
+        </div>
+
+        <button type="submit" class="register-modal__submit">
+          Створити акаунт
+        </button>
+      </form>
+
+      <div class="register-modal__footer">
+        <p class="register-modal__login-text">
+          Вже зареєстровані? Ви можете <a href="#" class="register-modal__login-link" id="showAuthModal">увійти</a> в
+          аккаунт
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Попап відновлення паролю -->
+  <div class="forgot-modal" id="forgotModal">
+    <div class="forgot-modal__overlay"></div>
+    <div class="forgot-modal__content">
+      <button class="forgot-modal__close" id="forgotModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="forgot-modal__main">
+        <h2 class="forgot-modal__title">Відновити пароль</h2>
+        <p class="forgot-modal__subtitle">Змінити пароль від вашого особистого кабінету</p>
+      </div>
+
+      <form class="forgot-modal__form" id="forgotForm">
+        <div class="forgot-modal__field">
+          <input type="email" id="forgotEmail" class="forgot-modal__input" placeholder="Електронна пошта" required>
+        </div>
+
+        <button type="submit" class="forgot-modal__submit">
+          Продовжити
+        </button>
+      </form>
+
+      <div class="forgot-modal__footer">
+        <p class="forgot-modal__back-text">
+          <a href="#" class="forgot-modal__back-link" id="showAuthModalFromForgot">Повернутися до авторизації</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Попап зміни паролю -->
+  <div class="change-password-modal" id="changePasswordModal">
+    <div class="change-password-modal__overlay"></div>
+    <div class="change-password-modal__content">
+      <button class="change-password-modal__close" id="changePasswordModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="change-password-modal__main">
+        <h2 class="change-password-modal__title">Створити новий пароль</h2>
+        <p class="change-password-modal__subtitle">Введіть новий пароль для вашого облікового запису</p>
+      </div>
+
+      <form class="change-password-modal__form" id="changePasswordForm">
+        <div class="change-password-modal__field">
+          <input type="password" id="newPassword" class="change-password-modal__input"
+            placeholder="Введіть новий пароль" required>
+        </div>
+
+        <div class="change-password-modal__field">
+          <input type="password" id="confirmNewPassword" class="change-password-modal__input"
+            placeholder="Введіть новий пароль ще раз" required>
+        </div>
+
+        <button type="submit" class="change-password-modal__submit">
+          Створити пароль
+        </button>
+      </form>
+
+      <div class="change-password-modal__footer">
+        <p class="change-password-modal__back-text">
+          <a href="#" class="change-password-modal__back-link" id="showAuthModalFromChangePassword">Скасувати</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Попап зміни комісії мережі TRX TRC20 -->
+  <div class="commission-modal" id="commissionModal">
+    <div class="commission-modal__overlay"></div>
+    <div class="commission-modal__content">
+      <button class="commission-modal__close" id="commissionModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="commission-modal__main">
+        <h2 class="commission-modal__title">Змінити комісію мережі TRX TRC20</h2>
+        <p class="commission-modal__subtitle">Комісія мережі впливає на швидкість обробки транзакції виплати</p>
+      </div>
+
+      <div class="commission__dots">
+        <img class="commission__dots-img" src="./images/dot.svg" alt="">
+        <img class="commission__dots-img line" src="./images/line.svg" alt="">
+        <img class="commission__dots-img" src="./images/dot-inactive.svg" alt="">
+        <img class="commission__dots-img line" src="./images/line.svg" alt="">
+        <img class="commission__dots-img" src="./images/dot-inactive.svg" alt="">
+      </div>
+      <div class="commission__numbers">
+        <div class="commission__number">1.0 USDT</div>
+        <div class="commission__number">1.5 USDT</div>
+        <div class="commission__number">2.0 USDT</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Попап додавання нового рахунку -->
+  <div class="add-account-modal" id="addAccountModal">
+    <div class="add-account-modal__overlay"></div>
+    <div class="add-account-modal__content">
+      <button class="add-account-modal__close" id="addAccountModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="add-account-modal__main">
+        <h2 class="add-account-modal__title">Додати новий рахунок</h2>
+      </div>
+
+      <form class="add-account-modal__form" id="addAccountForm">
+        <div class="add-account-modal__field">
+          <label class="add-account-modal__label" for="accountCurrency">Валюта</label>
+          <div class="add-account-modal__select-wrapper" id="currencySelector">
+            <div class="add-account-modal__select-icon">
+              <img src="./images/usdt.svg" alt="USDT" class="add-account-modal__currency-icon"
+                id="selectedCurrencyIcon">
+            </div>
+            <span class="add-account-modal__select-text" id="selectedCurrencyText">Tether TRC20 USDT</span>
+            <button type="button" class="add-account-modal__select-arrow" id="currencyDropdownArrow">
+              <img src="./images/dropdown-arrow.svg" alt="dropdown">
+            </button>
+
+            <div class="add-account-modal__currency-dropdown" id="currencyDropdown">
+              <div class="add-account-modal__currency-search">
+                <input type="text" class="add-account-modal__currency-search-input" placeholder="Пошук валюти..."
+                  id="currencySearchInput">
+                <svg class="add-account-modal__currency-search-icon" xmlns="http://www.w3.org/2000/svg" width="20"
+                  height="20" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M17.5 17.5L12.5 12.5M14.1667 8.33333C14.1667 11.555 11.555 14.1667 8.33333 14.1667C5.11167 14.1667 2.5 11.555 2.5 8.33333C2.5 5.11167 5.11167 2.5 8.33333 2.5C11.555 2.5 14.1667 5.11167 14.1667 8.33333Z"
+                    stroke="#202941" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="add-account-modal__currency-list" id="currencyList">
+                <div class="add-account-modal__currency-item" data-value="usdt-trc20" data-icon="./images/usdt.svg"
+                  data-text="Tether TRC20 USDT">
+                  <div class="add-account-modal__currency-item-left">
+                    <div class="add-account-modal__currency-item-icon">
+                      <img src="./images/usdt.svg" alt="USDT">
+                    </div>
+                    <span class="add-account-modal__currency-item-text">Tether TRC20 USDT</span>
+                  </div>
+                </div>
+
+                <div class="add-account-modal__currency-item" data-value="usdt-erc20" data-icon="./images/usdt.svg"
+                  data-text="Tether ERC20 USDT">
+                  <div class="add-account-modal__currency-item-left">
+                    <div class="add-account-modal__currency-item-icon">
+                      <img src="./images/usdt.svg" alt="USDT">
+                    </div>
+                    <span class="add-account-modal__currency-item-text">Tether ERC20 USDT</span>
+                  </div>
+                </div>
+
+                <div class="add-account-modal__currency-item" data-value="btc" data-icon="./images/btc.svg"
+                  data-text="Bitcoin BTC">
+                  <div class="add-account-modal__currency-item-left">
+                    <div class="add-account-modal__currency-item-icon">
+                      <img src="./images/btc.svg" alt="BTC">
+                    </div>
+                    <span class="add-account-modal__currency-item-text">Bitcoin BTC</span>
+                  </div>
+                </div>
+
+                <div class="add-account-modal__currency-item" data-value="trx" data-icon="./images/trc.svg"
+                  data-text="Tron TRX">
+                  <div class="add-account-modal__currency-item-left">
+                    <div class="add-account-modal__currency-item-icon">
+                      <img src="./images/trc.svg" alt="TRX">
+                    </div>
+                    <span class="add-account-modal__currency-item-text">Tron TRX</span>
+                  </div>
+                </div>
+
+                <div class="add-account-modal__currency-item" data-value="eth" data-icon="./images/eth.svg"
+                  data-text="Ethereum ETH">
+                  <div class="add-account-modal__currency-item-left">
+                    <div class="add-account-modal__currency-item-icon">
+                      <img src="./images/eth.svg" alt="ETH">
+                    </div>
+                    <span class="add-account-modal__currency-item-text">Ethereum ETH</span>
+                  </div>
+                </div>
+
+                <div class="add-account-modal__currency-item" data-value="bnb" data-icon="./images/bnb.svg"
+                  data-text="Binance BNB">
+                  <div class="add-account-modal__currency-item-left">
+                    <div class="add-account-modal__currency-item-icon">
+                      <img src="./images/bnb.svg" alt="BNB">
+                    </div>
+                    <span class="add-account-modal__currency-item-text">Binance BNB</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="add-account-modal__field">
+          <label class="add-account-modal__label" for="accountNumber">Рахунок</label>
+          <input class="add-account-modal__input" type="text" id="accountNumber" name="accountNumber"
+            placeholder="Введіть номер рахунку" required>
+        </div>
+
+        <div class="add-account-modal__field">
+          <label class="add-account-modal__label" for="accountComment">Коментар</label>
+          <textarea class="add-account-modal__textarea" id="accountComment" name="accountComment"
+            placeholder="Введіть коментар" rows="3"></textarea>
+        </div>
+
+        <div class="add-account-modal__status" id="accountStatus" style="display: none;">
+          <span class="add-account-modal__status-text">Рахунок додано</span>
+        </div>
+        <span class="add-span">Рахунок додано</span>
+
+        <button type="submit" class="add-account-modal__submit">
+          Додати
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Плашка з уведомленням про cookies -->
+  <div class="cookie-notice" id="cookieNotice">
+    <div class="cookie-notice__content">
+      <div class="cookie-notice__text">
+        <h3 class="cookie-notice__title">Cookies файли</h3>
+        <p class="cookie-notice__description">
+          Наш сайт використовує файли cookies для покращення вашого досвіду та аналізу трафіку.
+          Продовжуючи використовувати сайт, Ви погоджуєтесь з нашою
+          <a href="#" class="cookie-notice__link">політикою використання файлів cookies</a>.
+        </p>
+      </div>
+      <button class="cookie-notice__close" id="cookieNoticeClose" aria-label="Закрити повідомлення">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Модальне вікно з повідомленням -->
+  <div class="notification-modal" id="notificationModal">
+    <div class="notification-modal__overlay"></div>
+    <div class="notification-modal__content">
+      <button class="notification-modal__close" id="notificationModalClose">
+        <div class="notification-modal__close-icon"></div>
+      </button>
+
+      <div class="notification-modal__main">
+        <h2 class="notification-modal__title">Уведомление</h2>
+      </div>
+
+      <div class="notification-modal__body">
+        <p class="notification-modal__message">
+          В связи с высокой загрузкой сети ВТС заявки могут обрабатываться в течении 60 минут.
+        </p>
+      </div>
+
+      <div class="notification-modal__footer">
+        <button class="notification-modal__button" id="notificationModalOk">
+          Хорошо
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Попап з QR-кодом гаманця -->
+  <div class="qr-modal" id="qrModal">
+    <div class="qr-modal__overlay"></div>
+    <div class="qr-modal__content">
+      <button class="qr-modal__close" id="qrModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="qr-modal__main">
+        <h2 class="qr-modal__title">QR-код гаманця</h2>
+      </div>
+
+      <div class="qr-modal__body">
+        <div class="qr-modal__qr-code">
+          <div class="qr-modal__qr-frame">
+            <!-- Тут буде QR-код -->
+            <div class="qr-modal__qr-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" width="254" height="254" viewBox="0 0 254 254" fill="none">
+                <g clip-path="url(#clip0_1564_5357)">
+                  <rect width="254" height="254" rx="5" fill="white" />
+                  <path d="M254 0.00280762H0V255.273H254V0.00280762Z" fill="white" />
+                  <mask id="mask0_1564_5357" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="17" y="17"
+                    width="220" height="221">
+                    <path d="M96.6073 17.6078H87.5859V26.6743H96.6073V17.6078Z" fill="white" />
+                    <path d="M122.883 17.6078H113.862V26.6743H122.883V17.6078Z" fill="white" />
+                    <path d="M140.401 17.6078H131.379V26.6743H140.401V17.6078Z" fill="white" />
+                    <path d="M149.159 17.6078H140.138V26.6743H149.159V17.6078Z" fill="white" />
+                    <path d="M166.676 17.6078H157.655V26.6743H166.676V17.6078Z" fill="white" />
+                    <path d="M96.6073 26.41H87.5859V35.4765H96.6073V26.41Z" fill="white" />
+                    <path d="M114.125 26.41H105.103V35.4765H114.125V26.41Z" fill="white" />
+                    <path d="M122.883 26.41H113.862V35.4765H122.883V26.41Z" fill="white" />
+                    <path d="M149.159 26.41H140.138V35.4765H149.159V26.41Z" fill="white" />
+                    <path d="M157.918 26.41H148.896V35.4765H157.918V26.41Z" fill="white" />
+                    <path d="M96.6073 35.2125H87.5859V44.279H96.6073V35.2125Z" fill="white" />
+                    <path d="M122.883 35.2125H113.862V44.279H122.883V35.2125Z" fill="white" />
+                    <path d="M131.642 35.2125H122.621V44.279H131.642V35.2125Z" fill="white" />
+                    <path d="M140.401 35.2125H131.379V44.279H140.401V35.2125Z" fill="white" />
+                    <path d="M149.159 35.2125H140.138V44.279H149.159V35.2125Z" fill="white" />
+                    <path d="M157.918 35.2125H148.896V44.279H157.918V35.2125Z" fill="white" />
+                    <path d="M105.366 44.015H96.3447V53.0815H105.366V44.015Z" fill="white" />
+                    <path d="M114.125 44.015H105.103V53.0815H114.125V44.015Z" fill="white" />
+                    <path d="M140.401 44.015H131.379V53.0815H140.401V44.015Z" fill="white" />
+                    <path d="M157.918 44.015H148.896V53.0815H157.918V44.015Z" fill="white" />
+                    <path d="M131.642 52.8174H122.621V61.8839H131.642V52.8174Z" fill="white" />
+                    <path d="M140.401 52.8174H131.379V61.8839H140.401V52.8174Z" fill="white" />
+                    <path d="M96.6073 61.6199H87.5859V70.6864H96.6073V61.6199Z" fill="white" />
+                    <path d="M105.366 61.6199H96.3447V70.6864H105.366V61.6199Z" fill="white" />
+                    <path d="M122.883 61.6199H113.862V70.6864H122.883V61.6199Z" fill="white" />
+                    <path d="M140.401 61.6199H131.379V70.6864H140.401V61.6199Z" fill="white" />
+                    <path d="M166.676 61.6199H157.655V70.6864H166.676V61.6199Z" fill="white" />
+                    <path d="M96.6073 70.4224H87.5859V79.4888H96.6073V70.4224Z" fill="white" />
+                    <path d="M114.125 70.4224H105.103V79.4888H114.125V70.4224Z" fill="white" />
+                    <path d="M131.642 70.4224H122.621V79.4888H131.642V70.4224Z" fill="white" />
+                    <path d="M149.159 70.4224H140.138V79.4888H149.159V70.4224Z" fill="white" />
+                    <path d="M166.676 70.4224H157.655V79.4888H166.676V70.4224Z" fill="white" />
+                    <path d="M96.6073 79.2246H87.5859V88.2911H96.6073V79.2246Z" fill="white" />
+                    <path d="M105.366 79.2246H96.3447V88.2911H105.366V79.2246Z" fill="white" />
+                    <path d="M140.401 79.2246H131.379V88.2911H140.401V79.2246Z" fill="white" />
+                    <path d="M157.918 79.2246H148.896V88.2911H157.918V79.2246Z" fill="white" />
+                    <path d="M44.0558 88.027H35.0344V97.0935H44.0558V88.027Z" fill="white" />
+                    <path d="M52.8143 88.027H43.793V97.0935H52.8143V88.027Z" fill="white" />
+                    <path d="M61.5729 88.027H52.5515V97.0935H61.5729V88.027Z" fill="white" />
+                    <path d="M79.0902 88.027H70.0688V97.0935H79.0902V88.027Z" fill="white" />
+                    <path d="M96.6073 88.027H87.5859V97.0935H96.6073V88.027Z" fill="white" />
+                    <path d="M105.366 88.027H96.3447V97.0935H105.366V88.027Z" fill="white" />
+                    <path d="M114.125 88.027H105.103V97.0935H114.125V88.027Z" fill="white" />
+                    <path d="M122.883 88.027H113.862V97.0935H122.883V88.027Z" fill="white" />
+                    <path d="M131.642 88.027H122.621V97.0935H131.642V88.027Z" fill="white" />
+                    <path d="M140.401 88.027H131.379V97.0935H140.401V88.027Z" fill="white" />
+                    <path d="M166.676 88.027H157.655V97.0935H166.676V88.027Z" fill="white" />
+                    <path d="M175.435 88.027H166.414V97.0935H175.435V88.027Z" fill="white" />
+                    <path d="M184.193 88.027H175.172V97.0935H184.193V88.027Z" fill="white" />
+                    <path d="M192.952 88.027H183.931V97.0935H192.952V88.027Z" fill="white" />
+                    <path d="M219.228 88.027H210.207V97.0935H219.228V88.027Z" fill="white" />
+                    <path d="M227.987 88.027H218.965V97.0935H227.987V88.027Z" fill="white" />
+                    <path d="M236.745 88.027H227.724V97.0935H236.745V88.027Z" fill="white" />
+                    <path d="M44.0558 96.8295H35.0344V105.896H44.0558V96.8295Z" fill="white" />
+                    <path d="M61.5729 96.8295H52.5515V105.896H61.5729V96.8295Z" fill="white" />
+                    <path d="M87.8488 96.8295H78.8274V105.896H87.8488V96.8295Z" fill="white" />
+                    <path d="M105.366 96.8295H96.3447V105.896H105.366V96.8295Z" fill="white" />
+                    <path d="M122.883 96.8295H113.862V105.896H122.883V96.8295Z" fill="white" />
+                    <path d="M192.952 96.8295H183.931V105.896H192.952V96.8295Z" fill="white" />
+                    <path d="M210.469 96.8295H201.448V105.896H210.469V96.8295Z" fill="white" />
+                    <path d="M227.987 96.8295H218.965V105.896H227.987V96.8295Z" fill="white" />
+                    <path d="M35.297 105.632H26.2756V114.698H35.297V105.632Z" fill="white" />
+                    <path d="M44.0558 105.632H35.0344V114.698H44.0558V105.632Z" fill="white" />
+                    <path d="M79.0902 105.632H70.0688V114.698H79.0902V105.632Z" fill="white" />
+                    <path d="M87.8488 105.632H78.8274V114.698H87.8488V105.632Z" fill="white" />
+                    <path d="M96.6073 105.632H87.5859V114.698H96.6073V105.632Z" fill="white" />
+                    <path d="M114.125 105.632H105.103V114.698H114.125V105.632Z" fill="white" />
+                    <path d="M122.883 105.632H113.862V114.698H122.883V105.632Z" fill="white" />
+                    <path d="M131.642 105.632H122.621V114.698H131.642V105.632Z" fill="white" />
+                    <path d="M149.159 105.632H140.138V114.698H149.159V105.632Z" fill="white" />
+                    <path d="M157.918 105.632H148.896V114.698H157.918V105.632Z" fill="white" />
+                    <path d="M184.193 105.632H175.172V114.698H184.193V105.632Z" fill="white" />
+                    <path d="M192.952 105.632H183.931V114.698H192.952V105.632Z" fill="white" />
+                    <path d="M219.228 105.632H210.207V114.698H219.228V105.632Z" fill="white" />
+                    <path d="M227.987 105.632H218.965V114.698H227.987V105.632Z" fill="white" />
+                    <path d="M236.745 105.632H227.724V114.698H236.745V105.632Z" fill="white" />
+                    <path d="M26.5385 114.434H17.5171V123.501H26.5385V114.434Z" fill="white" />
+                    <path d="M44.0558 114.434H35.0344V123.501H44.0558V114.434Z" fill="white" />
+                    <path d="M61.5729 114.434H52.5515V123.501H61.5729V114.434Z" fill="white" />
+                    <path d="M70.3314 114.434H61.3101V123.501H70.3314V114.434Z" fill="white" />
+                    <path d="M87.8488 114.434H78.8274V123.501H87.8488V114.434Z" fill="white" />
+                    <path d="M96.6073 114.434H87.5859V123.501H96.6073V114.434Z" fill="white" />
+                    <path d="M114.125 114.434H105.103V123.501H114.125V114.434Z" fill="white" />
+                    <path d="M122.883 114.434H113.862V123.501H122.883V114.434Z" fill="white" />
+                    <path d="M131.642 114.434H122.621V123.501H131.642V114.434Z" fill="white" />
+                    <path d="M149.159 114.434H140.138V123.501H149.159V114.434Z" fill="white" />
+                    <path d="M157.918 114.434H148.896V123.501H157.918V114.434Z" fill="white" />
+                    <path d="M192.952 114.434H183.931V123.501H192.952V114.434Z" fill="white" />
+                    <path d="M227.987 114.434H218.965V123.501H227.987V114.434Z" fill="white" />
+                    <path d="M236.745 114.434H227.724V123.501H236.745V114.434Z" fill="white" />
+                    <path d="M26.5385 123.237H17.5171V132.303H26.5385V123.237Z" fill="white" />
+                    <path d="M35.297 123.237H26.2756V132.303H35.297V123.237Z" fill="white" />
+                    <path d="M52.8143 123.237H43.793V132.303H52.8143V123.237Z" fill="white" />
+                    <path d="M79.0902 123.237H70.0688V132.303H79.0902V123.237Z" fill="white" />
+                    <path d="M96.6073 123.237H87.5859V132.303H96.6073V123.237Z" fill="white" />
+                    <path d="M105.366 123.237H96.3447V132.303H105.366V123.237Z" fill="white" />
+                    <path d="M122.883 123.237H113.862V132.303H122.883V123.237Z" fill="white" />
+                    <path d="M157.918 123.237H148.896V132.303H157.918V123.237Z" fill="white" />
+                    <path d="M175.435 123.237H166.414V132.303H175.435V123.237Z" fill="white" />
+                    <path d="M184.193 123.237H175.172V132.303H184.193V123.237Z" fill="white" />
+                    <path d="M201.711 123.237H192.689V132.303H201.711V123.237Z" fill="white" />
+                    <path d="M210.469 123.237H201.448V132.303H210.469V123.237Z" fill="white" />
+                    <path d="M219.228 123.237H210.207V132.303H219.228V123.237Z" fill="white" />
+                    <path d="M227.987 123.237H218.965V132.303H227.987V123.237Z" fill="white" />
+                    <path d="M236.745 123.237H227.724V132.303H236.745V123.237Z" fill="white" />
+                    <path d="M26.5385 132.039H17.5171V141.106H26.5385V132.039Z" fill="white" />
+                    <path d="M44.0558 132.039H35.0344V141.106H44.0558V132.039Z" fill="white" />
+                    <path d="M96.6073 132.039H87.5859V141.106H96.6073V132.039Z" fill="white" />
+                    <path d="M114.125 132.039H105.103V141.106H114.125V132.039Z" fill="white" />
+                    <path d="M140.401 132.039H131.379V141.106H140.401V132.039Z" fill="white" />
+                    <path d="M157.918 132.039H148.896V141.106H157.918V132.039Z" fill="white" />
+                    <path d="M192.952 132.039H183.931V141.106H192.952V132.039Z" fill="white" />
+                    <path d="M210.469 132.039H201.448V141.106H210.469V132.039Z" fill="white" />
+                    <path d="M219.228 132.039H210.207V141.106H219.228V132.039Z" fill="white" />
+                    <path d="M26.5385 140.842H17.5171V149.908H26.5385V140.842Z" fill="white" />
+                    <path d="M52.8143 140.842H43.793V149.908H52.8143V140.842Z" fill="white" />
+                    <path d="M61.5729 140.842H52.5515V149.908H61.5729V140.842Z" fill="white" />
+                    <path d="M70.3314 140.842H61.3101V149.908H70.3314V140.842Z" fill="white" />
+                    <path d="M79.0902 140.842H70.0688V149.908H79.0902V140.842Z" fill="white" />
+                    <path d="M87.8488 140.842H78.8274V149.908H87.8488V140.842Z" fill="white" />
+                    <path d="M114.125 140.842H105.103V149.908H114.125V140.842Z" fill="white" />
+                    <path d="M131.642 140.842H122.621V149.908H131.642V140.842Z" fill="white" />
+                    <path d="M140.401 140.842H131.379V149.908H140.401V140.842Z" fill="white" />
+                    <path d="M157.918 140.842H148.896V149.908H157.918V140.842Z" fill="white" />
+                    <path d="M184.193 140.842H175.172V149.908H184.193V140.842Z" fill="white" />
+                    <path d="M192.952 140.842H183.931V149.908H192.952V140.842Z" fill="white" />
+                    <path d="M201.711 140.842H192.689V149.908H201.711V140.842Z" fill="white" />
+                    <path d="M227.987 140.842H218.965V149.908H227.987V140.842Z" fill="white" />
+                    <path d="M236.745 140.842H227.724V149.908H236.745V140.842Z" fill="white" />
+                    <path d="M26.5385 149.644H17.5171V158.71H26.5385V149.644Z" fill="white" />
+                    <path d="M44.0558 149.644H35.0344V158.71H44.0558V149.644Z" fill="white" />
+                    <path d="M70.3314 149.644H61.3101V158.71H70.3314V149.644Z" fill="white" />
+                    <path d="M87.8488 149.644H78.8274V158.71H87.8488V149.644Z" fill="white" />
+                    <path d="M114.125 149.644H105.103V158.71H114.125V149.644Z" fill="white" />
+                    <path d="M122.883 149.644H113.862V158.71H122.883V149.644Z" fill="white" />
+                    <path d="M149.159 149.644H140.138V158.71H149.159V149.644Z" fill="white" />
+                    <path d="M175.435 149.644H166.414V158.71H175.435V149.644Z" fill="white" />
+                    <path d="M184.193 149.644H175.172V158.71H184.193V149.644Z" fill="white" />
+                    <path d="M192.952 149.644H183.931V158.71H192.952V149.644Z" fill="white" />
+                    <path d="M236.745 149.644H227.724V158.71H236.745V149.644Z" fill="white" />
+                    <path d="M26.5385 158.446H17.5171V167.513H26.5385V158.446Z" fill="white" />
+                    <path d="M44.0558 158.446H35.0344V167.513H44.0558V158.446Z" fill="white" />
+                    <path d="M52.8143 158.446H43.793V167.513H52.8143V158.446Z" fill="white" />
+                    <path d="M61.5729 158.446H52.5515V167.513H61.5729V158.446Z" fill="white" />
+                    <path d="M70.3314 158.446H61.3101V167.513H70.3314V158.446Z" fill="white" />
+                    <path d="M79.0902 158.446H70.0688V167.513H79.0902V158.446Z" fill="white" />
+                    <path d="M87.8488 158.446H78.8274V167.513H87.8488V158.446Z" fill="white" />
+                    <path d="M96.6073 158.446H87.5859V167.513H96.6073V158.446Z" fill="white" />
+                    <path d="M131.642 158.446H122.621V167.513H131.642V158.446Z" fill="white" />
+                    <path d="M166.676 158.446H157.655V167.513H166.676V158.446Z" fill="white" />
+                    <path d="M175.435 158.446H166.414V167.513H175.435V158.446Z" fill="white" />
+                    <path d="M184.193 158.446H175.172V167.513H184.193V158.446Z" fill="white" />
+                    <path d="M192.952 158.446H183.931V167.513H192.952V158.446Z" fill="white" />
+                    <path d="M201.711 158.446H192.689V167.513H201.711V158.446Z" fill="white" />
+                    <path d="M210.469 158.446H201.448V167.513H210.469V158.446Z" fill="white" />
+                    <path d="M219.228 158.446H210.207V167.513H219.228V158.446Z" fill="white" />
+                    <path d="M227.987 158.446H218.965V167.513H227.987V158.446Z" fill="white" />
+                    <path d="M236.745 158.446H227.724V167.513H236.745V158.446Z" fill="white" />
+                    <path d="M96.6073 167.249H87.5859V176.315H96.6073V167.249Z" fill="white" />
+                    <path d="M105.366 167.249H96.3447V176.315H105.366V167.249Z" fill="white" />
+                    <path d="M131.642 167.249H122.621V176.315H131.642V167.249Z" fill="white" />
+                    <path d="M140.401 167.249H131.379V176.315H140.401V167.249Z" fill="white" />
+                    <path d="M149.159 167.249H140.138V176.315H149.159V167.249Z" fill="white" />
+                    <path d="M157.918 167.249H148.896V176.315H157.918V167.249Z" fill="white" />
+                    <path d="M166.676 167.249H157.655V176.315H166.676V167.249Z" fill="white" />
+                    <path d="M201.711 167.249H192.689V176.315H201.711V167.249Z" fill="white" />
+                    <path d="M149.159 176.051H140.138V185.118H149.159V176.051Z" fill="white" />
+                    <path d="M157.918 176.051H148.896V185.118H157.918V176.051Z" fill="white" />
+                    <path d="M166.676 176.051H157.655V185.118H166.676V176.051Z" fill="white" />
+                    <path d="M184.193 176.051H175.172V185.118H184.193V176.051Z" fill="white" />
+                    <path d="M201.711 176.051H192.689V185.118H201.711V176.051Z" fill="white" />
+                    <path d="M219.228 176.051H210.207V185.118H219.228V176.051Z" fill="white" />
+                    <path d="M227.987 176.051H218.965V185.118H227.987V176.051Z" fill="white" />
+                    <path d="M236.745 176.051H227.724V185.118H236.745V176.051Z" fill="white" />
+                    <path d="M114.125 184.854H105.103V193.92H114.125V184.854Z" fill="white" />
+                    <path d="M140.401 184.854H131.379V193.92H140.401V184.854Z" fill="white" />
+                    <path d="M149.159 184.854H140.138V193.92H149.159V184.854Z" fill="white" />
+                    <path d="M157.918 184.854H148.896V193.92H157.918V184.854Z" fill="white" />
+                    <path d="M166.676 184.854H157.655V193.92H166.676V184.854Z" fill="white" />
+                    <path d="M201.711 184.854H192.689V193.92H201.711V184.854Z" fill="white" />
+                    <path d="M96.6073 193.656H87.5859V202.722H96.6073V193.656Z" fill="white" />
+                    <path d="M122.883 193.656H113.862V202.722H122.883V193.656Z" fill="white" />
+                    <path d="M140.401 193.656H131.379V202.722H140.401V193.656Z" fill="white" />
+                    <path d="M157.918 193.656H148.896V202.722H157.918V193.656Z" fill="white" />
+                    <path d="M166.676 193.656H157.655V202.722H166.676V193.656Z" fill="white" />
+                    <path d="M175.435 193.656H166.414V202.722H175.435V193.656Z" fill="white" />
+                    <path d="M184.193 193.656H175.172V202.722H184.193V193.656Z" fill="white" />
+                    <path d="M192.952 193.656H183.931V202.722H192.952V193.656Z" fill="white" />
+                    <path d="M201.711 193.656H192.689V202.722H201.711V193.656Z" fill="white" />
+                    <path d="M210.469 193.656H201.448V202.722H210.469V193.656Z" fill="white" />
+                    <path d="M219.228 193.656H210.207V202.722H219.228V193.656Z" fill="white" />
+                    <path d="M227.987 193.656H218.965V202.722H227.987V193.656Z" fill="white" />
+                    <path d="M96.6073 202.458H87.5859V211.525H96.6073V202.458Z" fill="white" />
+                    <path d="M122.883 202.458H113.862V211.525H122.883V202.458Z" fill="white" />
+                    <path d="M157.918 202.458H148.896V211.525H157.918V202.458Z" fill="white" />
+                    <path d="M175.435 202.458H166.414V211.525H175.435V202.458Z" fill="white" />
+                    <path d="M184.193 202.458H175.172V211.525H184.193V202.458Z" fill="white" />
+                    <path d="M192.952 202.458H183.931V211.525H192.952V202.458Z" fill="white" />
+                    <path d="M201.711 202.458H192.689V211.525H201.711V202.458Z" fill="white" />
+                    <path d="M219.228 202.458H210.207V211.525H219.228V202.458Z" fill="white" />
+                    <path d="M236.745 202.458H227.724V211.525H236.745V202.458Z" fill="white" />
+                    <path d="M96.6073 211.261H87.5859V220.327H96.6073V211.261Z" fill="white" />
+                    <path d="M105.366 211.261H96.3447V220.327H105.366V211.261Z" fill="white" />
+                    <path d="M122.883 211.261H113.862V220.327H122.883V211.261Z" fill="white" />
+                    <path d="M131.642 211.261H122.621V220.327H131.642V211.261Z" fill="white" />
+                    <path d="M149.159 211.261H140.138V220.327H149.159V211.261Z" fill="white" />
+                    <path d="M157.918 211.261H148.896V220.327H157.918V211.261Z" fill="white" />
+                    <path d="M175.435 211.261H166.414V220.327H175.435V211.261Z" fill="white" />
+                    <path d="M192.952 211.261H183.931V220.327H192.952V211.261Z" fill="white" />
+                    <path d="M210.469 211.261H201.448V220.327H210.469V211.261Z" fill="white" />
+                    <path d="M219.228 211.261H210.207V220.327H219.228V211.261Z" fill="white" />
+                    <path d="M236.745 211.261H227.724V220.327H236.745V211.261Z" fill="white" />
+                    <path d="M105.366 220.063H96.3447V229.13H105.366V220.063Z" fill="white" />
+                    <path d="M114.125 220.063H105.103V229.13H114.125V220.063Z" fill="white" />
+                    <path d="M149.159 220.063H140.138V229.13H149.159V220.063Z" fill="white" />
+                    <path d="M166.676 220.063H157.655V229.13H166.676V220.063Z" fill="white" />
+                    <path d="M184.193 220.063H175.172V229.13H184.193V220.063Z" fill="white" />
+                    <path d="M210.469 220.063H201.448V229.13H210.469V220.063Z" fill="white" />
+                    <path d="M236.745 220.063H227.724V229.13H236.745V220.063Z" fill="white" />
+                    <path d="M105.366 228.866H96.3447V237.932H105.366V228.866Z" fill="white" />
+                    <path d="M184.193 228.866H175.172V237.932H184.193V228.866Z" fill="white" />
+                    <path d="M210.469 228.866H201.448V237.932H210.469V228.866Z" fill="white" />
+                    <path d="M219.228 228.866H210.207V237.932H219.228V228.866Z" fill="white" />
+                    <path d="M227.987 228.866H218.965V237.932H227.987V228.866Z" fill="white" />
+                    <path d="M236.745 228.866H227.724V237.932H236.745V228.866Z" fill="white" />
+                  </mask>
+                  <g mask="url(#mask0_1564_5357)">
+                    <path d="M254 0.00292969H-0.000244141V255.273H254V0.00292969Z" fill="#202941" />
+                  </g>
+                  <path
+                    d="M37.224 79.2247H59.5585C70.0688 79.2247 78.8274 70.4223 78.8274 59.8594V37.4132C78.8274 26.4102 70.0688 17.6078 59.1205 17.6078H36.7861C26.2757 17.6078 17.5171 26.4102 17.5171 36.9731V59.4193C17.5171 70.4223 26.2757 79.2247 37.224 79.2247ZM70.0688 38.7336V58.0989C70.0688 64.7007 64.3757 70.4223 57.8067 70.4223H38.5378C31.5309 70.4223 26.2757 65.1408 26.2757 58.0989V38.7336C26.2757 32.1318 31.9688 26.4102 38.5378 26.4102H57.8067C64.8136 26.4102 70.0688 31.6917 70.0688 38.7336Z"
+                    fill="#202941" />
+                  <path d="M61.3103 35.2125H35.0344V61.6198H61.3103V35.2125Z" fill="#202941" />
+                  <path
+                    d="M194.879 79.2247H217.213C227.724 79.2247 236.482 70.4223 236.482 59.8594V37.4132C236.482 26.4102 227.724 17.6078 216.776 17.6078H194.441C183.931 17.6078 175.172 26.4102 175.172 36.9731V59.4193C175.172 70.4223 183.931 79.2247 194.879 79.2247ZM227.724 38.7336V58.0989C227.724 64.7007 222.031 70.4223 215.462 70.4223H196.193C189.186 70.4223 183.931 65.1408 183.931 58.0989V38.7336C183.931 32.1318 189.624 26.4102 196.193 26.4102H215.462C222.469 26.4102 227.724 31.6917 227.724 38.7336Z"
+                    fill="#202941" />
+                  <path d="M218.965 35.2125H192.689V61.6198H218.965V35.2125Z" fill="#202941" />
+                  <path
+                    d="M37.224 237.668H59.5585C70.0688 237.668 78.8274 228.866 78.8274 218.303V195.857C78.8274 184.854 70.0688 176.051 59.1205 176.051H36.7861C26.2757 176.051 17.5171 184.854 17.5171 195.417V217.863C17.5171 228.866 26.2757 237.668 37.224 237.668ZM70.0688 197.177V216.542C70.0688 223.144 64.3757 228.866 57.8067 228.866H38.5378C31.5309 228.866 26.2757 223.584 26.2757 216.542V197.177C26.2757 190.575 31.9688 184.854 38.5378 184.854H57.8067C64.8136 184.854 70.0688 190.135 70.0688 197.177Z"
+                    fill="#202941" />
+                  <path d="M61.3103 193.656H35.0344V220.063H61.3103V193.656Z" fill="#202941" />
+                </g>
+                <rect x="0.5" y="0.5" width="253" height="253" rx="4.5" stroke="#202941" stroke-opacity="0.2" />
+                <defs>
+                  <clipPath id="clip0_1564_5357">
+                    <rect width="254" height="254" rx="5" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="qr-modal__wallet-info">
+          <span class="qr-modal__wallet-address">TALhAUcHhv76DxEpme3BY5ELzdKm2dyzBb</span>
+          <button class="qr-modal__copy-btn" title="Копіювати адресу">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+              <path
+                d="M14.75 3H1.25C1.05109 3 0.860322 3.07902 0.71967 3.21967C0.579018 3.36032 0.5 3.55109 0.5 3.75V17.25C0.5 17.4489 0.579018 17.6397 0.71967 17.7803C0.860322 17.921 1.05109 18 1.25 18H14.75C14.9489 18 15.1397 17.921 15.2803 17.7803C15.421 17.6397 15.5 17.4489 15.5 17.25V3.75C15.5 3.55109 15.421 3.36032 15.2803 3.21967C15.1397 3.07902 14.9489 3 14.75 3ZM14 16.5H2V4.5H14V16.5ZM18.5 0.75V14.25C18.5 14.4489 18.421 14.6397 18.2803 14.7803C18.1397 14.921 17.9489 15 17.75 15C17.5511 15 17.3603 14.921 17.2197 14.7803C17.079 14.6397 17 14.4489 17 14.25V1.5H4.25C4.05109 1.5 3.86032 1.42098 3.71967 1.28033C3.57902 1.13968 3.5 0.948912 3.5 0.75C3.5 0.551088 3.57902 0.360322 3.71967 0.21967C3.86032 0.0790178 4.05109 0 4.25 0H17.75C17.9489 0 18.1397 0.0790178 18.2803 0.21967C18.421 0.360322 18.5 0.551088 18.5 0.75Z"
+                fill="#202941" fill-opacity="0.5" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/main.js" defer></script>
+</body>
+
+</html>

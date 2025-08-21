@@ -56,6 +56,11 @@
               </div>
             </div>
           </div>
+          <button class="main__burger" type="button">
+            <span class="main__burger-line"></span>
+            <span class="main__burger-line"></span>
+            <span class="main__burger-line"></span>
+          </button>
           <div class="main__user-dropdown">
             <div class="main__user-selector">
               <div class="main__user-current">
@@ -90,6 +95,72 @@
       </div>
     </div>
   </header>
+
+  <!-- Мобільне меню -->
+  <div class="mobile-menu">
+    <div class="mobile-menu__main">
+      <a class="mobile-menu__logo" href="./index.html">
+        <img src="./images/logo.svg" alt="logo">
+      </a>
+      <div class="mobile-menu__controls">
+        <div class="mobile-menu__language-wrapper">
+          <div class="mobile-menu__language-selector">
+            <div class="mobile-menu__language-current">
+              <span class="mobile-menu__language-text">UA</span>
+              <img src="./images/dropdown-arrow.svg" alt="dropdown" class="mobile-menu__language-arrow">
+            </div>
+            <div class="mobile-menu__language-dropdown">
+              <div class="mobile-menu__language-option" data-value="en">
+                <span class="mobile-menu__language-option-text">English</span>
+              </div>
+              <div class="mobile-menu__language-option" data-value="ru">
+                <span class="mobile-menu__language-option-text">Русский</span>
+              </div>
+              <div class="mobile-menu__language-option" data-value="es">
+                <span class="mobile-menu__language-option-text">Español</span>
+              </div>
+              <div class="mobile-menu__language-option" data-value="ua">
+                <span class="mobile-menu__language-option-text">Українська</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="main__burger main__burger--close" type="button">
+          <span class="main__burger-line"></span>
+          <span class="main__burger-line"></span>
+          <span class="main__burger-line"></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu__user">
+      <div class="mobile-menu__avatar">
+        <span class="mobile-menu__avatar-text">D</span>
+      </div>
+      <div class="mobile-menu__user-info">
+        <div class="mobile-menu__email">Design.change99@gmail.com</div>
+        <a href="./profile.html" class="mobile-menu__account">Мій аккаунт</a>
+      </div>
+    </div>
+    <nav class="mobile-menu__nav">
+      <ul class="mobile-menu__list">
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="./partners.html">Партнерам</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="./rules.html">Правила</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="./contacts.html">Контакти</a>
+        </li>
+        <li class="mobile-menu__item">
+          <a class="mobile-menu__link" href="./profile.html">Профіль</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__footer">
+      <button class="mobile-menu__logout">Вийти</button>
+    </div>
+  </div>
 
   <section class="error">
     <div class="container">

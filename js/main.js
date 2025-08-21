@@ -3159,3 +3159,224 @@ function initAddAccountModal() {
 
 	console.log('Модальне вікно додавання рахунку ініціалізовано')
 }
+
+// Функціональність для exchange rate tooltip
+function initExchangeRateTooltip() {
+	console.log('Ініціалізація exchange rate tooltip...')
+
+	const exchangeRateBtn = document.getElementById('exchangeRateBtn')
+	const tooltip = document.getElementById('exchangeRateTooltip')
+
+	console.log('Знайдені елементи:', { exchangeRateBtn, tooltip })
+
+	if (!exchangeRateBtn || !tooltip) {
+		console.log('Exchange rate tooltip елементи не знайдено')
+		return
+	}
+
+	// Показ tooltip при кліку
+	exchangeRateBtn.addEventListener('click', function (e) {
+		console.log('Клік на exchange rate кнопку')
+		e.preventDefault()
+		e.stopPropagation()
+
+		// Переключаємо видимість tooltip
+		const isVisible = tooltip.classList.contains('show')
+		console.log('Tooltip видимий:', isVisible)
+
+		if (isVisible) {
+			tooltip.classList.remove('show')
+			console.log('Tooltip приховано')
+		} else {
+			// Закриваємо всі інші tooltip'и
+			document.querySelectorAll('.exchange-rate-tooltip.show').forEach(t => {
+				if (t !== tooltip) {
+					t.classList.remove('show')
+				}
+			})
+
+			// Показуємо tooltip з невеликою затримкою для плавності
+			setTimeout(() => {
+				tooltip.classList.add('show')
+				console.log('Tooltip показано')
+			}, 50)
+		}
+	})
+
+	// Закриття tooltip при кліку поза ним або на нього
+	document.addEventListener('click', function (e) {
+		if (!exchangeRateBtn.contains(e.target)) {
+			tooltip.classList.remove('show')
+		}
+	})
+
+	// Закриття tooltip при натисканні Escape
+	document.addEventListener('keydown', function (e) {
+		if (e.key === 'Escape' && tooltip.classList.contains('show')) {
+			tooltip.classList.remove('show')
+		}
+	})
+
+	console.log('Exchange rate tooltip ініціалізовано успішно')
+}
+
+// Ініціалізація tooltip при завантаженні сторінки
+document.addEventListener('DOMContentLoaded', function () {
+	console.log('DOM завантажено, ініціалізую tooltip...')
+	initExchangeRateTooltip()
+})
+
+// Також спробуємо ініціалізувати після завантаження всіх ресурсів
+window.addEventListener('load', function () {
+	console.log('Всі ресурси завантажено, перевіряю tooltip...')
+	if (!document.getElementById('exchangeRateBtn')) {
+		console.log('Кнопка все ще не знайдена, спробую ще раз...')
+		setTimeout(initExchangeRateTooltip, 100)
+	}
+})
+
+// Простий тест - додаємо alert для перевірки
+console.log('=== ТЕСТ TOOLTIP ===')
+console.log('Кнопка знайдена:', !!document.getElementById('exchangeRateBtn'))
+console.log(
+	'Tooltip знайдено:',
+	!!document.getElementById('exchangeRateTooltip')
+)
+
+// Додаємо простий тестовий tooltip
+setTimeout(function () {
+	const btn = document.getElementById('exchangeRateBtn')
+	const tooltip = document.getElementById('exchangeRateTooltip')
+
+	if (btn && tooltip) {
+		console.log('✅ Елементи знайдено!')
+		btn.style.border = '2px solid red'
+		tooltip.style.border = '2px solid blue'
+		console.log('Додано червоні рамки для тестування')
+
+		// Активуємо тестовий режим tooltip
+		tooltip.classList.add('test-mode')
+		console.log('🎯 ТЕСТОВИЙ TOOLTIP АКТИВОВАНО!')
+		console.log(
+			'Тепер tooltip має бути видимий завжди (червоний з жовтою рамкою)'
+		)
+	} else {
+		console.log('❌ Елементи НЕ знайдено!')
+		console.log('btn:', btn)
+		console.log('tooltip:', tooltip)
+	}
+}, 1000)
+
+// Функціональність для QR попапу
+function initQRModal() {
+	const qrModal = document.getElementById('qrModal')
+	const qrModalClose = document.getElementById('qrModalClose')
+	const qrButtons = document.querySelectorAll('.qr-btn')
+	const copyBtn = document.querySelector('.qr-modal__copy-btn')
+	const walletAddress = document.querySelector('.qr-modal__wallet-address')
+
+	if (!qrModal || !qrModalClose) {
+		console.log('QR modal елементи не знайдено')
+		return
+	}
+
+	// Функція для відкриття QR попапу
+	function openQRModal() {
+		qrModal.classList.add('active')
+		document.body.classList.add('no-scroll')
+		console.log('QR modal відкрито')
+	}
+
+	// Функція для закриття QR попапу
+	function closeQRModal() {
+		qrModal.classList.remove('active')
+		document.body.classList.remove('no-scroll')
+		console.log('QR modal закрито')
+	}
+
+	// Відкриття попапу при кліку на кнопки з класом qr-btn
+	qrButtons.forEach(button => {
+		button.addEventListener('click', function (e) {
+			e.preventDefault()
+			e.stopPropagation()
+			openQRModal()
+		})
+	})
+
+	// Закриття попапу при кліку на кнопку закриття
+	qrModalClose.addEventListener('click', closeQRModal)
+
+	// Закриття попапу при кліку на overlay
+	qrModal.addEventListener('click', function (e) {
+		if (
+			e.target === qrModal ||
+			e.target.classList.contains('qr-modal__overlay')
+		) {
+			closeQRModal()
+		}
+	})
+
+	// Закриття попапу при натисканні Escape
+	document.addEventListener('keydown', function (e) {
+		if (e.key === 'Escape' && qrModal.classList.contains('active')) {
+			closeQRModal()
+		}
+	})
+
+	// Функціональність копіювання адреси гаманця
+	if (copyBtn && walletAddress) {
+		// Функція для обрізання адреси посередині
+		function truncateAddress(address) {
+			if (address.length <= 20) return address
+			const start = address.substring(0, 10)
+			const end = address.substring(address.length - 10)
+			return `${start}...${end}`
+		}
+
+		// Встановлюємо обрізану адресу
+		const fullAddress = walletAddress.textContent
+		walletAddress.textContent = truncateAddress(fullAddress)
+
+		copyBtn.addEventListener('click', function () {
+			// Копіюємо в буфер обміну повну адресу
+			navigator.clipboard
+				.writeText(fullAddress)
+				.then(function () {
+					console.log('Адресу скопійовано:', fullAddress)
+
+					// Показуємо візуальний фідбек
+					const originalText = copyBtn.innerHTML
+					copyBtn.innerHTML = `
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" fill="#28a745"/>
+					</svg>
+				`
+
+					// Повертаємо оригінальну іконку через 2 секунди
+					setTimeout(() => {
+						copyBtn.innerHTML = originalText
+					}, 2000)
+				})
+				.catch(function (err) {
+					console.error('Помилка копіювання:', err)
+				})
+		})
+	}
+
+	console.log('QR modal ініціалізовано успішно')
+}
+
+// Ініціалізація QR modal при завантаженні сторінки
+document.addEventListener('DOMContentLoaded', function () {
+	console.log('DOM завантажено, ініціалізую QR modal...')
+	initQRModal()
+})
+
+// Також спробуємо ініціалізувати після завантаження всіх ресурсів
+window.addEventListener('load', function () {
+	console.log('Всі ресурси завантажено, перевіряю QR modal...')
+	if (!document.getElementById('qrModal')) {
+		console.log('QR modal все ще не знайдено, спробую ще раз...')
+		setTimeout(initQRModal, 100)
+	}
+})
