@@ -3230,7 +3230,7 @@ main {
 	display: flex;
 	justify-content: space-evenly;
 	position: relative;
-	padding: 0 20px;
+	padding: 5px 10px;
 }
 
 .commission__dots-img {
@@ -4610,6 +4610,15 @@ main {
 
 /* @media (max-width: 1150px) */
 @media (max-width: 1150px) {
+	.orders-table__cell:has(.orders-table__order-id) {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		max-width: 100px;
+	}
+	.main__button {
+		display: none;
+	}
 	/* Показуємо бургер меню */
 	.main__burger {
 		display: flex;
@@ -4665,6 +4674,27 @@ main {
 
 	.swapper__rate-text {
 		display: none;
+	}
+
+	/* Стилізуємо swapper таби як справжні таби на мобільних пристроях */
+	.swapper__tab {
+		border-bottom: none;
+		background: #f3f4f6;
+		border-radius: 8px;
+		padding: 12px 16px;
+		margin: 0 4px;
+		text-align: center;
+		transition: all 0.3s ease;
+	}
+
+	.swapper__tab.active {
+		background: #202941;
+		color: white;
+		box-shadow: 0 2px 4px rgba(32, 41, 65, 0.2);
+	}
+
+	.swapper__tab:hover:not(.active) {
+		background: #e5e7eb;
 	}
 
 	.auth-modal__title {
@@ -4881,10 +4911,38 @@ main {
 	.exchange__swap-text {
 		text-wrap: nowrap;
 	}
+	.orders__tabs {
+		overflow-x: auto;
+	}
 }
 
 /* @media (max-width: 650px) */
 @media (max-width: 650px) {
+	.orders__search-wrapper {
+		width: 0px !important;
+	}
+	.orders__search-btn {
+		border-radius: 5px !important;
+		cursor: pointer;
+	}
+
+	/* Показуємо попап пошуку на мобільних пристроях */
+	.orders-search-modal {
+		display: none;
+	}
+
+	.orders-search-modal--active {
+		display: block !important;
+	}
+
+	/* Приховуємо оригінальне поле пошуку на мобільних пристроях */
+	.orders__search-input {
+		display: none;
+	}
+
+	.orders__pagination {
+		justify-content: center;
+	}
 	.contacts__form {
 		padding: 30px 12px;
 	}
@@ -4984,6 +5042,22 @@ main {
 	.wallet-amount-label {
 		font-size: 13px !important;
 	}
+
+	/* Приховуємо інпут пошуку на малих екранах, залишаємо тільки кнопку */
+	.orders__search-wrapper {
+		min-width: auto;
+		padding: 10px;
+		justify-content: center;
+	}
+
+	.orders__search-input {
+		display: none;
+	}
+
+	.orders__search-btn {
+		position: static;
+		border-radius: 5px;
+	}
 }
 
 /* @media (max-width: 575px) */
@@ -5024,6 +5098,18 @@ main {
 
 /* @media (max-width: 480px) - Об'єднані всі запити для 480px */
 @media (max-width: 480px) {
+	.orders__search-btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.orders__search-btn img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
 	/* Адаптивність для плашки cookies */
 	.cookie-notice {
 		bottom: 10px;
@@ -5095,5 +5181,1396 @@ main {
 
 	.add-account-modal__currency-dropdown {
 		max-height: 250px;
+	}
+}
+
+/* Стилі для сторінки "Мої заявки" */
+.orders__page {
+	background: #fff;
+	border-radius: 15px;
+	padding: 20px 50px 50px 50px;
+	margin: 32px 0;
+	box-shadow: 0 4px 20px rgba(32, 41, 65, 0.08);
+	border: 1px solid #e2e8f0;
+	overflow: hidden;
+}
+
+/* Таби */
+.orders__tabs {
+	display: flex;
+	gap: 50px;
+	padding-top: 20px;
+	margin-bottom: 50px;
+	padding-bottom: 20px;
+	width: 100%;
+	position: relative;
+	box-sizing: border-box;
+	overflow-x: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.orders__tabs::-webkit-scrollbar {
+	display: none;
+}
+
+.orders__tabs::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: -50px;
+	right: -50px;
+	height: 1px;
+	background: rgba(32, 41, 65, 0.1);
+}
+
+.orders__tab {
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	background: transparent;
+	border: none;
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	color: #6b7280;
+	position: relative;
+	transition: all 0.3s;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.orders__tab--active {
+	background: transparent;
+	color: #202941;
+	font-weight: 600;
+}
+
+.orders__tab::after {
+	content: '';
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+	width: 100%;
+	height: 2px;
+	background: #6b7280;
+	border-radius: 1px;
+	transition: all 0.3s ease;
+}
+
+.orders__tab:hover::after {
+	opacity: 1;
+	visibility: visible;
+}
+.orders__tab--active::after {
+	content: '';
+	position: absolute;
+	opacity: 1;
+	visibility: visible;
+	bottom: -20px;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background: #202941;
+	border-radius: 1px;
+	transition: all 0.3s ease;
+}
+
+.orders__tab--active:hover {
+	background: transparent;
+}
+
+/* Контент табів */
+.orders__content {
+	display: none;
+}
+
+.orders__content--active {
+	display: block;
+}
+
+/* Заголовок з підсумком та пошуком */
+.orders__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 24px;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+.orders__summary {
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+.orders__summary-text {
+	color: var(--adddition, #858585);
+	font-family: Montserrat;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+
+.orders__search-wrapper {
+	display: flex;
+	align-items: center;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	padding: 10px 15px;
+	gap: 8px;
+	width: 300px;
+	position: relative;
+	transition: all 0.2s;
+}
+
+.orders__search-wrapper:hover {
+	border-color: #202941;
+}
+
+.orders__search-wrapper:focus-within {
+	border-color: #202941;
+}
+
+.orders__search-input {
+	color: var(--txt-50, rgba(32, 41, 65, 1));
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	border: none;
+	background: transparent;
+	outline: none;
+	flex: 1;
+	line-height: 1.4;
+}
+
+.orders__search-input::placeholder {
+	color: #94a3b8;
+	font-weight: 400;
+}
+
+.orders__search-btn {
+	position: absolute;
+	right: 0;
+	padding: 8px;
+	width: 42px;
+	height: 42px;
+	border-radius: 0 5px 5px 0;
+	background: var(--Main-Color, #202941);
+	transition: all 0.3s;
+}
+
+/* Таблиця заявок */
+.orders-table__wrapper {
+	overflow-x: auto;
+	margin-bottom: 24px;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: thin;
+	scrollbar-color: #cbd5e1 transparent;
+}
+
+/* Карточний вигляд для мобільних пристроїв */
+.orders-table__mobile-cards {
+	display: none;
+}
+
+.orders-table__mobile-card {
+	background: #fff;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	padding: 16px;
+	margin-bottom: 12px;
+	box-shadow: 0 2px 8px rgba(32, 41, 65, 0.06);
+}
+
+.orders-table__mobile-card-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 12px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #f1f3f8;
+}
+
+.orders-table__mobile-card-id {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	color: #202941;
+}
+
+.orders-table__mobile-card-status {
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-size: 12px;
+	font-weight: 600;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.orders-table__mobile-card-status--completed {
+	background: #dcfce7;
+	color: #166534;
+}
+
+.orders-table__mobile-card-status--pending {
+	background: #fef3c7;
+	color: #92400e;
+}
+
+.orders-table__mobile-card-status--deleted {
+	background: #fee2e2;
+	color: #991b1b;
+}
+
+.orders-table__mobile-card-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 8px;
+}
+
+.orders-table__mobile-card-row:last-child {
+	margin-bottom: 0;
+}
+
+.orders-table__mobile-card-label {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 12px;
+	color: #6b7280;
+	font-weight: 500;
+}
+
+.orders-table__mobile-card-value {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	color: #202941;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.orders-table__mobile-card-actions {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 12px;
+	padding-top: 8px;
+	border-top: 1px solid #f1f3f8;
+}
+
+.orders-table__wrapper::-webkit-scrollbar {
+	height: 6px;
+}
+
+.orders-table__wrapper::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.orders-table__wrapper::-webkit-scrollbar-thumb {
+	background: #cbd5e1;
+	border-radius: 3px;
+}
+
+.orders-table__wrapper::-webkit-scrollbar-thumb:hover {
+	background: #94a3b8;
+}
+
+.orders-table {
+	width: 100%;
+	border-collapse: collapse;
+	min-width: 800px;
+	background: #fff;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.orders-table__head {
+	border-radius: 5px;
+	background: var(--Light-Grey, #f7f7f7);
+}
+
+.orders-table__header {
+	padding: 10px;
+	text-align: left;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	color: #374151;
+	position: relative;
+}
+.orders-table__header-text {
+	color: var(--main2, #202941);
+	font-family: Montserrat;
+	font-size: 14px;
+	text-wrap: nowrap;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+.orders-table__header--sortable {
+	cursor: pointer;
+	user-select: none;
+	transition: background-color 0.2s;
+}
+
+.orders-table__sort-arrow {
+	width: 12px;
+	height: 12px;
+	margin-left: 6px;
+	opacity: 0.5;
+	transition: opacity 0.2s;
+}
+
+.orders__table__sort-btn {
+	padding: 0;
+}
+
+.orders__table__sort-btn:hover .orders-table__sort-arrow path {
+	fill-opacity: 1;
+}
+
+.orders-table__row:last-child {
+	border-bottom: none;
+}
+
+.orders-table__cell {
+	white-space: nowrap;
+	padding: 20px 8px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	vertical-align: middle;
+}
+.orders-table__cell:has(.orders-table__status) {
+	white-space: normal;
+}
+
+.orders-table__cell img {
+	vertical-align: middle;
+}
+
+.orders-table__order-id {
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.orders-table__amount {
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	margin-right: 5px;
+	vertical-align: middle;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.orders-table__currency-amount {
+	vertical-align: middle;
+
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	margin-right: 5px;
+	font-weight: 400;
+	line-height: normal;
+}
+
+/* Статуси заявок */
+.orders-table__status {
+	border-radius: 5px;
+	background: #f7f7f7;
+	color: var(--main2, #202941);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	display: inline-block;
+	line-height: normal;
+	padding: 5px;
+}
+
+.orders-table__date {
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	display: block;
+	line-height: normal;
+}
+
+.orders-table__more {
+	border-radius: 5px;
+	background: transparent;
+	width: 24px;
+	height: 24px;
+	padding: 10px 5px;
+	border: none;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	display: flex;
+	border-radius: 5px;
+	background: var(--Light-Grey, #f7f7f7);
+	align-items: center;
+	justify-content: center;
+}
+
+.orders-table__more-icon {
+	vertical-align: middle;
+}
+.orders-table__more-icon circle:first-child {
+	transform: translateY(-2px);
+}
+.orders-table__more-icon circle:last-child {
+	transform: translateY(2px);
+}
+
+.orders-table__more:hover {
+	background: #202941;
+}
+
+.orders-table__more-icon {
+	width: 16px;
+	height: 16px;
+	display: block;
+	transition: all 0.2s ease;
+}
+
+.orders-table__more:hover .orders-table__more-icon {
+	filter: brightness(0) invert(1);
+}
+
+/* Стан "немає даних" для таблиці заявок */
+.orders-table__empty {
+	display: none;
+	text-align: center;
+	padding: 150px 0;
+	background: #fff;
+}
+
+/* .orders-table__empty--active {
+	display: block;
+} */
+
+.orders-table__empty-icon {
+	margin-bottom: 24px;
+	display: flex;
+	justify-content: center;
+}
+
+.orders-table__empty-icon svg {
+	width: 100px;
+	height: 101px;
+	opacity: 0.2;
+}
+
+.orders-table__empty-text {
+	color: #6b7280;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+/* Приховання таблиці коли немає даних */
+/* .orders-table--hidden {
+	display: none;
+} */
+
+/* Пагінація */
+.orders__pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin-top: 24px;
+}
+
+.orders__pagination--hidden {
+	display: none;
+}
+
+.orders__pagination-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #e2e8f0;
+	background: #fff;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.orders__pagination-btn:hover {
+	border-color: #202941;
+	background: #f8f9fa;
+}
+
+.orders__pagination-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.orders__pagination-arrow {
+	width: 16px;
+	height: 16px;
+}
+
+.orders__pagination-pages {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.orders__pagination-page {
+	min-width: 40px;
+	height: 40px;
+	padding: 8px 12px;
+	border: 1px solid #e2e8f0;
+	background: #fff;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	color: #202941;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.orders__pagination-page:hover {
+	border-color: #202941;
+	background: #f8f9fa;
+}
+
+.orders__pagination-page--active {
+	background: #202941;
+	color: #fff;
+	border-color: #202941;
+}
+
+.orders__pagination-ellipsis {
+	padding: 8px 12px;
+	color: #6b7280;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+/* Placeholder для інших табів */
+.orders__placeholder {
+	text-align: center;
+	padding: 80px 20px;
+}
+
+.orders__placeholder-title {
+	color: #202941;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 24px;
+	font-weight: 600;
+	margin-bottom: 16px;
+}
+
+.orders__placeholder-text {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	color: #9ca3af;
+}
+/* .orders-table--hidden {
+	display: none;
+} */
+
+/* Демо-кнопка для перемикання стану (можна видалити в продакшені) */
+.orders__demo-toggle {
+	position: fixed;
+	top: 100px;
+	right: 20px;
+	z-index: 1000;
+	padding: 10px 16px;
+	background: #202941;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	transition: background 0.2s;
+}
+
+.orders__demo-toggle:hover {
+	background: #374151;
+}
+
+@media (max-width: 768px) {
+	.orders__demo-toggle {
+		top: 80px;
+		right: 16px;
+		padding: 8px 12px;
+		font-size: 12px;
+	}
+}
+
+/* Пагінація */
+.orders__pagination {
+	display: flex;
+	justify-content: right;
+	align-items: center;
+	gap: 5px;
+	margin-top: 20px;
+}
+
+/* .orders__pagination--hidden {
+	display: none;
+} */
+
+.orders__pagination-btn {
+	border-radius: 8px;
+	padding: 10px 14px;
+	cursor: pointer;
+	transition: all 0.2s;
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	min-width: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid transparent;
+	background: transparent;
+}
+
+.orders__pagination-btn:hover {
+	background: #f9fafb;
+	border-color: #d1d5db;
+}
+
+.orders__pagination-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.orders__pagination-arrow {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.orders__pagination-pages {
+	display: flex;
+	gap: 4px;
+}
+
+.orders__pagination-page {
+	border-radius: 5px;
+	background: var(--Blue-Click, #f7f7f7);
+	padding: 2px 8px;
+	cursor: pointer;
+	transition: all 0.2s;
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid transparent;
+	min-width: 32px;
+}
+
+.orders__pagination-page:hover {
+	background: #d1dcff;
+	border-color: #d1d5db;
+}
+
+.orders__pagination-page--active {
+	background: #d1dcff;
+	border-color: #d1d5db;
+	color: #202941;
+	font-weight: 600;
+}
+
+.orders__pagination-page--active:hover {
+	background: #d1dcff;
+	border-color: #d1d5db;
+	color: #202941;
+}
+
+.orders__pagination-ellipsis {
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	padding: 2px 8px;
+}
+
+/* Placeholder для інших табів */
+.orders__placeholder {
+	text-align: center;
+	padding: 60px 20px;
+	color: #6b7280;
+}
+
+.orders__placeholder-title {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+	margin-bottom: 12px;
+	color: #374151;
+}
+
+.orders__placeholder-text {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	color: #9ca3af;
+}
+
+@media (max-width: 768px) {
+	.orders__page {
+		padding: 16px 20px 24px 20px;
+		margin: 16px 0;
+		border-radius: 12px;
+	}
+
+	.orders__tabs {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 16px;
+		padding-top: 12px;
+		margin-bottom: 24px;
+		padding-bottom: 16px;
+	}
+
+	.orders__tab {
+		padding: 8px 12px;
+		font-size: 14px;
+	}
+
+	/* Стилізуємо orders таби як справжні таби на мобільних пристроях */
+	.orders__tab {
+		background: #f3f4f6;
+		border-radius: 8px;
+		padding: 12px 16px;
+		text-align: center;
+		transition: all 0.3s ease;
+		border: 1px solid transparent;
+	}
+
+	.orders__tab--active {
+		background: #202941;
+		color: white;
+		box-shadow: 0 2px 4px rgba(32, 41, 65, 0.2);
+	}
+
+	.orders__tab:hover:not(.orders__tab--active) {
+		background: #e5e7eb;
+		border-color: #d1d5db;
+	}
+
+	/* Приховуємо лінію під табами на мобільних пристроях */
+	.orders__tab::after,
+	.orders__tab:hover::after,
+	.orders__tab--active::after {
+		display: none;
+	}
+
+	.orders__header {
+		margin-bottom: 16px;
+		gap: 12px;
+	}
+
+	.orders__summary {
+		font-size: 15px;
+	}
+
+	/* Показуємо карточки на мобільних пристроях */
+	.orders-table__wrapper {
+		margin: 0 -20px;
+		padding: 0 20px;
+	}
+
+	.orders-table {
+		display: none;
+	}
+
+	.orders-table__mobile-cards {
+		display: block;
+	}
+
+	.orders-table__mobile-card {
+		padding: 14px;
+		margin-bottom: 10px;
+	}
+
+	.orders-table__mobile-card-header {
+		margin-bottom: 10px;
+		padding-bottom: 6px;
+	}
+
+	.orders-table__mobile-card-id {
+		font-size: 13px;
+	}
+
+	.orders-table__mobile-card-status {
+		padding: 3px 6px;
+		font-size: 11px;
+	}
+
+	.orders-table__mobile-card-row {
+		margin-bottom: 6px;
+	}
+
+	.orders-table__mobile-card-label {
+		font-size: 11px;
+	}
+
+	.orders-table__mobile-card-value {
+		font-size: 13px;
+		gap: 4px;
+	}
+
+	.orders-table__mobile-card-actions {
+		margin-top: 10px;
+		padding-top: 6px;
+	}
+
+	/* Мобільні стилі для стану "немає даних" */
+	.orders-table__empty {
+		padding: 60px 16px;
+		margin: 0 -20px;
+	}
+
+	.orders-table__empty-icon svg {
+		width: 80px;
+		height: 81px;
+	}
+
+	.orders-table__empty-text {
+		font-size: 16px;
+	}
+
+	/* Пагінація для планшетів */
+	.orders__pagination {
+		gap: 6px;
+		margin-top: 20px;
+	}
+
+	.orders__pagination-btn {
+		width: 36px;
+		height: 36px;
+	}
+
+	.orders__pagination-page {
+		min-width: 36px;
+		height: 36px;
+		padding: 6px 10px;
+		font-size: 13px;
+	}
+
+	.orders__pagination-ellipsis {
+		padding: 6px 10px;
+		font-size: 13px;
+	}
+
+	/* Placeholder для планшетів */
+	.orders__placeholder {
+		padding: 60px 16px;
+	}
+
+	.orders__placeholder-title {
+		font-size: 22px;
+		margin-bottom: 14px;
+	}
+
+	.orders__placeholder-text {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 480px) {
+	.orders__page {
+		padding: 12px 16px 20px 16px;
+		margin: 12px 0;
+		border-radius: 10px;
+	}
+
+	.orders__tabs {
+		gap: 12px;
+		padding-top: 8px;
+		margin-bottom: 20px;
+		padding-bottom: 12px;
+	}
+
+	.orders__tab {
+		padding: 6px 6px;
+		font-size: 13px;
+	}
+
+	.orders__header {
+		margin-bottom: 16px;
+		gap: 10px;
+	}
+
+	.orders__summary {
+		font-size: 14px;
+	}
+
+	.orders__summary-text {
+		font-size: 14px;
+	}
+
+	.orders__search-wrapper {
+		min-width: 100%;
+		padding: 6px 10px;
+	}
+
+	.orders__search-input {
+		font-size: 13px;
+	}
+
+	.orders__search-btn {
+		width: 36px;
+		height: 36px;
+	}
+
+	/* Карточки для малих екранів */
+	.orders-table__mobile-card {
+		padding: 12px;
+		margin-bottom: 8px;
+	}
+
+	.orders-table__mobile-card-header {
+		margin-bottom: 8px;
+		padding-bottom: 4px;
+	}
+
+	.orders-table__mobile-card-id {
+		font-size: 12px;
+	}
+
+	.orders-table__mobile-card-status {
+		padding: 2px 4px;
+		font-size: 10px;
+	}
+
+	.orders-table__mobile-card-row {
+		margin-bottom: 4px;
+	}
+
+	.orders-table__mobile-card-label {
+		font-size: 10px;
+	}
+
+	.orders-table__mobile-card-value {
+		font-size: 12px;
+		gap: 3px;
+	}
+
+	.orders-table__mobile-card-value img {
+		width: 14px;
+		height: 14px;
+	}
+
+	.orders-table__mobile-card-actions {
+		margin-top: 8px;
+		padding-top: 4px;
+	}
+
+	/* Мобільні стилі для стану "немає даних" на малих екранах */
+	.orders-table__empty {
+		padding: 40px 12px;
+		margin: 0 -16px;
+	}
+
+	.orders-table__empty-icon svg {
+		width: 60px;
+		height: 61px;
+	}
+
+	.orders-table__empty-text {
+		font-size: 14px;
+	}
+
+	.orders-table__wrapper {
+		margin: 0 -16px;
+		padding: 0 16px;
+	}
+
+	.orders-table {
+		min-width: 500px;
+	}
+
+	.orders-table__header,
+	.orders-table__cell {
+		padding: 8px 4px;
+		font-size: 11px;
+	}
+
+	.orders-table__status {
+		padding: 3px 6px;
+		font-size: 10px;
+		min-width: 80px;
+	}
+
+	.orders-table__order-id {
+		font-size: 11px;
+	}
+
+	.orders-table__amount,
+	.orders-table__currency-amount {
+		font-size: 11px;
+	}
+
+	.orders-table__date {
+		font-size: 11px;
+	}
+}
+
+@media (max-width: 360px) {
+	.orders__page {
+		padding: 10px 12px 16px 12px;
+		margin: 8px 0;
+		border-radius: 8px;
+	}
+
+	.orders__tabs {
+		gap: 8px;
+		padding-top: 6px;
+		margin-bottom: 16px;
+		padding-bottom: 10px;
+	}
+
+	.orders__tab {
+		padding: 4px 8px;
+		font-size: 12px;
+	}
+
+	.orders__header {
+		margin-bottom: 12px;
+		gap: 8px;
+	}
+
+	.orders__summary {
+		font-size: 13px;
+	}
+
+	.orders__summary-text {
+		font-size: 13px;
+	}
+
+	.orders__search-wrapper {
+		padding: 5px 8px;
+	}
+
+	.orders__search-input {
+		font-size: 12px;
+	}
+
+	.orders__search-btn {
+		width: 32px;
+		height: 32px;
+	}
+
+	/* Карточки для дуже малих екранів */
+	.orders-table__mobile-card {
+		padding: 10px;
+		margin-bottom: 6px;
+	}
+
+	.orders-table__mobile-card-header {
+		margin-bottom: 6px;
+		padding-bottom: 3px;
+	}
+
+	.orders-table__mobile-card-id {
+		font-size: 11px;
+	}
+
+	.orders-table__mobile-card-status {
+		padding: 1px 3px;
+		font-size: 9px;
+	}
+
+	.orders-table__mobile-card-row {
+		margin-bottom: 3px;
+	}
+
+	.orders-table__mobile-card-label {
+		font-size: 9px;
+	}
+
+	.orders-table__mobile-card-value {
+		font-size: 11px;
+		gap: 2px;
+	}
+
+	.orders-table__mobile-card-value img {
+		width: 12px;
+		height: 12px;
+	}
+
+	.orders-table__mobile-card-actions {
+		margin-top: 6px;
+		padding-top: 3px;
+	}
+
+	.orders-table__wrapper {
+		margin: 0 -12px;
+		padding: 0 12px;
+	}
+
+	.orders-table {
+		min-width: 450px;
+	}
+
+	.orders-table__header,
+	.orders-table__cell {
+		padding: 6px 3px;
+		font-size: 10px;
+	}
+
+	.orders-table__status {
+		padding: 2px 4px;
+		font-size: 9px;
+		min-width: 70px;
+	}
+
+	.orders-table__order-id {
+		font-size: 10px;
+	}
+
+	.orders-table__amount,
+	.orders-table__currency-amount {
+		font-size: 10px;
+	}
+
+	.orders-table__date {
+		font-size: 10px;
+	}
+
+	.orders-table__empty {
+		padding: 30px 8px;
+		margin: 0 -12px;
+	}
+
+	.orders-table__empty-icon svg {
+		width: 50px;
+		height: 51px;
+	}
+
+	.orders-table__empty-text {
+		font-size: 13px;
+	}
+
+	/* Пагінація для малих екранів */
+	.orders__pagination {
+		gap: 4px;
+		margin-top: 16px;
+	}
+
+	.orders__pagination-btn {
+		width: 32px;
+		height: 32px;
+	}
+
+	.orders__pagination-page {
+		min-width: 32px;
+		height: 32px;
+		padding: 4px 8px;
+		font-size: 12px;
+	}
+
+	.orders__pagination-ellipsis {
+		padding: 4px 8px;
+		font-size: 12px;
+	}
+
+	/* Placeholder для малих екранів */
+	.orders__placeholder {
+		padding: 40px 12px;
+	}
+
+	.orders__placeholder-title {
+		font-size: 20px;
+		margin-bottom: 12px;
+	}
+
+	.orders__placeholder-text {
+		font-size: 13px;
+	}
+}
+
+/* Стилі для попапу пошуку заявок */
+.orders-search-modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+}
+
+.orders-search-modal--active {
+	display: block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+}
+
+.orders-search-modal__overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(32, 41, 65, 0.5);
+}
+
+.orders-search-modal__content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #fff;
+	border-radius: 15px;
+	border: 1px solid #e2e8f0;
+	width: 90%;
+	max-width: 400px;
+	box-shadow: 0 10px 40px rgba(32, 41, 65, 0.15);
+	display: block;
+	visibility: visible;
+	opacity: 1;
+}
+
+.orders-search-modal__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 24px 24px 0 24px;
+}
+
+.orders-search-modal__title {
+	font-size: 24px;
+	font-weight: 600;
+	color: #202941;
+	margin: 0;
+}
+
+.orders-search-modal__close {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 8px;
+	border-radius: 8px;
+	transition: background-color 0.2s ease;
+}
+
+.orders-search-modal__close:hover {
+	background-color: #f1f5f9;
+}
+
+.orders-search-modal__body {
+	padding: 24px;
+}
+
+.orders-search-modal__label {
+	display: block;
+	font-size: 14px;
+	font-weight: 500;
+	color: #202941;
+	margin-bottom: 8px;
+}
+
+.orders-search-modal__input {
+	width: 100%;
+	padding: 16px;
+	border: 1px solid #e2e8f0;
+	border-radius: 4px;
+	color: var(--white-bg-pop-up-modal, #fff);
+	font-family: Montserrat;
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	margin-bottom: 24px;
+	box-sizing: border-box;
+	transition: border-color 0.2s ease;
+}
+
+.orders-search-modal__input:focus {
+	outline: none;
+	border-color: #202941;
+}
+
+.orders-search-modal__btn {
+	width: 100%;
+	padding: 16px;
+	background: #202941;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.orders-search-modal__btn:hover {
+	background: #374151;
+}
+
+/* Адаптивність для попапу пошуку */
+@media (max-width: 480px) {
+	.orders-search-modal__content {
+		width: 95%;
+		max-width: none;
+	}
+
+	.orders-search-modal__header {
+		padding: 20px 20px 0 20px;
+	}
+
+	.orders-search-modal__title {
+		font-size: 20px;
+	}
+
+	.orders-search-modal__body {
+		padding: 20px;
+	}
+
+	.orders-search-modal__input {
+		padding: 14px;
+		font-size: 15px;
+		margin-bottom: 20px;
+	}
+
+	.orders-search-modal__btn {
+		padding: 14px;
+		font-size: 15px;
 	}
 }

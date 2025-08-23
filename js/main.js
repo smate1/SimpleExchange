@@ -1,5 +1,30 @@
 console.log('JavaScript файл main.js завантажено')
 
+// Функціональність для табів на сторінці замовлень
+function initOrdersTabs() {
+	const tabs = document.querySelectorAll('.orders__tab')
+	const contents = document.querySelectorAll('.orders__content')
+
+	tabs.forEach(tab => {
+		tab.addEventListener('click', () => {
+			const targetTab = tab.dataset.tab
+
+			// Видаляємо активний клас з усіх табів
+			tabs.forEach(t => t.classList.remove('orders__tab--active'))
+			contents.forEach(c => c.classList.remove('orders__content--active'))
+
+			// Додаємо активний клас до поточного таба та контенту
+			tab.classList.add('orders__tab--active')
+			const targetContent = document.querySelector(
+				`[data-content="${targetTab}"]`
+			)
+			if (targetContent) {
+				targetContent.classList.add('orders__content--active')
+			}
+		})
+	})
+}
+
 // Глобальна функція для перевірки email
 function isValidEmail(email) {
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -3379,4 +3404,442 @@ window.addEventListener('load', function () {
 		console.log('QR modal все ще не знайдено, спробую ще раз...')
 		setTimeout(initQRModal, 100)
 	}
+})
+
+// Ініціалізація функціональності сторінки "Мої заявки"
+function initOrdersPage() {
+	console.log('Ініціалізую сторінку "Мої заявки"...')
+
+	// Елементи табів
+	const ordersTabs = document.querySelectorAll('.orders-tab')
+	const ordersContents = document.querySelectorAll('.orders-content')
+
+	// Функція переключення між табами
+	function switchTab(tabName) {
+		console.log('Переключаю на таб:', tabName)
+
+		// Видаляємо активний клас з усіх табів
+		ordersTabs.forEach(tab => {
+			tab.classList.remove('orders-tab--active')
+		})
+
+		// Приховуємо всі контенти
+		ordersContents.forEach(content => {
+			content.classList.remove('orders-content--active')
+		})
+
+		// Активуємо потрібний таб та контент
+		const activeTab = document.querySelector(`[data-tab="${tabName}"]`)
+		const activeContent = document.querySelector(`[data-content="${tabName}"]`)
+
+		if (activeTab && activeContent) {
+			activeTab.classList.add('orders-tab--active')
+			activeContent.classList.add('orders-content--active')
+		}
+	}
+
+	// Додаємо обробники подій для табів
+	ordersTabs.forEach(tab => {
+		tab.addEventListener('click', function () {
+			const tabName = this.getAttribute('data-tab')
+			switchTab(tabName)
+		})
+	})
+
+	// Функціональність пошуку
+	const searchInput = document.querySelector('.orders-search-input')
+	const searchBtn = document.querySelector('.orders-search-btn')
+
+	if (searchInput && searchBtn) {
+		function performSearch() {
+			const searchTerm = searchInput.value.trim().toLowerCase()
+			console.log('Виконую пошук:', searchTerm)
+
+			if (searchTerm === '') {
+				// Показуємо всі рядки, якщо пошук порожній
+				document.querySelectorAll('.orders-table-row').forEach(row => {
+					row.style.display = ''
+				})
+				return
+			}
+
+			// Шукаємо по номеру заявки
+			document.querySelectorAll('.orders-table-row').forEach(row => {
+				const orderId = row.querySelector('.orders-table-order-id')
+				if (orderId) {
+					const orderIdText = orderId.textContent.toLowerCase()
+					if (orderIdText.includes(searchTerm)) {
+						row.style.display = ''
+					} else {
+						row.style.display = 'none'
+					}
+				}
+			})
+		}
+
+		// Пошук при натисканні Enter
+		searchInput.addEventListener('keypress', function (e) {
+			if (e.key === 'Enter') {
+				performSearch()
+			}
+		})
+
+		// Пошук при кліку на кнопку
+		searchBtn.addEventListener('click', performSearch)
+
+		// Пошук при введенні тексту (з затримкою)
+		let searchTimeout
+		searchInput.addEventListener('input', function () {
+			clearTimeout(searchTimeout)
+			searchTimeout = setTimeout(performSearch, 300)
+		})
+	}
+
+	// Функціональність сортування таблиці
+	const sortableHeaders = document.querySelectorAll(
+		'.orders-table-header--sortable'
+	)
+
+	sortableHeaders.forEach(header => {
+		header.addEventListener('click', function () {
+			const columnIndex = Array.from(this.parentElement.children).indexOf(this)
+			const tableBody = this.closest('table').querySelector('tbody')
+			const rows = Array.from(tableBody.querySelectorAll('tr'))
+
+			// Визначаємо тип даних для сортування
+			const isDate = this.textContent.includes('Дата')
+			const isAmount =
+				this.textContent.includes('Відправляєте') ||
+				this.textContent.includes('Отримуєте')
+
+			// Сортуємо рядки
+			rows.sort((a, b) => {
+				const aValue = a.children[columnIndex].textContent.trim()
+				const bValue = b.children[columnIndex].textContent.trim()
+
+				if (isDate) {
+					// Сортування по даті
+					const aDate = new Date(aValue)
+					const bDate = new Date(bValue)
+					return aDate - bDate
+				} else if (isAmount) {
+					// Сортування по сумі
+					const aNum = parseFloat(aValue.replace(/[^\d.-]/g, ''))
+					const bNum = parseFloat(bValue.replace(/[^\d.-]/g, ''))
+					return aNum - bNum
+				} else {
+					// Звичайне текстове сортування
+					return aValue.localeCompare(bValue, 'uk')
+				}
+			})
+
+			// Переставляємо рядки в таблиці
+			rows.forEach(row => tableBody.appendChild(row))
+		})
+	})
+
+	// Функціональність кнопки "Більше опцій" (•••)
+	const moreButtons = document.querySelectorAll('.orders-table-more')
+
+	moreButtons.forEach(button => {
+		button.addEventListener('click', function (e) {
+			e.stopPropagation()
+			const row = this.closest('tr')
+			const orderId = row.querySelector('.orders-table-order-id').textContent
+			console.log('Відкриваю меню для заявки:', orderId)
+
+			// Тут можна додати логіку відкриття контекстного меню
+			// Наприклад, показ dropdown з опціями: "Переглянути", "Скасувати", тощо
+		})
+	})
+
+	console.log('Сторінка "Мої заявки" ініціалізована успішно')
+}
+
+// Функціональність для перемикання між станом "немає даних" та таблицею
+function initOrdersTableToggle() {
+	const emptyState = document.querySelector('.orders-table__empty')
+	const table = document.querySelector('.orders-table')
+	const summaryText = document.querySelector('.orders__summary-text')
+	const pagination = document.querySelector('.orders__pagination')
+
+	if (!emptyState || !table || !summaryText) {
+		console.log('Елементи таблиці не знайдено')
+		return
+	}
+
+	// Функція для показу стану "немає даних"
+	function showEmptyState() {
+		emptyState.classList.add('orders-table__empty--active')
+		table.classList.add('orders-table--hidden')
+		if (pagination) {
+			pagination.classList.add('orders__pagination--hidden')
+		}
+		summaryText.textContent = ' 0'
+		console.log('Показано стан "немає даних"')
+	}
+
+	// Функція для показу таблиці з даними
+	function showTableWithData() {
+		emptyState.classList.remove('orders-table__empty--active')
+		table.classList.remove('orders-table--hidden')
+		if (pagination) {
+			pagination.classList.remove('orders__pagination--hidden')
+		}
+		summaryText.textContent = ' 7'
+		console.log('Показано таблицю з даними')
+	}
+
+	// Додаємо кнопку для демонстрації (можна видалити в продакшені)
+	const demoButton = document.createElement('button')
+	demoButton.textContent = 'Перемкнути стан'
+	demoButton.className = 'orders__demo-toggle'
+	demoButton.style.cssText = `
+		position: fixed;
+		top: 100px;
+		right: 20px;
+		z-index: 1000;
+		padding: 10px 16px;
+		background: #202941;
+		color: white;
+		border: none;
+		border-radius: 8px;
+		cursor: pointer;
+		font-family: Montserrat, sans-serif;
+		font-size: 14px;
+		transition: background 0.2s;
+	`
+
+	demoButton.addEventListener('mouseenter', () => {
+		demoButton.style.background = '#374151'
+	})
+
+	demoButton.addEventListener('mouseleave', () => {
+		demoButton.style.background = '#202941'
+	})
+
+	let isTableVisible = false
+	demoButton.addEventListener('click', () => {
+		if (isTableVisible) {
+			showEmptyState()
+			isTableVisible = false
+		} else {
+			showTableWithData()
+			isTableVisible = true
+		}
+	})
+
+	document.body.appendChild(demoButton)
+
+	// За замовчуванням показуємо стан "немає даних"
+	showEmptyState()
+
+	// Ініціалізація пагінації
+	initPagination()
+}
+
+// Функціональність пагінації
+function initPagination() {
+	const paginationPages = document.querySelectorAll('.orders__pagination-page')
+	const prevBtn = document.querySelector('.orders__pagination-btn--prev')
+	const nextBtn = document.querySelector('.orders__pagination-btn--next')
+
+	if (paginationPages.length > 0) {
+		function goToPage(pageNumber) {
+			console.log('Переходжу на сторінку:', pageNumber)
+
+			// Оновлюємо активну сторінку
+			paginationPages.forEach(page => {
+				page.classList.remove('orders__pagination-page--active')
+			})
+
+			const activePage = document.querySelector(`[data-page="${pageNumber}"]`)
+			if (activePage) {
+				activePage.classList.add('orders__pagination-page--active')
+			}
+
+			// Тут можна додати логіку завантаження даних для конкретної сторінки
+			// Наприклад, AJAX запит до сервера
+		}
+
+		// Додаємо обробники для кнопок пагінації
+		paginationPages.forEach(page => {
+			page.addEventListener('click', function () {
+				const pageNumber = this.textContent
+				goToPage(pageNumber)
+			})
+		})
+
+		// Кнопки "Попередня" та "Наступна"
+		if (prevBtn) {
+			prevBtn.addEventListener('click', function () {
+				const currentPage = document.querySelector(
+					'.orders__pagination-page--active'
+				)
+				if (currentPage) {
+					const currentPageNum = parseInt(currentPage.textContent)
+					if (currentPageNum > 1) {
+						goToPage(currentPageNum - 1)
+					}
+				}
+			})
+		}
+
+		if (nextBtn) {
+			nextBtn.addEventListener('click', function () {
+				const currentPage = document.querySelector(
+					'.orders__pagination-page--active'
+				)
+				if (currentPage) {
+					const currentPageNum = parseInt(currentPage.textContent)
+					const maxPage = Math.max(
+						...Array.from(paginationPages).map(p => parseInt(p.textContent))
+					)
+					if (currentPageNum < maxPage) {
+						goToPage(currentPageNum + 1)
+					}
+				}
+			})
+		}
+	}
+}
+
+// Ініціалізація сторінки orders при завантаженні DOM
+document.addEventListener('DOMContentLoaded', function () {
+	// Перевіряємо, чи знаходимося на сторінці orders
+	if (document.querySelector('.orders__page')) {
+		console.log('Знайдено сторінку orders, ініціалізую...')
+		initOrdersPage()
+		initOrdersTabs()
+		initOrdersTableToggle()
+	}
+})
+
+// Також спробуємо ініціалізувати після завантаження всіх ресурсів
+window.addEventListener('load', function () {
+	if (
+		document.querySelector('.orders__page') &&
+		!document.querySelector('.orders__tab--active')
+	) {
+		console.log('Сторінка orders завантажена, перевіряю ініціалізацію...')
+		setTimeout(initOrdersPage, 100)
+		initOrdersTabs()
+		initOrdersTableToggle()
+	}
+})
+
+// Функції для роботи з попапом пошуку заявок
+function openOrdersSearchModal() {
+	console.log('Функція openOrdersSearchModal викликана')
+	const modal = document.getElementById('ordersSearchModal')
+	console.log('Знайдено модальне вікно для відкриття:', modal)
+
+	if (modal) {
+		console.log('Додаю клас orders-search-modal--active')
+		modal.classList.add('orders-search-modal--active')
+		document.body.style.overflow = 'hidden'
+
+		// Перевіряємо поточний стан
+		console.log('Класи модального вікна:', modal.className)
+		console.log('Computed display:', window.getComputedStyle(modal).display)
+
+		// Фокус на поле вводу
+		const input = modal.querySelector('.orders-search-modal__input')
+		if (input) {
+			setTimeout(() => input.focus(), 100)
+		}
+	} else {
+		console.error('Модальне вікно не знайдено!')
+	}
+}
+
+function closeOrdersSearchModal() {
+	const modal = document.getElementById('ordersSearchModal')
+	if (modal) {
+		modal.classList.remove('orders-search-modal--active')
+		document.body.style.overflow = ''
+
+		// Очищаємо поле вводу
+		const input = modal.querySelector('.orders-search-modal__input')
+		if (input) {
+			input.value = ''
+		}
+	}
+}
+
+function applyOrdersSearch() {
+	const modal = document.getElementById('ordersSearchModal')
+	if (modal) {
+		const input = modal.querySelector('.orders-search-modal__input')
+		const searchValue = input ? input.value.trim() : ''
+
+		if (searchValue) {
+			console.log('Пошук заявки:', searchValue)
+			// Тут можна додати логіку пошуку заявок
+			// Наприклад, фільтрація таблиці або AJAX запит
+		}
+
+		closeOrdersSearchModal()
+	}
+}
+
+// Ініціалізація попапу пошуку при завантаженні DOM
+document.addEventListener('DOMContentLoaded', function () {
+	console.log('DOM завантажено, ініціалізую попап пошуку...')
+
+	// Додаємо обробник для кнопки пошуку на мобільних пристроях
+	const searchBtn = document.querySelector('.orders__search-btn')
+	console.log('Знайдено кнопку пошуку:', searchBtn)
+
+	if (searchBtn) {
+		// Тестовий обробник для всіх кліків
+		searchBtn.addEventListener('click', function (e) {
+			console.log('Клік на кнопку пошуку (загальний)')
+			console.log('Ширина екрану:', window.innerWidth)
+			console.log('Умова window.innerWidth <= 650:', window.innerWidth <= 650)
+		})
+
+		searchBtn.addEventListener('click', function () {
+			console.log('Клік на кнопку пошуку, ширина екрану:', window.innerWidth)
+			// Перевіряємо ширину екрану
+			if (window.innerWidth <= 650) {
+				console.log('Відкриваю попап пошуку...')
+				openOrdersSearchModal()
+			} else {
+				console.log('Екран занадто широкий для попапу')
+			}
+		})
+	}
+
+	// Закриття попапу при кліку на overlay
+	const modal = document.getElementById('ordersSearchModal')
+	console.log('Знайдено модальне вікно:', modal)
+
+	if (modal) {
+		// Додаємо тестовий клас для перевірки
+		console.log('Початковий стан модального вікна:')
+		console.log('- Класи:', modal.className)
+		console.log('- Display:', window.getComputedStyle(modal).display)
+		console.log('- Z-index:', window.getComputedStyle(modal).zIndex)
+
+		const overlay = modal.querySelector('.orders-search-modal__overlay')
+		if (overlay) {
+			overlay.addEventListener('click', closeOrdersSearchModal)
+		}
+
+		// Закриття по Escape
+		document.addEventListener('keydown', function (e) {
+			if (e.key === 'Escape') {
+				closeOrdersSearchModal()
+			}
+		})
+	} else {
+		console.error('Модальне вікно ordersSearchModal не знайдено!')
+	}
+
+	// Тестовий виклик функції через 2 секунди
+	setTimeout(() => {
+		console.log('Тестовий виклик функції відкриття попапу...')
+		openOrdersSearchModal()
+	}, 2000)
 })

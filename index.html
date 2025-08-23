@@ -65,8 +65,8 @@
             <span class="main__burger-line"></span>
             <span class="main__burger-line"></span>
           </button>
-          <button class="main__button" style="display: none;">Увійти</button>
-          <div class="main__user-dropdown">
+          <button class="main__button">Увійти</button>
+          <div class="main__user-dropdown" style="display: none;">
             <div class="main__user-selector">
               <div class="main__user-current">
                 <div class="main__user-avatar">
@@ -376,7 +376,8 @@
                 </div>
               </label>
             </div>
-            <div class="swapper__form-error" id="cardError" role="alert" aria-live="polite">
+            <div class="swapper__form-error" id="cardError" role="alert" aria-live="polite"
+              style="display: none !important;">
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
                 aria-hidden="true">
                 <path
@@ -494,260 +495,7 @@
             </button>
           </div>
         </div>
-        <div class="main__swapper incative">
-          <div class="swapper__tabs">
-            <button class="swapper__tab active">
-              Купити
-            </button>
-            <button class="swapper__tab">
-              Продати
-            </button>
-          </div>
-          <div class="swapper__content">
-            <div class="swapper__wrapper">
-              <label class="swapper__send">
-                <div class="swapper__send-wrapper">
-                  <span class="swapper__send-text">
-                    Ви відправляєте
-                  </span>
-                  <input class="swapper__send-input" type="number" placeholder="1000">
-                </div>
-                <div class="swapper__select-wrapper">
 
-                  <div class="swapper__select-icon">
-                    <img src="./images/usdt.svg" alt="USDT" class="swapper__select-currency-icon">
-                  </div>
-                  <img src="./images/dropdown-arrow.svg" alt="dropdown" class="swapper__select-arrow">
-                  <div class="currency__overlay">
-                    <div class="currency__search">
-                      <div class="currency__search-wrapper">
-                        <input type="text" class="currency__search-input" placeholder="Пошук валюти...">
-                        <svg class="currency__search-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
-                          viewBox="0 0 28 28" fill="none">
-                          <path
-                            d="M25.1191 23.8809L19.6427 18.4056C21.2299 16.5 22.0214 14.0558 21.8525 11.5814C21.6836 9.10709 20.5672 6.79313 18.7357 5.12091C16.9041 3.4487 14.4984 2.54697 12.0189 2.60332C9.53944 2.65967 7.17715 3.66976 5.42345 5.42345C3.66976 7.17715 2.65967 9.53944 2.60332 12.0189C2.54697 14.4984 3.4487 16.9041 5.12091 18.7357C6.79313 20.5672 9.10709 21.6836 11.5814 21.8525C14.0558 22.0214 16.5 21.2299 18.4056 19.6427L23.8809 25.1191C23.9622 25.2004 24.0588 25.2649 24.165 25.3088C24.2712 25.3528 24.385 25.3755 24.5 25.3755C24.615 25.3755 24.7288 25.3528 24.835 25.3088C24.9413 25.2649 25.0378 25.2004 25.1191 25.1191C25.2004 25.0378 25.2649 24.9413 25.3088 24.835C25.3528 24.7288 25.3755 24.615 25.3755 24.5C25.3755 24.385 25.3528 24.2712 25.3088 24.165C25.2649 24.0588 25.2004 23.9622 25.1191 23.8809ZM4.37501 12.25C4.37501 10.6925 4.83687 9.16993 5.70218 7.87489C6.5675 6.57985 7.79741 5.57049 9.23637 4.97445C10.6753 4.37841 12.2587 4.22246 13.7863 4.52632C15.3139 4.83018 16.7171 5.5802 17.8185 6.68154C18.9198 7.78288 19.6698 9.18607 19.9737 10.7137C20.2775 12.2413 20.1216 13.8247 19.5256 15.2636C18.9295 16.7026 17.9202 17.9325 16.6251 18.7978C15.3301 19.6631 13.8075 20.125 12.25 20.125C10.1621 20.1227 8.16044 19.2923 6.6841 17.8159C5.20775 16.3396 4.37732 14.3379 4.37501 12.25Z"
-                            fill="#202941" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div class="currency__list">
-                      <div class="currency__item" data-value="usdt-trc20">
-                        <div class="currency__left">
-                          <img src="./images/usdt.svg" alt="">
-                          <p class="currency__text">Tether TRC20 (USDT)</p>
-                        </div>
-                        <div class="currency__reserve">
-                          Резерв: 232.123
-                        </div>
-                      </div>
-                      <div class="currency__item" data-value="usdt-erc20">
-                        <div class="currency__left">
-                          <img src="./images/usdt.svg" alt="">
-                          <p class="currency__text">Tether ERC20 (USDT)</p>
-                        </div>
-                        <div class="currency__reserve">
-                          Резерв: 20.923
-                        </div>
-                      </div>
-                      <div class="currency__item" data-value="btc">
-                        <div class="currency__left">
-                          <img src="./images/btc.svg" alt="">
-                          <p class="currency__text">Bitcoin (BTC)</p>
-                        </div>
-                        <div class="currency__reserve">
-                          Резерв: 32
-                        </div>
-                      </div>
-                      <div class="currency__item" data-value="trx">
-                        <div class="currency__left">
-                          <img src="./images/trc.svg" alt="">
-                          <p class="currency__text">Tron (TRX)</p>
-                        </div>
-                        <div class="currency__reserve">
-                          Резерв: 9.123.994
-                        </div>
-                      </div>
-                      <div class="currency__item" data-value="eth">
-                        <div class="currency__left">
-                          <img src="./images/eth.svg" alt="">
-                          <p class="currency__text">Ethereum (ETH)</p>
-                        </div>
-                        <div class="currency__reserve">
-                          Резерв: 213
-                        </div>
-                      </div>
-                      <div class="currency__item" data-value="bnb">
-                        <div class="currency__left">
-                          <img src="./images/bnb.svg" alt="">
-                          <p class="currency__text">Binance (BNB)</p>
-                        </div>
-                        <div class="currency__reserve">
-                          Резерв: 0
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </label>
-              <button class="swapper__swap">
-                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="44" height="44" rx="22" fill="#202941" />
-                  <circle cx="22.5" cy="22.5" r="0.5" fill="#202941" />
-                  <path
-                    d="M30.0307 27.0307L27.0307 30.0307C26.89 30.1714 26.6991 30.2505 26.5001 30.2505C26.3011 30.2505 26.1102 30.1714 25.9695 30.0307C25.8287 29.8899 25.7497 29.6991 25.7497 29.5001C25.7497 29.301 25.8287 29.1102 25.9695 28.9694L27.6898 27.2501H14.5001C14.3012 27.2501 14.1104 27.171 13.9698 27.0304C13.8291 26.8897 13.7501 26.699 13.7501 26.5001C13.7501 26.3011 13.8291 26.1104 13.9698 25.9697C14.1104 25.8291 14.3012 25.7501 14.5001 25.7501H27.6898L25.9695 24.0307C25.8287 23.8899 25.7497 23.6991 25.7497 23.5001C25.7497 23.301 25.8287 23.1102 25.9695 22.9694C26.1102 22.8287 26.3011 22.7496 26.5001 22.7496C26.6991 22.7496 26.89 22.8287 27.0307 22.9694L30.0307 25.9694C30.1005 26.0391 30.1558 26.1218 30.1935 26.2128C30.2313 26.3039 30.2507 26.4015 30.2507 26.5001C30.2507 26.5986 30.2313 26.6962 30.1935 26.7873C30.1558 26.8783 30.1005 26.961 30.0307 27.0307ZM16.9695 21.0307C17.1102 21.1714 17.3011 21.2505 17.5001 21.2505C17.6991 21.2505 17.89 21.1714 18.0307 21.0307C18.1715 20.8899 18.2505 20.6991 18.2505 20.5001C18.2505 20.301 18.1715 20.1102 18.0307 19.9694L16.3104 18.2501H29.5001C29.699 18.2501 29.8898 18.171 30.0304 18.0304C30.1711 17.8897 30.2501 17.699 30.2501 17.5001C30.2501 17.3011 30.1711 17.1104 30.0304 16.9697C29.8898 16.8291 29.699 16.7501 29.5001 16.7501H16.3104L18.0307 15.0307C18.1715 14.8899 18.2505 14.6991 18.2505 14.5001C18.2505 14.301 18.1715 14.1102 18.0307 13.9694C17.89 13.8287 17.6991 13.7496 17.5001 13.7496C17.3011 13.7496 17.1102 13.8287 16.9695 13.9694L13.9695 16.9694C13.8997 17.0391 13.8444 17.1218 13.8067 17.2128C13.7689 17.3039 13.7495 17.4015 13.7495 17.5001C13.7495 17.5986 13.7689 17.6962 13.8067 17.7873C13.8444 17.8783 13.8997 17.961 13.9695 18.0307L16.9695 21.0307Z"
-                    fill="white" />
-                </svg>
-              </button>
-              <label class="swapper__receive">
-                <div class="swapper__recieve-wrapper">
-                  <span class="swapper__receive-text">
-                    Ви отримуєте
-                  </span>
-                  <input class="swapper__receive-input" type="number" placeholder="43,72">
-                </div>
-                <div class="swapper__select-wrapper">
-
-
-                  <div class="swapper__select-icon">
-                    <img src="./images/uah.svg" alt="UAH" class="swapper__select-currency-icon">
-                  </div>
-                  <img src="./images/dropdown-arrow.svg" alt="dropdown" class="swapper__select-arrow">
-                  <div class="currency__overlay">
-                    <div class="currency__search">
-                      <div class="currency__search-wrapper">
-                        <input type="text" class="currency__search-input" placeholder="Пошук">
-                        <svg class="currency__search-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
-                          viewBox="0 0 28 28" fill="none">
-                          <path
-                            d="M25.1191 23.8809L19.6427 18.4056C21.2299 16.5 22.0214 14.0558 21.8525 11.5814C21.6836 9.10709 20.5672 6.79313 18.7357 5.12091C16.9041 3.4487 14.4984 2.54697 12.0189 2.60332C9.53944 2.65967 7.17715 3.66976 5.42345 5.42345C3.66976 7.17715 2.65967 9.53944 2.60332 12.0189C2.54697 14.4984 3.4487 16.9041 5.12091 18.7357C6.79313 20.5672 9.10709 21.6836 11.5814 21.8525C14.0558 22.0214 16.5 21.2299 18.4056 19.6427L23.8809 25.1191C23.9622 25.2004 24.0588 25.2649 24.165 25.3088C24.2712 25.3528 24.385 25.3755 24.5 25.3755C24.615 25.3755 24.7288 25.3528 24.835 25.3088C24.9413 25.2649 25.0378 25.2004 25.1191 25.1191C25.2004 25.0378 25.2649 24.9413 25.3088 24.835C25.3528 24.7288 25.3755 24.615 25.3755 24.5C25.3755 24.385 25.3528 24.2712 25.3088 24.165C25.2649 24.0588 25.2004 23.9622 25.1191 23.8809ZM4.37501 12.25C4.37501 10.6925 4.83687 9.16993 5.70218 7.87489C6.5675 6.57985 7.79741 5.57049 9.23637 4.97445C10.6753 4.37841 12.2587 4.22246 13.7863 4.52632C15.3139 4.83018 16.7171 5.5802 17.8185 6.68154C18.9198 7.78288 19.6698 9.18607 19.9737 10.7137C20.2775 12.2413 20.1216 13.8247 19.5256 15.2636C18.9295 16.7026 17.9202 17.9325 16.6251 18.7978C15.3301 19.6631 13.8075 20.125 12.25 20.125C10.1621 20.1227 8.16044 19.2923 6.6841 17.8159C5.20775 16.3396 4.37732 14.3379 4.37501 12.25Z"
-                            fill="#202941" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div class="currency__list">
-                      <div class="currency__item" data-value="usdt-trc20">
-                        <div class="currency__left">
-                          <img src="./images/usdt.svg" alt="">
-                          <p class="currency__text">Tether TRC20 (USDT)</p>
-                        </div>
-                        <div class="currency__reserve">
-                          Резерв: 232.123
-                        </div>
-                      </div>
-                      <div class="currency__item" data-value="usdt-erc20">
-                        <div class="currency__left">
-                          <img src="./images/usdt.svg" alt="">
-                          <p class="currency__text">Tether ERC20 (USDT)</p>
-                        </div>
-                        <div class="currency__reserve">
-                          Резерв: 20.923
-                        </div>
-                      </div>
-                      <div class="currency__item" data-value="btc">
-                        <div class="currency__left">
-                          <img src="./images/btc.svg" alt="">
-                          <p class="currency__text">Bitcoin (BTC)</p>
-                        </div>
-                        <div class="currency__reserve">
-                          Резерв: 32
-                        </div>
-                      </div>
-                      <div class="currency__item" data-value="trx">
-                        <div class="currency__left">
-                          <img src="./images/trc.svg" alt="">
-                          <p class="currency__text">Tron (TRX)</p>
-                        </div>
-                        <div class="currency__reserve">
-                          Резерв: 9.123.994
-                        </div>
-                      </div>
-                      <div class="currency__item" data-value="eth">
-                        <div class="currency__left">
-                          <img src="./images/eth.svg" alt="">
-                          <p class="currency__text">Ethereum (ETH)</p>
-                        </div>
-                        <div class="currency__reserve">
-                          Резерв: 213
-                        </div>
-                      </div>
-                      <div class="currency__item" data-value="bnb">
-                        <div class="currency__left">
-                          <img src="./images/bnb.svg" alt="">
-                          <p class="currency__text">Binance (BNB)</p>
-                        </div>
-                        <div class="currency__reserve">
-                          Резерв: 0
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </label>
-            </div>
-            <div class="swapper__rate">
-              <p class="swapper__rate-text">
-                1 USDT = 41.123 UAH
-                <span>60</span>
-              </p>
-              <p class="swapper__rate-commission">
-                Комісія за обробку платежу <span>1,5 USDT</span>
-              </p>
-            </div>
-            <div class="swapper__details">
-              <p class="swapper__details-text">
-                Реквізити
-              </p>
-              <form class="swapper__form">
-                <div class="floating-label-wrapper">
-                  <input class="swapper__form-input" type="text" placeholder=" " maxlength="23" id="cardNumberInput"
-                    autocomplete="cc-number">
-                  <label for="cardNumberInput" class="floating-label">Банківська карта</label>
-                </div>
-                <div class="floating-label-wrapper">
-                  <input class="swapper__form-input" type="text" placeholder=" ">
-                  <label class="floating-label">Адреса Tether</label>
-                </div>
-              </form>
-            </div>
-            <div class="swapper__description">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M11.5 2C9.62108 2 7.78435 2.55717 6.22209 3.60104C4.65982 4.64491 3.44218 6.12861 2.72315 7.86451C2.00412 9.6004 1.81598 11.5105 2.18254 13.3534C2.5491 15.1962 3.45389 16.8889 4.78249 18.2175C6.11109 19.5461 7.80383 20.4509 9.64664 20.8175C11.4895 21.184 13.3996 20.9959 15.1355 20.2769C16.8714 19.5578 18.3551 18.3402 19.399 16.7779C20.4428 15.2156 21 13.3789 21 11.5C20.9973 8.98126 19.9956 6.56644 18.2146 4.78542C16.4336 3.0044 14.0187 2.00266 11.5 2ZM11.1346 6.38461C11.3514 6.38461 11.5633 6.4489 11.7436 6.56935C11.9239 6.6898 12.0644 6.86099 12.1473 7.06129C12.2303 7.26158 12.252 7.48198 12.2097 7.69462C12.1674 7.90725 12.063 8.10257 11.9097 8.25587C11.7564 8.40917 11.5611 8.51356 11.3485 8.55586C11.1358 8.59816 10.9154 8.57645 10.7151 8.49348C10.5148 8.41052 10.3436 8.27002 10.2232 8.08976C10.1028 7.9095 10.0385 7.69757 10.0385 7.48077C10.0385 7.19005 10.154 6.91124 10.3595 6.70567C10.5651 6.5001 10.8439 6.38461 11.1346 6.38461ZM12.2308 16.6154C11.8431 16.6154 11.4714 16.4614 11.1973 16.1873C10.9232 15.9132 10.7692 15.5415 10.7692 15.1538V11.5C10.5754 11.5 10.3895 11.423 10.2525 11.286C10.1155 11.1489 10.0385 10.963 10.0385 10.7692C10.0385 10.5754 10.1155 10.3895 10.2525 10.2525C10.3895 10.1155 10.5754 10.0385 10.7692 10.0385C11.1569 10.0385 11.5286 10.1924 11.8027 10.4665C12.0768 10.7406 12.2308 11.1124 12.2308 11.5V15.1538C12.4246 15.1538 12.6105 15.2308 12.7475 15.3679C12.8845 15.5049 12.9615 15.6908 12.9615 15.8846C12.9615 16.0784 12.8845 16.2643 12.7475 16.4013C12.6105 16.5384 12.4246 16.6154 12.2308 16.6154Z"
-                  fill="#202941" />
-              </svg>
-              <p class="swapper__description-text">
-                Якщо сума обміну перевищує 500$, потрібно пройти реєстрацію та верифікацію особи на нашому сайті
-              </p>
-            </div>
-            <div class="swapper__description">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M11.5 2C9.62108 2 7.78435 2.55717 6.22209 3.60104C4.65982 4.64491 3.44218 6.12861 2.72315 7.86451C2.00412 9.6004 1.81598 11.5105 2.18254 13.3534C2.5491 15.1962 3.45389 16.8889 4.78249 18.2175C6.11109 19.5461 7.80383 20.4509 9.64664 20.8175C11.4895 21.184 13.3996 20.9959 15.1355 20.2769C16.8714 19.5578 18.3551 18.3402 19.399 16.7779C20.4428 15.2156 21 13.3789 21 11.5C20.9973 8.98126 19.9956 6.56644 18.2146 4.78542C16.4336 3.0044 14.0187 2.00266 11.5 2ZM11.1346 6.38461C11.3514 6.38461 11.5633 6.4489 11.7436 6.56935C11.9239 6.6898 12.0644 6.86099 12.1473 7.06129C12.2303 7.26158 12.252 7.48198 12.2097 7.69462C12.1674 7.90725 12.063 8.10257 11.9097 8.25587C11.7564 8.40917 11.5611 8.51356 11.3485 8.55586C11.1358 8.59816 10.9154 8.57645 10.7151 8.49348C10.5148 8.41052 10.3436 8.27002 10.2232 8.08976C10.1028 7.9095 10.0385 7.69757 10.0385 7.48077C10.0385 7.19005 10.154 6.91124 10.3595 6.70567C10.5651 6.5001 10.8439 6.38461 11.1346 6.38461ZM12.2308 16.6154C11.8431 16.6154 11.4714 16.4614 11.1973 16.1873C10.9232 15.9132 10.7692 15.5415 10.7692 15.1538V11.5C10.5754 11.5 10.3895 11.423 10.2525 11.286C10.1155 11.1489 10.0385 10.963 10.0385 10.7692C10.0385 10.5754 10.1155 10.3895 10.2525 10.2525C10.3895 10.1155 10.5754 10.0385 10.7692 10.0385C11.1569 10.0385 11.5286 10.1924 11.8027 10.4665C12.0768 10.7406 12.2308 11.1124 12.2308 11.5V15.1538C12.4246 15.1538 12.6105 15.2308 12.7475 15.3679C12.8845 15.5049 12.9615 15.6908 12.9615 15.8846C12.9615 16.0784 12.8845 16.2643 12.7475 16.4013C12.6105 16.5384 12.4246 16.6154 12.2308 16.6154Z"
-                  fill="#202941" />
-              </svg>
-              <p class="swapper__description-text">
-                Пожалуйста, убедитесь, что вывод производится в рамках сети TRC-20, в пр отивном случае, средства не
-                зачислятся на наш кошелек. Требуется 12 подтверждений от сети.
-                При переводе средств просим Вас учитывать комиссию сети.
-              </p>
-            </div>
-            <label class="swapper__agree swapper__agree-first">
-              <input class="swapper__agree-input" type="checkbox">
-              <p class="swapper__agree-text">
-                Я згоден з <a href="#">регламентом сервісу</a> та правилами <a href="#">AML перевірки</a>
-              </p>
-            </label>
-            <label class="swapper__agree">
-              <input class="swapper__agree-input" type="checkbox">
-              <p class="swapper__agree-text">
-                Запам'ятати мої дані
-              </p>
-            </label>
-            <button class="swapper__button" style="margin-top: 20px;">
-              Створити замовлення
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   </main>
@@ -1156,7 +904,7 @@
         <div class="add-account-modal__status" id="accountStatus" style="display: none;">
           <span class="add-account-modal__status-text">Рахунок додано</span>
         </div>
-                <span class="add-span">Рахунок додано</span>
+        <span class="add-span">Рахунок додано</span>
 
         <button type="submit" class="add-account-modal__submit">
           Додати
