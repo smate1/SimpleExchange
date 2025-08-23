@@ -3843,3 +3843,51 @@ document.addEventListener('DOMContentLoaded', function () {
 		openOrdersSearchModal()
 	}, 2000)
 })
+
+// Функціональність копіювання для сторінки referal
+function initReferalCopyButtons() {
+	const copyButtons = document.querySelectorAll('.referal__bottom-btn.copy-btn')
+
+	copyButtons.forEach(button => {
+		button.addEventListener('click', function () {
+			// Знаходимо текст для копіювання (значення з referal__bottom-value)
+			const valueElement = button
+				.closest('.referal__bottom-text')
+				.querySelector('.referal__bottom-value')
+			const textToCopy = valueElement ? valueElement.textContent : ''
+
+			if (textToCopy) {
+				// Копіюємо в буфер обміну
+				navigator.clipboard
+					.writeText(textToCopy)
+					.then(function () {
+						console.log('Текст скопійовано:', textToCopy)
+
+						// Показуємо візуальний фідбек
+						const originalHTML = button.innerHTML
+						button.innerHTML = `
+							<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" fill="#28a745"/>
+							</svg>
+						`
+
+						// Повертаємо оригінальну іконку через 2 секунди
+						setTimeout(() => {
+							button.innerHTML = originalHTML
+						}, 2000)
+					})
+					.catch(function (err) {
+						console.error('Помилка копіювання:', err)
+					})
+			}
+		})
+	})
+}
+
+// Ініціалізація кнопок копіювання на сторінці referal
+document.addEventListener('DOMContentLoaded', function () {
+	// Перевіряємо, чи ми на сторінці referal
+	if (document.querySelector('.referal__bottom-text')) {
+		initReferalCopyButtons()
+	}
+})

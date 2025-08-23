@@ -190,558 +190,128 @@
           </div>
         </div>
 
-        <!-- Контент таба "Мої заявки" -->
-        <div class="orders__content orders__content--active" data-content="applications">
-          <div class="orders__header">
-            <div class="orders__summary">
-              Загалом заявок
-              <span class="orders__summary-text"> 0</span>
-            </div>
-            <div class="orders__search">
-              <div class="orders__search-wrapper">
-                <input type="text" class="orders__search-input" placeholder="Пошук по номеру заявки">
-                <button class="orders__search-btn" type="button" aria-label="Пошук заявок">
-                  <img src="./images/search.svg" alt="search">
-                </button>
-              </div>
-            </div>
+        <div class="referal__content">
+          <div class="referal__top">
+            <h5 class="referal__title">
+              Заробляйте з нами!
+            </h5>
+            <p class="referal__text">
+              Запрошуйте нових користувачів за допомогою Вашого унікального реферального посилання. За кожну операцію,
+              здійснену
+              користувачами, що прийшли за Вашим посиланням, ви отримуватимете відсоток від комісії обміну.
+            </p>
+            <p class="referal__text">
+              Умови та правила реферальної програми доступні на сторінці <a class="referal__text-link"
+                href="./partners.html">партнерської програми</a>.
+            </p>
           </div>
-
-          <!-- Попап пошуку для мобільних пристроїв -->
-          <div class="orders-search-modal" id="ordersSearchModal">
-            <div class="orders-search-modal__overlay"></div>
-            <div class="orders-search-modal__content">
-              <div class="orders-search-modal__header">
-                <h3 class="orders-search-modal__title">Пошук</h3>
-                <button class="orders-search-modal__close" type="button" onclick="closeOrdersSearchModal()">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="#202941" stroke-width="2" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg>
-                </button>
+          <div class="referal__info">
+            <div class="referal__items">
+              <div class="referal__item">
+                <p class="referal__item-title">Кількість переходів</p>
+                <p class="referal__item-text">1 людина</p>
               </div>
-              <div class="orders-search-modal__body">
-                <label class="orders-search-modal__label">Пошук по номеру заявки</label>
-                <input type="text" class="orders-search-modal__input" placeholder="Введіть номер заявки">
-                <button class="orders-search-modal__btn" onclick="applyOrdersSearch()">Применить</button>
+              <div class="referal__item">
+                <p class="referal__item-title">Кількість обмінів</p>
+                <p class="referal__item-text">0 обменов</p>
               </div>
-            </div>
-          </div>
-
-          <!-- Таблиця заявок -->
-          <div class="orders-table__wrapper">
-
-            <!-- Карточки для мобільних пристроїв -->
-            <div class="orders-table__mobile-cards">
-              <div class="orders-table__mobile-card">
-                <div class="orders-table__mobile-card-header">
-                  <div class="orders-table__mobile-card-id">f0b1d648-39e7-11ee-be56-024</div>
-                  <button class="orders-table__more" type="button">
-                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                    </svg>
-                  </button>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Статус:</div>
-                  <div class="orders-table__mobile-card-status orders-table__mobile-card-status--deleted">Видалена</div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Відправляєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="UAH" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Отримуєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="USDT" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Дата:</div>
-                  <div class="orders-table__mobile-card-value">24 апр 2025 23:30</div>
-                </div>
+              <div class="referal__item hidden">
+                <p class="referal__item-title">Запрошено рефералів</p>
+                <p class="referal__item-text">0 рефералів</p>
               </div>
-
-              <div class="orders-table__mobile-card">
-                <div class="orders-table__mobile-card-header">
-                  <div class="orders-table__mobile-card-id">f0b1d648-39e7-11ee-be56-024</div>
-                  <button class="orders-table__more" type="button">
-                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                    </svg>
-                  </button>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Статус:</div>
-                  <div class="orders-table__mobile-card-status orders-table__mobile-card-status--completed">Виконана
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Відправляєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="UAH" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Отримуєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="USDT" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Дата:</div>
-                  <div class="orders-table__mobile-card-value">24 апр 2025 23:30</div>
-                </div>
+              <div class="referal__item hidden">
+                <p class="referal__item-title">Зароблено за весь час</p>
+                <p class="referal__item-text">1.23 USDT</p>
               </div>
-
-              <div class="orders-table__mobile-card">
-                <div class="orders-table__mobile-card-header">
-                  <div class="orders-table__mobile-card-id">f0b1d648-39e7-11ee-be56-024</div>
-                  <button class="orders-table__more" type="button">
-                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                    </svg>
-                  </button>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Статус:</div>
-                  <div class="orders-table__mobile-card-status orders-table__mobile-card-status--pending">Очікуємо
-                    оплату</div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Відправляєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="UAH" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Отримуєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="USDT" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Дата:</div>
-                  <div class="orders-table__mobile-card-value">24 апр 2025 23:30</div>
-                </div>
+              <div class="referal__item">
+                <p class="referal__item-title">Сумарна сума обмінів</p>
+                <p class="referal__item-text">0 USDT</p>
               </div>
-              <div class="orders-table__mobile-card">
-                <div class="orders-table__mobile-card-header">
-                  <div class="orders-table__mobile-card-id">f0b1d648-39e7-11ee-be56-024</div>
-                  <button class="orders-table__more" type="button">
-                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                    </svg>
-                  </button>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Статус:</div>
-                  <div class="orders-table__mobile-card-status orders-table__mobile-card-status--deleted">Видалена</div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Відправляєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="UAH" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Отримуєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="USDT" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Дата:</div>
-                  <div class="orders-table__mobile-card-value">24 апр 2025 23:30</div>
-                </div>
+              <div class="referal__item">
+                <p class="referal__item-title">Ваш відсоток</p>
+                <p class="referal__item-text">30 %</p>
               </div>
-
-              <div class="orders-table__mobile-card">
-                <div class="orders-table__mobile-card-header">
-                  <div class="orders-table__mobile-card-id">f0b1d648-39e7-11ee-be56-024</div>
-                  <button class="orders-table__more" type="button">
-                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                    </svg>
-                  </button>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Статус:</div>
-                  <div class="orders-table__mobile-card-status orders-table__mobile-card-status--completed">Виконана
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Відправляєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="UAH" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Отримуєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="USDT" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Дата:</div>
-                  <div class="orders-table__mobile-card-value">24 апр 2025 23:30</div>
-                </div>
+              <div class="referal__item">
+                <p class="referal__item-title">Поточний баланс</p>
+                <p class="referal__item-text">1.23 USDT</p>
               </div>
             </div>
-
-            <!-- Таблиця з даними (за замовчуванням прихована) -->
-            <table class="orders-table ">
-              <thead class="orders-table__head">
-                <tr class="orders-table__row">
-                  <th class="orders-table__header">
-                    <span class="orders-table__header-text">Номер заявки</span>
-                  </th>
-                  <th class="orders-table__header orders-table__header--sortable">
-                    <span class="orders-table__header-text">Відправляєте</span>
-                    <button class="orders__table__sort-btn">
-                      <svg class="orders-table__sort-arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="10"
-                        viewBox="0 0 12 10" fill="none">
-                        <path
-                          d="M6.90138 9.5122C6.50077 10.1626 5.49923 10.1626 5.09862 9.5122L0.140997 1.46341C-0.259618 0.813007 0.241152 0 1.04238 0L10.9576 0C11.7588 0 12.2596 0.813008 11.859 1.46341L6.90138 9.5122Z"
-                          fill="#202941" fill-opacity="0.2" />
-                      </svg>
-                    </button>
-                  </th>
-                  <th class="orders-table__header orders-table__header--sortable">
-                    <span class="orders-table__header-text">Отримуєте</span>
-                    <button class="orders__table__sort-btn">
-                      <svg class="orders-table__sort-arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="10"
-                        viewBox="0 0 12 10" fill="none">
-                        <path
-                          d="M6.90138 9.5122C6.50077 10.1626 5.49923 10.1626 5.09862 9.5122L0.140997 1.46341C-0.259618 0.813007 0.241152 0 1.04238 0L10.9576 0C11.7588 0 12.2596 0.813008 11.859 1.46341L6.90138 9.5122Z"
-                          fill="#202941" fill-opacity="0.2" />
-                      </svg>
-                    </button>
-                  </th>
-                  <th class="orders-table__header">
-                    <span class="orders-table__header-text">Статус</span>
-                  </th>
-                  <th class="orders-table__header orders-table__header--sortable">
-                    <span class="orders-table__header-text">Дата</span>
-                    <button class="orders__table__sort-btn">
-                      <svg class="orders-table__sort-arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="10"
-                        viewBox="0 0 12 10" fill="none">
-                        <path
-                          d="M6.90138 9.5122C6.50077 10.1626 5.49923 10.1626 5.09862 9.5122L0.140997 1.46341C-0.259618 0.813007 0.241152 0 1.04238 0L10.9576 0C11.7588 0 12.2596 0.813008 11.859 1.46341L6.90138 9.5122Z"
-                          fill="#202941" fill-opacity="0.2" />
-                      </svg>
-                    </button>
-                  </th>
-                  <th class="orders-table__header">
-                    <span class="orders-table__header-text"></span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="orders-table__body orders-table--hidden">
-                <tr class="orders-table__row">
-                  <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--deleted">Видалена</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <button class="orders-table__more" type="button">
-                      <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="orders-table__row">
-                  <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--completed">Виконана</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <button class="orders-table__more" type="button">
-                      <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="orders-table__row">
-                  <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--pending">Очікуємо оплату</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <button class="orders-table__more" type="button">
-                      <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="orders-table__row">
-                  <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--deleted">Видалена</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <button class="orders-table__more" type="button">
-                      <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="orders-table__row">
-                  <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--completed">Виконана</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <button class="orders-table__more" type="button">
-                      <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="orders-table__row">
-                  <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--pending">Очікуємо оплату</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <button class="orders-table__more" type="button">
-                      <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="orders-table__row">
-                  <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--deleted">Видалена</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <button class="orders-table__more" type="button">
-                      <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="orders-table__row">
-                  <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--pending">Очікуємо оплату</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <button class="orders-table__more" type="button">
-                      <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <!-- Стан "немає даних" -->
-            <div class="orders-table__empty orders-table__empty--active">
-              <div class="orders-table__empty-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="101" viewBox="0 0 100 101" fill="none">
-                  <path
-                    d="M12.5 25.5C12.5 24.6712 12.8292 23.8763 13.4153 23.2903C14.0013 22.7042 14.7962 22.375 15.625 22.375H84.375C85.2038 22.375 85.9987 22.7042 86.5847 23.2903C87.1708 23.8763 87.5 24.6712 87.5 25.5C87.5 26.3288 87.1708 27.1237 86.5847 27.7097C85.9987 28.2958 85.2038 28.625 84.375 28.625H15.625C14.7962 28.625 14.0013 28.2958 13.4153 27.7097C12.8292 27.1237 12.5 26.3288 12.5 25.5ZM15.625 53.625H43.75C44.5788 53.625 45.3737 53.2958 45.9597 52.7097C46.5458 52.1237 46.875 51.3288 46.875 50.5C46.875 49.6712 46.5458 48.8763 45.9597 48.2903C45.3737 47.7042 44.5788 47.375 43.75 47.375H15.625C14.7962 47.375 14.0013 47.7042 13.4153 48.2903C12.8292 48.8763 12.5 49.6712 12.5 50.5C12.5 51.3288 12.8292 52.1237 13.4153 52.7097C14.0013 53.2958 14.7962 53.625 15.625 53.625ZM50 72.375H15.625C14.7962 72.375 14.0013 72.7042 13.4153 73.2903C12.8292 73.8763 12.5 74.6712 12.5 75.5C12.5 76.3288 12.8292 77.1237 13.4153 77.7097C14.0013 78.2958 14.7962 78.625 15.625 78.625H50C50.8288 78.625 51.6237 78.2958 52.2097 77.7097C52.7958 77.1237 53.125 76.3288 53.125 75.5C53.125 74.6712 52.7958 73.8763 52.2097 73.2903C51.6237 72.7042 50.8288 72.375 50 72.375ZM92.8359 73.2891L84.9062 65.3438C87.038 62.1126 87.8945 58.2052 87.3097 54.3787C86.725 50.5521 84.7406 47.0788 81.7411 44.6318C78.7416 42.1849 74.9406 40.9384 71.0746 41.134C67.2085 41.3296 63.5527 42.9533 60.8155 45.6905C58.0783 48.4277 56.4546 52.0835 56.259 55.9496C56.0634 59.8156 57.3099 63.6166 59.7568 66.6161C62.2038 69.6156 65.6771 71.5999 69.5037 72.1847C73.3302 72.7695 77.2376 71.913 80.4688 69.7812L88.3984 77.7109C88.9848 78.2973 89.7801 78.6267 90.6094 78.6267C91.4386 78.6267 92.2339 78.2973 92.8203 77.7109C93.4067 77.1246 93.7361 76.3293 93.7361 75.5C93.7361 74.6707 93.4067 73.8754 92.8203 73.2891H92.8359Z"
-                    fill="#202941" fill-opacity="0.2" />
-                </svg>
-              </div>
-              <div class="orders-table__empty-text">Немає даних</div>
-            </div>
-
-            <!-- Пагінація -->
-            <div class="orders__pagination orders__pagination--hidden">
-              <button class="orders__pagination-btn orders__pagination-btn--prev" type="button">
-                <span class="orders__pagination-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="7" height="14"
-                    viewBox="0 0 7 14" fill="none">
-                    <path
-                      d="M5.85221 13.0229L0.227206 7.39792C0.174907 7.34567 0.133417 7.28364 0.10511 7.21535C0.0768023 7.14706 0.062233 7.07387 0.062233 6.99995C0.062233 6.92603 0.0768023 6.85283 0.10511 6.78454C0.133417 6.71626 0.174907 6.65422 0.227206 6.60198L5.85221 0.976978C5.95775 0.87143 6.10091 0.812134 6.25018 0.812134C6.39944 0.812134 6.5426 0.87143 6.64814 0.976978C6.75369 1.08253 6.81299 1.22568 6.81299 1.37495C6.81299 1.52421 6.75369 1.66737 6.64814 1.77292L1.42041 6.99995L6.64814 12.227C6.70041 12.2792 6.74186 12.3413 6.77015 12.4096C6.79843 12.4779 6.81299 12.551 6.81299 12.6249C6.81299 12.6989 6.79843 12.772 6.77015 12.8403C6.74186 12.9086 6.70041 12.9707 6.64814 13.0229C6.59588 13.0752 6.53384 13.1166 6.46555 13.1449C6.39727 13.1732 6.32409 13.1878 6.25018 13.1878C6.17627 13.1878 6.10308 13.1732 6.0348 13.1449C5.96651 13.1166 5.90447 13.0752 5.85221 13.0229Z"
-                      fill="#202941" />
-                  </svg></span>
-              </button>
-              <div class="orders__pagination-pages">
-                <button class="orders__pagination-page orders__pagination-page--active" type="button">1</button>
-                <button class="orders__pagination-page" type="button">2</button>
-                <span class="orders__pagination-ellipsis">...</span>
-                <button class="orders__pagination-page" type="button">98</button>
-                <button class="orders__pagination-page" type="button">99</button>
-              </div>
-              <button class="orders__pagination-btn orders__pagination-btn--next" type="button">
-                <span class="orders__pagination-arrow">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                    <path
-                      d="M7.14779 2.97708L12.7728 8.60208C12.8251 8.65433 12.8666 8.71636 12.8949 8.78465C12.9232 8.85294 12.9378 8.92613 12.9378 9.00005C12.9378 9.07397 12.9232 9.14717 12.8949 9.21546C12.8666 9.28374 12.8251 9.34578 12.7728 9.39802L7.14779 15.023C7.04225 15.1286 6.89909 15.1879 6.74982 15.1879C6.60056 15.1879 6.4574 15.1286 6.35186 15.023C6.24631 14.9175 6.18701 14.7743 6.18701 14.6251C6.18701 14.4758 6.24631 14.3326 6.35186 14.2271L11.5796 9.00005L6.35186 3.77302C6.29959 3.72076 6.25814 3.65872 6.22985 3.59043C6.20157 3.52215 6.18701 3.44896 6.18701 3.37505C6.18701 3.30114 6.20157 3.22796 6.22985 3.15967C6.25814 3.09139 6.29959 3.02935 6.35186 2.97708C6.40412 2.92482 6.46616 2.88337 6.53445 2.85508C6.60273 2.8268 6.67591 2.81224 6.74982 2.81224C6.82373 2.81224 6.89692 2.8268 6.9652 2.85508C7.03349 2.88337 7.09553 2.92482 7.14779 2.97708Z"
-                      fill="#202941" />
-                  </svg>
-                </span>
+            <div class="referal__info-btn--wrapper">
+              <button class="referal__info-btn">
+                Вивести кошти
               </button>
             </div>
           </div>
-
-
+          <div class="referal__bottom">
+            <div class="referal__bottom-left">
+              <div class="referal__bottom-title">
+                Ваш реферальний код та посилання
+              </div>
+              <div class="referal__bottom-text">
+                <div class="referal__bottom-content">
+                  <div class="referal__bottom-value">G2t3iO</div>
+                </div>
+                <div class="referal__bottom-actions">
+                  <button class="referal__bottom-btn copy-btn" title="Копіювати">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path
+                        d="M14.25 3H0.75C0.551088 3 0.360322 3.07902 0.21967 3.21967C0.0790178 3.36032 0 3.55109 0 3.75V17.25C0 17.4489 0.0790178 17.6397 0.21967 17.7803C0.360322 17.921 0.551088 18 0.75 18H14.25C14.4489 18 14.6397 17.921 14.7803 17.7803C14.921 17.6397 15 17.4489 15 17.25V3.75C15 3.55109 14.921 3.36032 14.7803 3.21967C14.6397 3.07902 14.4489 3 14.25 3ZM13.5 16.5H1.5V4.5H13.5V16.5ZM18 0.75V14.25C18 14.4489 17.921 14.6397 17.7803 14.7803C17.6397 14.921 17.4489 15 17.25 15C17.0511 15 16.8603 14.921 16.7197 14.7803C16.579 14.6397 16.5 14.4489 16.5 14.25V1.5H3.75C3.55109 1.5 3.36032 1.42098 3.21967 1.28033C3.07902 1.13968 3 0.948912 3 0.75C3 0.551088 3.07902 0.360322 3.21967 0.21967C3.36032 0.0790178 3.55109 0 3.75 0H17.25C17.4489 0 17.6397 0.0790178 17.7803 0.21967C17.921 0.360322 18 0.551088 18 0.75Z"
+                        fill="#202941" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="referal__bottom-text">
+                <div class="referal__bottom-content">
+                  <div class="referal__bottom-value">https://example-change.com?ref=G2t3iO</div>
+                </div>
+                <div class="referal__bottom-actions">
+                  <button class="referal__bottom-btn copy-btn" title="Копіювати">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path
+                        d="M14.25 3H0.75C0.551088 3 0.360322 3.07902 0.21967 3.21967C0.0790178 3.36032 0 3.55109 0 3.75V17.25C0 17.4489 0.0790178 17.6397 0.21967 17.7803C0.360322 17.921 0.551088 18 0.75 18H14.25C14.4489 18 14.6397 17.921 14.7803 17.7803C14.921 17.6397 15 17.4489 15 17.25V3.75C15 3.55109 14.921 3.36032 14.7803 3.21967C14.6397 3.07902 14.4489 3 14.25 3ZM13.5 16.5H1.5V4.5H13.5V16.5ZM18 0.75V14.25C18 14.4489 17.921 14.6397 17.7803 14.7803C17.6397 14.921 17.4489 15 17.25 15C17.0511 15 16.8603 14.921 16.7197 14.7803C16.579 14.6397 16.5 14.4489 16.5 14.25V1.5H3.75C3.55109 1.5 3.36032 1.42098 3.21967 1.28033C3.07902 1.13968 3 0.948912 3 0.75C3 0.551088 3.07902 0.360322 3.21967 0.21967C3.36032 0.0790178 3.55109 0 3.75 0H17.25C17.4489 0 17.6397 0.0790178 17.7803 0.21967C17.921 0.360322 18 0.551088 18 0.75Z"
+                        fill="#202941" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="referal__bottom-right">
+              <div class="referal__bottom-title">
+                Посилання на курси обміну
+              </div>
+              <div class="referal__bottom-text">
+                <div class="referal__bottom-content">
+                  <div class="referal__bottom-value">https://example-change.com/rates.json</div>
+                </div>
+                <div class="referal__bottom-actions">
+                  <button class="referal__bottom-btn copy-btn" title="Копіювати">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path
+                        d="M14.25 3H0.75C0.551088 3 0.360322 3.07902 0.21967 3.21967C0.0790178 3.36032 0 3.55109 0 3.75V17.25C0 17.4489 0.0790178 17.6397 0.21967 17.7803C0.360322 17.921 0.551088 18 0.75 18H14.25C14.4489 18 14.6397 17.921 14.7803 17.7803C14.921 17.6397 15 17.4489 15 17.25V3.75C15 3.55109 14.921 3.36032 14.7803 3.21967C14.6397 3.07902 14.4489 3 14.25 3ZM13.5 16.5H1.5V4.5H13.5V16.5ZM18 0.75V14.25C18 14.4489 17.921 14.6397 17.7803 14.7803C17.6397 14.921 17.4489 15 17.25 15C17.0511 15 16.8603 14.921 16.7197 14.7803C16.579 14.6397 16.5 14.4489 16.5 14.25V1.5H3.75C3.55109 1.5 3.36032 1.42098 3.21967 1.28033C3.07902 1.13968 3 0.948912 3 0.75C3 0.551088 3.07902 0.360322 3.21967 0.21967C3.36032 0.0790178 3.55109 0 3.75 0H17.25C17.4489 0 17.6397 0.0790178 17.7803 0.21967C17.921 0.360322 18 0.551088 18 0.75Z"
+                        fill="#202941" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="referal__bottom-text">
+                <div class="referal__bottom-content">
+                  <div class="referal__bottom-value">https://example-change.com/rates.xml</div>
+                </div>
+                <div class="referal__bottom-actions">
+                  <button class="referal__bottom-btn copy-btn" title="Копіювати">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path
+                        d="M14.25 3H0.75C0.551088 3 0.360322 3.07902 0.21967 3.21967C0.0790178 3.36032 0 3.55109 0 3.75V17.25C0 17.4489 0.0790178 17.6397 0.21967 17.7803C0.360322 17.921 0.551088 18 0.75 18H14.25C14.4489 18 14.6397 17.921 14.7803 17.7803C14.921 17.6397 15 17.4489 15 17.25V3.75C15 3.55109 14.921 3.36032 14.7803 3.21967C14.6397 3.07902 14.4489 3 14.25 3ZM13.5 16.5H1.5V4.5H13.5V16.5ZM18 0.75V14.25C18 14.4489 17.921 14.6397 17.7803 14.7803C17.6397 14.921 17.4489 15 17.25 15C17.0511 15 16.8603 14.921 16.7197 14.7803C16.579 14.6397 16.5 14.4489 16.5 14.25V1.5H3.75C3.55109 1.5 3.36032 1.42098 3.21967 1.28033C3.07902 1.13968 3 0.948912 3 0.75C3 0.551088 3.07902 0.360322 3.21967 0.21967C3.36032 0.0790178 3.55109 0 3.75 0H17.25C17.4489 0 17.6397 0.0790178 17.7803 0.21967C17.921 0.360322 18 0.551088 18 0.75Z"
+                        fill="#202941" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
 
         <!-- Контент таба "Мої реквізити" -->
         <div class="orders__content" data-content="details">

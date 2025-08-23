@@ -4604,6 +4604,194 @@ main {
 	background: rgba(32, 41, 65, 0.1);
 }
 
+.referal__content {
+}
+.referal__top {
+}
+.referal__title {
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 22px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	margin-bottom: 20px;
+}
+.referal__text {
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-bottom: 20px;
+}
+.referal__text-link {
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	text-decoration-line: underline;
+	text-decoration-style: solid;
+	text-decoration-skip-ink: none;
+	text-decoration-thickness: auto;
+	text-underline-offset: auto;
+	text-underline-position: from-font;
+}
+.referal__info {
+	border-radius: 4px;
+	padding: 30px;
+	background: #f7f7f7;
+	margin-top: 37px;
+}
+.referal__items {
+	row-gap: 30px;
+	column-gap: 120px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	margin-bottom: 30px;
+}
+.referal__item-title{
+	white-space: nowrap;
+}
+.referal__item-title {
+	color: var(--txt-50, rgba(32, 41, 65, 0.5));
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-bottom: 5px;
+}
+.referal__item-text {
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+
+.referal__info-btn--wrapper {
+	max-width: 380px;
+	margin-left: auto;
+}
+.referal__info-btn {
+	border-radius: 4px;
+	background: var(--Main-Color, #202941);
+	color: var(--white-bg-pop-up-modal, #fff);
+	font-family: Montserrat;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	padding: 17px 40px;
+	transition: all 0.5s;
+	width: 380px;
+	text-align: center;
+}
+
+.referal__info-btn:hover {
+	background: #353d60;
+}
+.referal__bottom {
+	margin-top: 37px;
+	display: flex;
+	justify-content: space-between;
+	gap: 30px;
+}
+.referal__bottom-left {
+	flex: 1;
+
+}
+.referal__bottom-title {
+	color: var(--Main-Color, #202941);
+	text-align: center;
+	font-family: Montserrat;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-bottom: 10px;
+}
+.referal__bottom-text {
+	background: #fff;
+	border: 1px solid rgba(32, 41, 65, 0.2);
+	border-radius: 8px;
+	padding: 20px 15px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 60px;
+	margin-bottom: 16px;
+}
+.referal__bottom-content {
+	flex: 1;
+}
+
+.referal__bottom-value {
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+
+.referal__bottom-actions {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.referal__bottom-btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 3px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.5s;
+	border-radius: 4px;
+}
+
+.referal__bottom-btn:hover svg path {
+	transition: all 0.5s;
+}
+
+.referal__bottom-btn:hover {
+	background: #202941;
+}
+
+.referal__bottom-btn:hover svg path {
+	fill: #fff;
+}
+
+.referal__bottom-btn svg {
+	width: 20px;
+	height: 20px;
+	fill: #202941;
+}
+
+.referal__bottom-btn.copy-btn svg {
+	width: 16px;
+	height: 16px;
+}
+
+.referal__bottom-left,
+.referal__bottom-right {
+	margin-bottom: 24px;
+}
+
+.referal__bottom-right {
+	flex: 1;
+
+}
+
 /* ======================================== */
 /* ВСІ @MEDIA ЗАПИТИ В КІНЦІ ФАЙЛУ */
 /* ======================================== */
@@ -4918,9 +5106,34 @@ main {
 
 /* @media (max-width: 650px) */
 @media (max-width: 650px) {
+	.referal__items{
+		column-gap: 30px;
+		grid-template-columns: 1fr 1fr;
+	}
+	.referal__info-btn{
+		width: 100%;
+	}
+	.referal__info{
+		padding: 30px 15px;
+	}
+	.referal__item.hidden{
+		display: none;
+	}
 	.orders__search-wrapper {
 		width: 0px !important;
 	}
+	.orders__header {
+		justify-content: space-between;
+	}
+	.orders__add-account-btn {
+		height: 42px;
+		width: auto !important;
+	}
+	.orders__actions {
+		width: auto !important;
+		gap: 20px !important;
+	}
+
 	.orders__search-btn {
 		border-radius: 5px !important;
 		cursor: pointer;
@@ -5098,6 +5311,9 @@ main {
 
 /* @media (max-width: 480px) - Об'єднані всі запити для 480px */
 @media (max-width: 480px) {
+	.orders__add-account-btn {
+		height: 36px !important;
+	}
 	.orders__search-btn {
 		display: flex;
 		justify-content: center;
@@ -5300,17 +5516,43 @@ main {
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 24px;
-	flex-wrap: wrap;
 	gap: 16px;
 }
+
+.orders__actions {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.orders__add-account-btn {
+	background: var(--Main-Color, #202941);
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	padding: 12px 24px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	text-wrap: nowrap;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.orders__add-account-btn:hover {
+	background: #353d60;
+}
+
 .orders__summary {
 	color: var(--Main-Color, #202941);
 	font-family: Montserrat;
 	font-size: 16px;
+	white-space: nowrap;
 	font-style: normal;
 	font-weight: 600;
 	line-height: normal;
 }
+
 .orders__summary-text {
 	color: var(--adddition, #858585);
 	font-family: Montserrat;
@@ -5458,6 +5700,54 @@ main {
 	display: flex;
 	align-items: center;
 	gap: 6px;
+}
+
+/* Стилі для мобільних карток рахунків */
+.orders-table__mobile-card-account {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	color: #202941;
+}
+
+.orders-table__mobile-card-verification {
+	padding: 4px 8px;
+	border-radius: 4px;
+	font-size: 12px;
+	font-weight: 600;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.orders-table__mobile-card-verification--not-verified {
+	background: #fee2e2;
+	color: #991b1b;
+}
+
+.orders-table__mobile-card-verification--aml {
+	background: #fef3c7;
+	color: #92400e;
+}
+
+.orders-table__mobile-card-verification--verified {
+	background: #dcfce7;
+	color: #166534;
+}
+
+.orders-table__mobile-card-currency {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	color: #202941;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.orders-table__mobile-card-comment {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	color: #6b7280;
+	font-weight: 400;
 }
 
 .orders-table__mobile-card-actions {
@@ -5661,6 +5951,77 @@ main {
 	text-align: center;
 	padding: 150px 0;
 	background: #fff;
+}
+
+/* Стилі для рахунків */
+.orders-table__account-number {
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+
+/* Статуси верифікації рахунків */
+.orders-table__verification {
+	border-radius: 5px;
+	background: #f7f7f7;
+	color: var(--main2, #202941);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	display: inline-block;
+	line-height: normal;
+	padding: 5px 8px;
+}
+
+.orders-table__verification--not-verified {
+	background: #fee2e2;
+	color: #991b1b;
+}
+
+.orders-table__verification--aml {
+	background: #fef3c7;
+	color: #92400e;
+}
+
+.orders-table__verification--verified {
+	background: #dcfce7;
+	color: #166534;
+}
+
+/* Стилі для валют */
+.orders-table__currency {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.orders-table__currency-name {
+	color: var(--Main-Color, #202941);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+
+.orders-table__currency-icon {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+
+/* Стилі для коментарів */
+.orders-table__comment {
+	color: var(--txt-50, rgba(32, 41, 65, 0.5));
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
 }
 
 /* .orders-table__empty--active {
@@ -5951,6 +6312,21 @@ main {
 }
 
 @media (max-width: 768px) {
+	.referal__bottom {
+		flex-direction: column;
+		gap: 10px;
+	}
+	.referal__bottom-title{
+		margin-bottom: 15px;
+	}
+.referal__bottom-left{
+	margin-bottom: 0px;
+}
+	.orders__search-wrapper:focus-within,
+	.orders__search-wrapper:hover {
+		border-color: transparent !important;
+	}
+
 	.orders__page {
 		padding: 16px 20px 24px 20px;
 		margin: 16px 0;
@@ -6002,6 +6378,21 @@ main {
 	.orders__header {
 		margin-bottom: 16px;
 		gap: 12px;
+	}
+
+	.orders__actions {
+		gap: 12px;
+		width: 100%;
+	}
+
+	.orders__add-account-btn {
+		width: 100%;
+		padding: 10px 20px;
+		font-size: 13px;
+	}
+
+	.orders__search-wrapper {
+		width: 100%;
 	}
 
 	.orders__summary {
@@ -6134,6 +6525,15 @@ main {
 	.orders__header {
 		margin-bottom: 16px;
 		gap: 10px;
+	}
+
+	.orders__actions {
+		gap: 10px;
+	}
+
+	.orders__add-account-btn {
+		padding: 8px 16px;
+		font-size: 12px;
 	}
 
 	.orders__summary {

@@ -194,15 +194,18 @@
         <div class="orders__content orders__content--active" data-content="applications">
           <div class="orders__header">
             <div class="orders__summary">
-              Загалом заявок
-              <span class="orders__summary-text"> 0</span>
+              Загалом рахунків
+              <span class="orders__summary-text"> 4</span>
             </div>
-            <div class="orders__search">
-              <div class="orders__search-wrapper">
-                <input type="text" class="orders__search-input" placeholder="Пошук по номеру заявки">
-                <button class="orders__search-btn" type="button" aria-label="Пошук заявок">
-                  <img src="./images/search.svg" alt="search">
-                </button>
+            <div class="orders__actions">
+              <button class="orders__add-account-btn" type="button">Додати рахунок</button>
+              <div class="orders__search">
+                <div class="orders__search-wrapper">
+                  <input type="text" class="orders__search-input" placeholder="Пошук рахунка">
+                  <button class="orders__search-btn" type="button" aria-label="Пошук рахунків">
+                    <img src="./images/search.svg" alt="search">
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -221,221 +224,21 @@
                 </button>
               </div>
               <div class="orders-search-modal__body">
-                <label class="orders-search-modal__label">Пошук по номеру заявки</label>
-                <input type="text" class="orders-search-modal__input" placeholder="Введіть номер заявки">
+                <label class="orders-search-modal__label">Пошук рахунка</label>
+                <input type="text" class="orders-search-modal__input" placeholder="Введіть номер рахунку">
                 <button class="orders-search-modal__btn" onclick="applyOrdersSearch()">Применить</button>
               </div>
             </div>
           </div>
 
-          <!-- Таблиця заявок -->
+          <!-- Таблиця рахунків -->
           <div class="orders-table__wrapper">
-
-            <!-- Карточки для мобільних пристроїв -->
-            <div class="orders-table__mobile-cards">
-              <div class="orders-table__mobile-card">
-                <div class="orders-table__mobile-card-header">
-                  <div class="orders-table__mobile-card-id">f0b1d648-39e7-11ee-be56-024</div>
-                  <button class="orders-table__more" type="button">
-                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                    </svg>
-                  </button>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Статус:</div>
-                  <div class="orders-table__mobile-card-status orders-table__mobile-card-status--deleted">Видалена</div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Відправляєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="UAH" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Отримуєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="USDT" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Дата:</div>
-                  <div class="orders-table__mobile-card-value">24 апр 2025 23:30</div>
-                </div>
-              </div>
-
-              <div class="orders-table__mobile-card">
-                <div class="orders-table__mobile-card-header">
-                  <div class="orders-table__mobile-card-id">f0b1d648-39e7-11ee-be56-024</div>
-                  <button class="orders-table__more" type="button">
-                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                    </svg>
-                  </button>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Статус:</div>
-                  <div class="orders-table__mobile-card-status orders-table__mobile-card-status--completed">Виконана
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Відправляєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="UAH" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Отримуєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="USDT" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Дата:</div>
-                  <div class="orders-table__mobile-card-value">24 апр 2025 23:30</div>
-                </div>
-              </div>
-
-              <div class="orders-table__mobile-card">
-                <div class="orders-table__mobile-card-header">
-                  <div class="orders-table__mobile-card-id">f0b1d648-39e7-11ee-be56-024</div>
-                  <button class="orders-table__more" type="button">
-                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                    </svg>
-                  </button>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Статус:</div>
-                  <div class="orders-table__mobile-card-status orders-table__mobile-card-status--pending">Очікуємо
-                    оплату</div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Відправляєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="UAH" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Отримуєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="USDT" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Дата:</div>
-                  <div class="orders-table__mobile-card-value">24 апр 2025 23:30</div>
-                </div>
-              </div>
-              <div class="orders-table__mobile-card">
-                <div class="orders-table__mobile-card-header">
-                  <div class="orders-table__mobile-card-id">f0b1d648-39e7-11ee-be56-024</div>
-                  <button class="orders-table__more" type="button">
-                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                    </svg>
-                  </button>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Статус:</div>
-                  <div class="orders-table__mobile-card-status orders-table__mobile-card-status--deleted">Видалена</div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Відправляєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="UAH" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Отримуєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="USDT" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Дата:</div>
-                  <div class="orders-table__mobile-card-value">24 апр 2025 23:30</div>
-                </div>
-              </div>
-
-              <div class="orders-table__mobile-card">
-                <div class="orders-table__mobile-card-header">
-                  <div class="orders-table__mobile-card-id">f0b1d648-39e7-11ee-be56-024</div>
-                  <button class="orders-table__more" type="button">
-                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                      viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                    </svg>
-                  </button>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Статус:</div>
-                  <div class="orders-table__mobile-card-status orders-table__mobile-card-status--completed">Виконана
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Відправляєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="UAH" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Отримуєте:</div>
-                  <div class="orders-table__mobile-card-value">
-                    <span>126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="USDT" width="16" height="16">
-                  </div>
-                </div>
-                <div class="orders-table__mobile-card-row">
-                  <div class="orders-table__mobile-card-label">Дата:</div>
-                  <div class="orders-table__mobile-card-value">24 апр 2025 23:30</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Таблиця з даними (за замовчуванням прихована) -->
-            <table class="orders-table ">
+            <!-- Таблиця з даними -->
+            <table class="orders-table">
               <thead class="orders-table__head">
                 <tr class="orders-table__row">
-                  <th class="orders-table__header">
-                    <span class="orders-table__header-text">Номер заявки</span>
-                  </th>
                   <th class="orders-table__header orders-table__header--sortable">
-                    <span class="orders-table__header-text">Відправляєте</span>
-                    <button class="orders__table__sort-btn">
-                      <svg class="orders-table__sort-arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="10"
-                        viewBox="0 0 12 10" fill="none">
-                        <path
-                          d="M6.90138 9.5122C6.50077 10.1626 5.49923 10.1626 5.09862 9.5122L0.140997 1.46341C-0.259618 0.813007 0.241152 0 1.04238 0L10.9576 0C11.7588 0 12.2596 0.813008 11.859 1.46341L6.90138 9.5122Z"
-                          fill="#202941" fill-opacity="0.2" />
-                      </svg>
-                    </button>
-                  </th>
-                  <th class="orders-table__header orders-table__header--sortable">
-                    <span class="orders-table__header-text">Отримуєте</span>
+                    <span class="orders-table__header-text">Рахунок</span>
                     <button class="orders__table__sort-btn">
                       <svg class="orders-table__sort-arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="10"
                         viewBox="0 0 12 10" fill="none">
@@ -446,10 +249,10 @@
                     </button>
                   </th>
                   <th class="orders-table__header">
-                    <span class="orders-table__header-text">Статус</span>
+                    <span class="orders-table__header-text">Верифікація</span>
                   </th>
                   <th class="orders-table__header orders-table__header--sortable">
-                    <span class="orders-table__header-text">Дата</span>
+                    <span class="orders-table__header-text">Валюта</span>
                     <button class="orders__table__sort-btn">
                       <svg class="orders-table__sort-arrow" xmlns="http://www.w3.org/2000/svg" width="12" height="10"
                         viewBox="0 0 12 10" fill="none">
@@ -458,30 +261,32 @@
                           fill="#202941" fill-opacity="0.2" />
                       </svg>
                     </button>
+                  </th>
+                  <th class="orders-table__header">
+                    <span class="orders-table__header-text">Коментар</span>
                   </th>
                   <th class="orders-table__header">
                     <span class="orders-table__header-text"></span>
                   </th>
                 </tr>
               </thead>
-              <tbody class="orders-table__body orders-table--hidden">
+              <tbody class="orders-table__body">
                 <tr class="orders-table__row">
                   <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
+                    <span class="orders-table__account-number">999 888 7707 003332</span>
                   </td>
                   <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
+                    <span class="orders-table__verification orders-table__verification--not-verified">Не
+                      верифіковано</span>
                   </td>
                   <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
+                    <div class="orders-table__currency">
+                      <span class="orders-table__currency-name">Tether ERC20</span>
+                      <img src="./images/usdt.svg" alt="USDT" class="orders-table__currency-icon">
+                    </div>
                   </td>
                   <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--deleted">Видалена</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
+                    <span class="orders-table__comment"></span>
                   </td>
                   <td class="orders-table__cell">
                     <button class="orders-table__more" type="button">
@@ -496,50 +301,19 @@
                 </tr>
                 <tr class="orders-table__row">
                   <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
+                    <span class="orders-table__account-number">999 888 7707 003332</span>
                   </td>
                   <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
+                    <span class="orders-table__verification orders-table__verification--aml">AML проверка</span>
                   </td>
                   <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
+                    <div class="orders-table__currency">
+                      <span class="orders-table__currency-name">Bitcoin</span>
+                      <img src="./images/btc.svg" alt="BTC" class="orders-table__currency-icon">
+                    </div>
                   </td>
                   <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--completed">Виконана</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <button class="orders-table__more" type="button">
-                      <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="orders-table__row">
-                  <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--pending">Очікуємо оплату</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
+                    <span class="orders-table__comment"></span>
                   </td>
                   <td class="orders-table__cell">
                     <button class="orders-table__more" type="button">
@@ -554,21 +328,18 @@
                 </tr>
                 <tr class="orders-table__row">
                   <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
+                    <span class="orders-table__account-number">999 888 7707 003332</span>
                   </td>
                   <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
                   </td>
                   <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
+                    <div class="orders-table__currency">
+                      <span class="orders-table__currency-name">Bitcoin</span>
+                      <img src="./images/btc.svg" alt="BTC" class="orders-table__currency-icon">
+                    </div>
                   </td>
                   <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--deleted">Видалена</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
+                    <span class="orders-table__comment"></span>
                   </td>
                   <td class="orders-table__cell">
                     <button class="orders-table__more" type="button">
@@ -583,108 +354,19 @@
                 </tr>
                 <tr class="orders-table__row">
                   <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
+                    <span class="orders-table__account-number">999 888 7707 003332</span>
                   </td>
                   <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
+                    <span class="orders-table__verification orders-table__verification--verified">Верифіковано</span>
                   </td>
                   <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
+                    <div class="orders-table__currency">
+                      <span class="orders-table__currency-name">Bitcoin</span>
+                      <img src="./images/btc.svg" alt="BTC" class="orders-table__currency-icon">
+                    </div>
                   </td>
                   <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--completed">Виконана</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <button class="orders-table__more" type="button">
-                      <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="orders-table__row">
-                  <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--pending">Очікуємо оплату</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <button class="orders-table__more" type="button">
-                      <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="orders-table__row">
-                  <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--deleted">Видалена</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <button class="orders-table__more" type="button">
-                      <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                        viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="3" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="7" r="1.75" fill="#202941" />
-                        <circle cx="8" cy="11" r="1.75" fill="#202941" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="orders-table__row">
-                  <td class="orders-table__cell">
-                    <span class="orders-table__order-id">f0b1d648-39e7-11ee-be56-024</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__amount">1600.123 UAH</span>
-                    <img src="./images/uah.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__currency-amount">126,27 USDT</span>
-                    <img src="./images/usdt.svg" alt="">
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__status orders-table__status--pending">Очікуємо оплату</span>
-                  </td>
-                  <td class="orders-table__cell">
-                    <span class="orders-table__date">24 апр 2025 23:30</span>
+                    <span class="orders-table__comment"></span>
                   </td>
                   <td class="orders-table__cell">
                     <button class="orders-table__more" type="button">
@@ -699,20 +381,132 @@
                 </tr>
               </tbody>
             </table>
-            <!-- Стан "немає даних" -->
-            <div class="orders-table__empty orders-table__empty--active">
-              <div class="orders-table__empty-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="101" viewBox="0 0 100 101" fill="none">
-                  <path
-                    d="M12.5 25.5C12.5 24.6712 12.8292 23.8763 13.4153 23.2903C14.0013 22.7042 14.7962 22.375 15.625 22.375H84.375C85.2038 22.375 85.9987 22.7042 86.5847 23.2903C87.1708 23.8763 87.5 24.6712 87.5 25.5C87.5 26.3288 87.1708 27.1237 86.5847 27.7097C85.9987 28.2958 85.2038 28.625 84.375 28.625H15.625C14.7962 28.625 14.0013 28.2958 13.4153 27.7097C12.8292 27.1237 12.5 26.3288 12.5 25.5ZM15.625 53.625H43.75C44.5788 53.625 45.3737 53.2958 45.9597 52.7097C46.5458 52.1237 46.875 51.3288 46.875 50.5C46.875 49.6712 46.5458 48.8763 45.9597 48.2903C45.3737 47.7042 44.5788 47.375 43.75 47.375H15.625C14.7962 47.375 14.0013 47.7042 13.4153 48.2903C12.8292 48.8763 12.5 49.6712 12.5 50.5C12.5 51.3288 12.8292 52.1237 13.4153 52.7097C14.0013 53.2958 14.7962 53.625 15.625 53.625ZM50 72.375H15.625C14.7962 72.375 14.0013 72.7042 13.4153 73.2903C12.8292 73.8763 12.5 74.6712 12.5 75.5C12.5 76.3288 12.8292 77.1237 13.4153 77.7097C14.0013 78.2958 14.7962 78.625 15.625 78.625H50C50.8288 78.625 51.6237 78.2958 52.2097 77.7097C52.7958 77.1237 53.125 76.3288 53.125 75.5C53.125 74.6712 52.7958 73.8763 52.2097 73.2903C51.6237 72.7042 50.8288 72.375 50 72.375ZM92.8359 73.2891L84.9062 65.3438C87.038 62.1126 87.8945 58.2052 87.3097 54.3787C86.725 50.5521 84.7406 47.0788 81.7411 44.6318C78.7416 42.1849 74.9406 40.9384 71.0746 41.134C67.2085 41.3296 63.5527 42.9533 60.8155 45.6905C58.0783 48.4277 56.4546 52.0835 56.259 55.9496C56.0634 59.8156 57.3099 63.6166 59.7568 66.6161C62.2038 69.6156 65.6771 71.5999 69.5037 72.1847C73.3302 72.7695 77.2376 71.913 80.4688 69.7812L88.3984 77.7109C88.9848 78.2973 89.7801 78.6267 90.6094 78.6267C91.4386 78.6267 92.2339 78.2973 92.8203 77.7109C93.4067 77.1246 93.7361 76.3293 93.7361 75.5C93.7361 74.6707 93.4067 73.8754 92.8203 73.2891H92.8359Z"
-                    fill="#202941" fill-opacity="0.2" />
-                </svg>
+
+            <!-- Карточки для мобільних пристроїв -->
+            <div class="orders-table__mobile-cards">
+              <div class="orders-table__mobile-card">
+                <div class="orders-table__mobile-card-header">
+                  <div class="orders-table__mobile-card-account">999 888 7707 003332</div>
+                  <button class="orders-table__more" type="button">
+                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
+                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
+                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="orders-table__mobile-card-row">
+                  <div class="orders-table__mobile-card-label">Верифікація:</div>
+                  <div
+                    class="orders-table__mobile-card-verification orders-table__mobile-card-verification--not-verified">
+                    Не верифіковано</div>
+                </div>
+                <div class="orders-table__mobile-card-row">
+                  <div class="orders-table__mobile-card-label">Валюта:</div>
+                  <div class="orders-table__mobile-card-currency">
+                    <span>Tether ERC20</span>
+                    <img src="./images/usdt.svg" alt="USDT" width="16" height="16">
+                  </div>
+                </div>
+                <div class="orders-table__mobile-card-row">
+                  <div class="orders-table__mobile-card-label">Коментар:</div>
+                  <div class="orders-table__mobile-card-comment">-</div>
+                </div>
               </div>
-              <div class="orders-table__empty-text">Немає даних</div>
+
+              <div class="orders-table__mobile-card">
+                <div class="orders-table__mobile-card-header">
+                  <div class="orders-table__mobile-card-account">999 888 7707 003332</div>
+                  <button class="orders-table__more" type="button">
+                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
+                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
+                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="orders-table__mobile-card-row">
+                  <div class="orders-table__mobile-card-label">Верифікація:</div>
+                  <div class="orders-table__mobile-card-verification orders-table__mobile-card-verification--aml">AML
+                    проверка</div>
+                </div>
+                <div class="orders-table__mobile-card-row">
+                  <div class="orders-table__mobile-card-label">Валюта:</div>
+                  <div class="orders-table__mobile-card-currency">
+                    <span>Bitcoin</span>
+                    <img src="./images/btc.svg" alt="BTC" width="16" height="16">
+                  </div>
+                </div>
+                <div class="orders-table__mobile-card-row">
+                  <div class="orders-table__mobile-card-label">Коментар:</div>
+                  <div class="orders-table__mobile-card-comment">-</div>
+                </div>
+              </div>
+
+              <div class="orders-table__mobile-card">
+                <div class="orders-table__mobile-card-header">
+                  <div class="orders-table__mobile-card-account">999 888 7707 003332</div>
+                  <button class="orders-table__more" type="button">
+                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
+                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
+                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="orders-table__mobile-card-row">
+                  <div class="orders-table__mobile-card-label">Верифікація:</div>
+                  <div class="orders-table__mobile-card-verification">-</div>
+                </div>
+                <div class="orders-table__mobile-card-row">
+                  <div class="orders-table__mobile-card-label">Валюта:</div>
+                  <div class="orders-table__mobile-card-currency">
+                    <span>Bitcoin</span>
+                    <img src="./images/btc.svg" alt="BTC" width="16" height="16">
+                  </div>
+                </div>
+                <div class="orders-table__mobile-card-row">
+                  <div class="orders-table__mobile-card-label">Коментар:</div>
+                  <div class="orders-table__mobile-card-comment">-</div>
+                </div>
+              </div>
+
+              <div class="orders-table__mobile-card">
+                <div class="orders-table__mobile-card-header">
+                  <div class="orders-table__mobile-card-account">999 888 7707 003332</div>
+                  <button class="orders-table__more" type="button">
+                    <svg class="orders-table__more-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                      viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="3" r="1.75" fill="#202941" />
+                      <circle cx="8" cy="7" r="1.75" fill="#202941" />
+                      <circle cx="8" cy="11" r="1.75" fill="#202941" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="orders-table__mobile-card-row">
+                  <div class="orders-table__mobile-card-label">Верифікація:</div>
+                  <div class="orders-table__mobile-card-verification orders-table__mobile-card-verification--verified">
+                    Верифіковано</div>
+                </div>
+                <div class="orders-table__mobile-card-row">
+                  <div class="orders-table__mobile-card-label">Валюта:</div>
+                  <div class="orders-table__mobile-card-currency">
+                    <span>Bitcoin</span>
+                    <img src="./images/btc.svg" alt="BTC" width="16" height="16">
+                  </div>
+                </div>
+                <div class="orders-table__mobile-card-row">
+                  <div class="orders-table__mobile-card-label">Коментар:</div>
+                  <div class="orders-table__mobile-card-comment">-</div>
+                </div>
+              </div>
             </div>
 
             <!-- Пагінація -->
-            <div class="orders__pagination orders__pagination--hidden">
+            <div class="orders__pagination">
               <button class="orders__pagination-btn orders__pagination-btn--prev" type="button">
                 <span class="orders__pagination-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="7" height="14"
                     viewBox="0 0 7 14" fill="none">
@@ -739,8 +533,6 @@
               </button>
             </div>
           </div>
-
-
         </div>
 
         <!-- Контент таба "Мої реквізити" -->
