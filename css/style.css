@@ -7240,9 +7240,6 @@ main {
 }
 
 /* Правая колонка - смена пароля */
-.settings__password {
-	margin-bottom: 24px;
-}
 
 .settings__password-title {
 	color: var(--main2, #202941);
@@ -7256,7 +7253,6 @@ main {
 
 .settings__password-input {
 	position: relative;
-	margin-bottom: 16px;
 	min-height: 84px; /* 60px для input + 4px для margin-top ошибки + 20px для min-height ошибки */
 }
 
@@ -7273,6 +7269,7 @@ main {
 	border-radius: 4px;
 	border: 1px solid var(--Border, rgba(32, 41, 65, 0.2));
 	background: #fff;
+	box-sizing: border-box;
 }
 
 .settings__password-input input:hover {
@@ -7371,9 +7368,6 @@ main {
 }
 
 /* Telegram аккаунт */
-.settings__telegram {
-	margin-bottom: 24px;
-}
 
 .settings__telegram-title {
 	color: var(--main2, #202941);
@@ -7387,7 +7381,6 @@ main {
 
 .settings__telegram-input {
 	position: relative;
-	margin-bottom: 16px;
 	min-height: 84px; /* 60px для input + 4px для margin-top ошибки + 20px для min-height ошибки */
 }
 
@@ -7422,24 +7415,21 @@ main {
 /* Адаптивность */
 @media (max-width: 1024px) {
 	.settings {
-		padding: 30px;
+		padding: 0px;
 	}
 
 	.settings__top,
 	.settings__bottom {
-		gap: 40px;
+		gap: 35px;
 	}
 }
 
 @media (max-width: 768px) {
-	.settings {
-		padding: 20px;
-	}
 
 	.settings__top,
 	.settings__bottom {
 		grid-template-columns: 1fr;
-		gap: 40px;
+		gap: 30px;
 	}
 
 	.settings__user {
@@ -7456,12 +7446,15 @@ main {
 	.settings__user-avatar-text {
 		font-size: 24px;
 	}
+
+	.settings__password-input input,
+	.settings__telegram-input input {
+		width: 100%;
+		box-sizing: border-box;
+	}
 }
 
 @media (max-width: 480px) {
-	.settings {
-		padding: 16px;
-	}
 
 	.settings__title {
 		font-size: 18px;
@@ -7469,10 +7462,22 @@ main {
 
 	.settings__info-text {
 		font-size: 14px;
+		/* Стилі для обрізання email адреси */
+		max-width: 150px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 
 	.settings__notification-text {
 		font-size: 14px;
+	}
+
+	.settings__password-input input,
+	.settings__telegram-input input {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 14px;
 	}
 }
 
@@ -7480,34 +7485,37 @@ main {
 @media (max-width: 1200px) {
 	.settings__top,
 	.settings__bottom {
-		gap: 30px;
+		gap: 25px;
 	}
 }
 
 @media (max-width: 900px) {
-	.settings {
-		padding: 25px;
-	}
-
 	.settings__top {
-		margin-bottom: 40px;
+		margin-bottom: 35px;
 	}
 
 	.settings__title {
 		font-size: 20px;
 		margin-bottom: 20px;
 	}
+
+	/* Стилі для обрізання email адреси */
+	.settings__info-text {
+		max-width: 250px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 }
 
 @media (max-width: 600px) {
 	.settings {
-		padding: 20px;
 		border-radius: 12px;
 	}
 
 	.settings__top,
 	.settings__bottom {
-		gap: 30px;
+		gap: 25px;
 	}
 
 	.settings__user {
@@ -7526,11 +7534,18 @@ main {
 		font-size: 28px;
 	}
 
-	.settings__password {
-		margin-bottom: 20px;
+	/* Стилі для обрізання email адреси */
+	.settings__info-text {
+		max-width: 150px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 
-	.settings__password-input input {
+	.settings__password-input input,
+	.settings__telegram-input input {
+		width: 100%;
+		box-sizing: border-box;
 		padding: 14px;
 		font-size: 15px;
 	}
@@ -7556,13 +7571,12 @@ main {
 
 @media (max-width: 400px) {
 	.settings {
-		padding: 16px;
 		border-radius: 8px;
 	}
 
 	.settings__top,
 	.settings__bottom {
-		gap: 25px;
+		gap: 20px;
 	}
 
 	.settings__title {
@@ -7602,6 +7616,8 @@ main {
 
 	.settings__password-input input,
 	.settings__telegram-input input {
+		width: 100%;
+		box-sizing: border-box;
 		padding: 12px;
 		font-size: 14px;
 	}
@@ -7624,12 +7640,12 @@ main {
 /* Стилі для дуже малих екранів */
 @media (max-width: 320px) {
 	.settings {
-		padding: 12px;
+		padding: 8px;
 	}
 
 	.settings__top,
 	.settings__bottom {
-		gap: 20px;
+		gap: 16px;
 	}
 
 	.settings__title {
@@ -7663,6 +7679,8 @@ main {
 
 	.settings__password-input input,
 	.settings__telegram-input input {
+		width: 100%;
+		box-sizing: border-box;
 		padding: 10px;
 		font-size: 13px;
 	}
@@ -7726,7 +7744,6 @@ main {
 .settings__password-input,
 .settings__telegram-input {
 	position: relative;
-	margin-bottom: 20px;
 	min-height: 84px; /* 60px для input + 4px для margin-top ошибки + 20px для min-height ошибки */
 }
 
