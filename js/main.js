@@ -1023,22 +1023,15 @@ function initAuthModal() {
 		input.style.borderColor = '#dc3545'
 		input.style.boxShadow = '0 0 0 4px rgba(220, 53, 69, 0.1)'
 
-		// Видаляємо попередню помилку
-		const existingError = input.parentNode.querySelector('.auth-modal__error')
-		if (existingError) {
-			existingError.remove()
+		// Знаходимо іконку помилки та текст
+		const errorElement = input.parentNode.querySelector('.auth-modal__error')
+		if (errorElement) {
+			const span = errorElement.querySelector('span')
+			if (span) {
+				span.textContent = message
+			}
+			errorElement.style.display = 'flex'
 		}
-
-		// Додаємо нову помилку
-		const errorElement = document.createElement('div')
-		errorElement.className = 'auth-modal__error'
-		errorElement.textContent = message
-		errorElement.style.color = '#dc3545'
-		errorElement.style.fontSize = '12px'
-		errorElement.style.marginTop = '4px'
-		errorElement.style.fontFamily = 'Montserrat, sans-serif'
-
-		input.parentNode.appendChild(errorElement)
 	}
 
 	// Функція для очищення помилки поля
@@ -1048,7 +1041,7 @@ function initAuthModal() {
 
 		const errorElement = input.parentNode.querySelector('.auth-modal__error')
 		if (errorElement) {
-			errorElement.remove()
+			errorElement.style.display = 'none'
 		}
 	}
 
@@ -1347,25 +1340,16 @@ function initRegisterModal() {
 		input.style.borderColor = '#dc3545'
 		input.style.boxShadow = '0 0 0 4px rgba(220, 53, 69, 0.1)'
 
-		// Видаляємо попередню помилку
-		const existingError = input.parentNode.querySelector(
-			'.register-modal__field-error'
+		// Знаходимо іконку помилки та текст
+		const errorElement = input.parentNode.querySelector(
+			'.register-modal__error'
 		)
-		if (existingError) {
-			existingError.remove()
-		}
-
-		// Додаємо нову помилку, якщо є повідомлення
-		if (message) {
-			const errorElement = document.createElement('div')
-			errorElement.className = 'register-modal__field-error'
-			errorElement.textContent = message
-			errorElement.style.color = '#dc3545'
-			errorElement.style.fontSize = '12px'
-			errorElement.style.marginTop = '4px'
-			errorElement.style.fontFamily = 'Montserrat, sans-serif'
-
-			input.parentNode.appendChild(errorElement)
+		if (errorElement) {
+			const span = errorElement.querySelector('span')
+			if (span) {
+				span.textContent = message
+			}
+			errorElement.style.display = 'flex'
 		}
 	}
 
@@ -1375,10 +1359,10 @@ function initRegisterModal() {
 		input.style.boxShadow = 'none'
 
 		const errorElement = input.parentNode.querySelector(
-			'.register-modal__field-error'
+			'.register-modal__error'
 		)
 		if (errorElement) {
-			errorElement.remove()
+			errorElement.style.display = 'none'
 		}
 	}
 
@@ -3891,3 +3875,415 @@ document.addEventListener('DOMContentLoaded', function () {
 		initReferalCopyButtons()
 	}
 })
+
+// Функціональність для валідації полів форми
+function initFormValidation() {
+	const form = document.querySelector('.swapper__form')
+	if (!form) return
+
+	const inputs = form.querySelectorAll('input[required]')
+	const errorElements = form.querySelectorAll('.swapper__form-error')
+
+	// Функція для показу помилки
+	function showError(inputId, message) {
+		const errorElement = document.getElementById(inputId + 'Error')
+		if (errorElement) {
+			errorElement.style.display = 'flex'
+			const span = errorElement.querySelector('span')
+			if (span) {
+				span.textContent = message
+			}
+		}
+	}
+
+	// Функція для приховування помилки
+	function hideError(inputId) {
+		const errorElement = document.getElementById(inputId + 'Error')
+		if (errorElement) {
+			errorElement.style.display = 'none'
+		}
+	}
+
+	// Функція для валідації email
+	function validateEmail(email) {
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+		return emailRegex.test(email)
+	}
+
+	// Функція для валідації номера карти
+	function validateCardNumber(cardNumber) {
+		const cleanCardNumber = cardNumber.replace(/\s/g, '')
+		return cleanCardNumber.length >= 13 && cleanCardNumber.length <= 19
+	}
+
+	// Функція для валідації номера телефону
+	function validatePhone(phone) {
+		const cleanPhone = phone.toString().replace(/\D/g, '')
+		return cleanPhone.length >= 10
+	}
+
+	// Обробник подій для кожного поля
+	inputs.forEach(input => {
+		const inputId = input.id
+
+		// Валідація при втраті фокусу
+		input.addEventListener('blur', function () {
+			const value = this.value.trim()
+
+			if (!value) {
+				showError(inputId, "Поле обов'язкове до заповнення")
+			} else {
+				// Специфічна валідація для різних типів полів
+				if (input.type === 'email' && !validateEmail(value)) {
+					showError(inputId, 'Введіть коректний email')
+				} else if (
+					inputId === 'cardNumberInput' &&
+					!validateCardNumber(value)
+				) {
+					showError(inputId, 'Введіть коректний номер карти')
+				} else if (inputId === 'phone' && !validatePhone(value)) {
+					showError(inputId, 'Введіть коректний номер телефону')
+				} else {
+					hideError(inputId)
+				}
+			}
+		})
+
+		// Валідація при введенні
+		input.addEventListener('input', function () {
+			const value = this.value.trim()
+
+			if (value) {
+				// Специфічна валідація для різних типів полів
+				if (input.type === 'email' && !validateEmail(value)) {
+					showError(inputId, 'Введіть коректний email')
+				} else if (
+					inputId === 'cardNumberInput' &&
+					!validateCardNumber(value)
+				) {
+					showError(inputId, 'Введіть коректний номер карти')
+				} else if (inputId === 'phone' && !validatePhone(value)) {
+					showError(inputId, 'Введіть коректний номер телефону')
+				} else {
+					hideError(inputId)
+				}
+			} else {
+				showError(inputId, "Поле обов'язкове до заповнення")
+			}
+		})
+	})
+
+	// Валідація форми при відправці
+	form.addEventListener('submit', function (e) {
+		e.preventDefault()
+
+		let hasErrors = false
+
+		inputs.forEach(input => {
+			const inputId = input.id
+			const value = input.value.trim()
+
+			if (!value) {
+				showError(inputId, "Поле обов'язкове до заповнення")
+				hasErrors = true
+			} else {
+				// Специфічна валідація для різних типів полів
+				if (input.type === 'email' && !validateEmail(value)) {
+					showError(inputId, 'Введіть коректний email')
+					hasErrors = true
+				} else if (
+					inputId === 'cardNumberInput' &&
+					!validateCardNumber(value)
+				) {
+					showError(inputId, 'Введіть коректний номер карти')
+					hasErrors = true
+				} else if (inputId === 'phone' && !validatePhone(value)) {
+					showError(inputId, 'Введіть коректний номер телефону')
+					hasErrors = true
+				} else {
+					hideError(inputId)
+				}
+			}
+		})
+
+		if (!hasErrors) {
+			console.log('Форма валідна, можна відправляти')
+			// Тут можна додати логіку відправки форми
+		}
+	})
+}
+
+// Ініціалізація валідації форми при завантаженні сторінки
+document.addEventListener('DOMContentLoaded', function () {
+	// Перевіряємо, чи ми на сторінці з основною формою
+	if (document.querySelector('.swapper__form')) {
+		initFormValidation()
+	}
+
+	// Перевіряємо, чи ми на сторінці з формою контактів
+	if (document.querySelector('.contacts__form')) {
+		initContactsFormValidation()
+	}
+
+	// Перевіряємо, чи ми на сторінці налаштувань
+	if (
+		document.querySelector('#oldPassword') ||
+		document.querySelector('#telegramAccount')
+	) {
+		initSettingsValidation()
+	}
+})
+
+// Функціональність для валідації форми контактів
+function initContactsFormValidation() {
+	const form = document.querySelector('.contacts__form')
+	if (!form) return
+
+	const inputs = form.querySelectorAll('input[required], textarea[required]')
+
+	// Функція для показу помилки
+	function showError(inputId, message) {
+		const errorElement = document.getElementById(inputId + 'Error')
+		if (errorElement) {
+			errorElement.style.display = 'flex'
+			const span = errorElement.querySelector('span')
+			if (span) {
+				span.textContent = message
+			}
+		}
+	}
+
+	// Функція для приховування помилки
+	function hideError(inputId) {
+		const errorElement = document.getElementById(inputId + 'Error')
+		if (errorElement) {
+			errorElement.style.display = 'none'
+		}
+	}
+
+	// Функція для валідації email
+	function validateEmail(email) {
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+		return emailRegex.test(email)
+	}
+
+	// Обробник подій для кожного поля
+	inputs.forEach(input => {
+		const inputId = input.id
+
+		// Валідація при втраті фокусу
+		input.addEventListener('blur', function () {
+			const value = this.value.trim()
+
+			if (!value) {
+				showError(inputId, "Поле обов'язкове до заповнення")
+			} else {
+				// Специфічна валідація для різних типів полів
+				if (input.type === 'email' && !validateEmail(value)) {
+					showError(inputId, 'Введіть коректний email')
+				} else {
+					hideError(inputId)
+				}
+			}
+		})
+
+		// Валідація при введенні
+		input.addEventListener('input', function () {
+			const value = this.value.trim()
+
+			if (value) {
+				// Специфічна валідація для різних типів полів
+				if (input.type === 'email' && !validateEmail(value)) {
+					showError(inputId, 'Введіть коректний email')
+				} else {
+					hideError(inputId)
+				}
+			} else {
+				showError(inputId, "Поле обов'язкове до заповнення")
+			}
+		})
+	})
+
+	// Валідація форми при відправці
+	form.addEventListener('submit', function (e) {
+		e.preventDefault()
+
+		let hasErrors = false
+
+		inputs.forEach(input => {
+			const inputId = input.id
+			const value = input.value.trim()
+
+			if (!value) {
+				showError(inputId, "Поле обов'язкове до заповнення")
+				hasErrors = true
+			} else {
+				// Специфічна валідація для різних типів полів
+				if (input.type === 'email' && !validateEmail(value)) {
+					showError(inputId, 'Введіть коректний email')
+					hasErrors = true
+				} else {
+					hideError(inputId)
+				}
+			}
+		})
+
+		if (!hasErrors) {
+			console.log('Форма контактів валідна, можна відправляти')
+			// Тут можна додати логіку відправки форми
+		}
+	})
+}
+
+// Функціональність для валідації налаштувань
+function initSettingsValidation() {
+	const oldPasswordInput = document.querySelector('#oldPassword')
+	const newPasswordInput = document.querySelector('#newPassword')
+	const confirmPasswordInput = document.querySelector('#confirmPassword')
+	const telegramInput = document.querySelector('#telegramAccount')
+
+	if (
+		!oldPasswordInput &&
+		!newPasswordInput &&
+		!confirmPasswordInput &&
+		!telegramInput
+	)
+		return
+
+	// Функція для показу помилки
+	function showError(inputId, message) {
+		const errorElement = document.getElementById(inputId + 'Error')
+		if (errorElement) {
+			errorElement.style.display = 'flex'
+			const span = errorElement.querySelector('span')
+			if (span) {
+				span.textContent = message
+			}
+		}
+	}
+
+	// Функція для приховування помилки
+	function hideError(inputId) {
+		const errorElement = document.getElementById(inputId + 'Error')
+		if (errorElement) {
+			errorElement.style.display = 'none'
+		}
+	}
+
+	// Функція для валідації пароля
+	function validatePassword(password) {
+		return password.length >= 6
+	}
+
+	// Функція для валідації телеграм акаунту
+	function validateTelegram(telegram) {
+		return telegram.startsWith('@') && telegram.length >= 2
+	}
+
+	// Валідація старого пароля
+	if (oldPasswordInput) {
+		oldPasswordInput.addEventListener('blur', function () {
+			const value = this.value.trim()
+			if (!value) {
+				showError('oldPassword', "Поле обов'язкове до заповнення")
+			} else if (!validatePassword(value)) {
+				showError('oldPassword', 'Пароль повинен містити мінімум 6 символів')
+			} else {
+				hideError('oldPassword')
+			}
+		})
+
+		oldPasswordInput.addEventListener('input', function () {
+			const value = this.value.trim()
+			if (value && validatePassword(value)) {
+				hideError('oldPassword')
+			}
+		})
+	}
+
+	// Валідація нового пароля
+	if (newPasswordInput) {
+		newPasswordInput.addEventListener('blur', function () {
+			const value = this.value.trim()
+			if (!value) {
+				showError('newPassword', "Поле обов'язкове до заповнення")
+			} else if (!validatePassword(value)) {
+				showError('newPassword', 'Пароль повинен містити мінімум 6 символів')
+			} else {
+				hideError('newPassword')
+			}
+		})
+
+		newPasswordInput.addEventListener('input', function () {
+			const value = this.value.trim()
+			if (value && validatePassword(value)) {
+				hideError('newPassword')
+			}
+		})
+	}
+
+	// Валідація підтвердження пароля
+	if (confirmPasswordInput) {
+		confirmPasswordInput.addEventListener('blur', function () {
+			const value = this.value.trim()
+			const newPasswordValue = newPasswordInput
+				? newPasswordInput.value.trim()
+				: ''
+
+			if (!value) {
+				showError('confirmPassword', "Поле обов'язкове до заповнення")
+			} else if (newPasswordValue && value !== newPasswordValue) {
+				showError('confirmPassword', 'Паролі не співпадають')
+			} else {
+				hideError('confirmPassword')
+			}
+		})
+
+		confirmPasswordInput.addEventListener('input', function () {
+			const value = this.value.trim()
+			const newPasswordValue = newPasswordInput
+				? newPasswordInput.value.trim()
+				: ''
+
+			if (value && newPasswordValue && value === newPasswordValue) {
+				hideError('confirmPassword')
+			}
+		})
+	}
+
+	// Валідація телеграм акаунту
+	if (telegramInput) {
+		telegramInput.addEventListener('blur', function () {
+			const value = this.value.trim()
+			if (!value) {
+				showError('telegramAccount', "Поле обов'язкове до заповнення")
+			} else if (!validateTelegram(value)) {
+				showError(
+					'telegramAccount',
+					'Введіть коректний телеграм акаунт (наприклад: @username)'
+				)
+			} else {
+				hideError('telegramAccount')
+			}
+		})
+
+		telegramInput.addEventListener('input', function () {
+			const value = this.value.trim()
+			if (value && validateTelegram(value)) {
+				hideError('telegramAccount')
+			}
+		})
+	}
+
+	// Валідація при зміні нового пароля (для перевірки підтвердження)
+	if (newPasswordInput && confirmPasswordInput) {
+		newPasswordInput.addEventListener('input', function () {
+			const confirmValue = confirmPasswordInput.value.trim()
+			if (confirmValue && confirmValue !== this.value.trim()) {
+				showError('confirmPassword', 'Паролі не співпадають')
+			} else if (confirmValue) {
+				hideError('confirmPassword')
+			}
+		})
+	}
+}
