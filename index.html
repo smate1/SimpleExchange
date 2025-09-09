@@ -14,87 +14,112 @@
     rel="stylesheet">
   <link rel="stylesheet" href="./css/reset.css" />
   <link rel="stylesheet" href="./css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/progressbar.js"></script>
+  <style>
+    #loader-container {
+      width: 20px;
+      height: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    #loader-container svg {
+      transform: scaleX(-1);
+    }
+
+    #timer-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      color: rgba(32, 41, 65, 0.5);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      user-select: none;
+    }
+  </style>
 </head>
 
-<body>
-  <header class="main">
+<body class="index-page">
+  <header class="header">
     <div class="container">
-      <div class="main__top">
-        <a class="main__logo" href="./index.html">
+      <div class="header__top">
+        <a class="header__logo" href="./index.html">
           <img src="./images/logo.svg" alt="logo">
         </a>
-        <nav class="main__nav">
-          <ul class="main__list">
-            <li class="main__item">
-              <a class="main__link" href="./partners.html">Партнерам</a>
+        <nav class="header__nav">
+          <ul class="header__list">
+            <li class="header__item">
+              <a class="header__link" href="./partners.html">Партнерам</a>
             </li>
-            <li class="main__item">
-              <a class="main__link" href="./rules.html">Правила</a>
+            <li class="header__item">
+              <a class="header__link" href="./rules.html">Правила</a>
             </li>
-            <li class="main__item">
-              <a class="main__link" href="./contacts.html">Контакти</a>
+            <li class="header__item">
+              <a class="header__link" href="./contacts.html">Контакти</a>
             </li>
           </ul>
         </nav>
 
-        <div class="main__right">
-          <div class="main__language-wrapper">
-            <div class="main__language-selector">
-              <div class="main__language-current">
-                <span class="main__language-text">UA</span>
-                <img src="./images/dropdown-arrow.svg" alt="dropdown" class="main__language-arrow">
+        <div class="header__right">
+          <div class="header__language-wrapper">
+            <div class="header__language-selector">
+              <div class="header__language-current">
+                <span class="header__language-text">UA</span>
+                <img src="./images/dropdown-arrow.svg" alt="dropdown" class="header__language-arrow">
               </div>
-              <div class="main__language-dropdown">
-                <div class="main__language-option" data-value="en">
-                  <span class="main__language-option-text">English</span>
+              <div class="header__language-dropdown">
+                <div class="header__language-option" data-value="en">
+                  <span class="header__language-option-text">English</span>
                 </div>
-                <div class="main__language-option" data-value="ru">
-                  <span class="main__language-option-text">Русский</span>
+                <div class="header__language-option" data-value="ru">
+                  <span class="header__language-option-text">Русский</span>
                 </div>
-                <div class="main__language-option" data-value="es">
-                  <span class="main__language-option-text">Español</span>
+                <div class="header__language-option" data-value="es">
+                  <span class="header__language-option-text">Español</span>
                 </div>
-                <div class="main__language-option" data-value="ua">
-                  <span class="main__language-option-text">Українська</span>
+                <div class="header__language-option" data-value="ua">
+                  <span class="header__language-option-text">Українська</span>
                 </div>
               </div>
             </div>
           </div>
-          <button class="main__burger" type="button">
-            <span class="main__burger-line"></span>
-            <span class="main__burger-line"></span>
-            <span class="main__burger-line"></span>
+          <button class="header__burger" type="button">
+            <span class="header__burger-line"></span>
+            <span class="header__burger-line"></span>
+            <span class="header__burger-line"></span>
           </button>
-          <button class="main__button">Увійти</button>
-          <div class="main__user-dropdown" style="display: none;">
-            <div class="main__user-selector">
-              <div class="main__user-current">
-                <div class="main__user-avatar">
-                  <span class="main__user-avatar-text">D</span>
+          <button class="header__button enter-btn">Увійти</button>
+          <div class="header__user-dropdown" style="display: none;">
+            <div class="header__user-selector">
+              <div class="header__user-current">
+                <div class="header__user-avatar">
+                  <span class="header__user-avatar-text">D</span>
                 </div>
-                <span class="main__user-email">desi...@proton.me</span>
-                <img src="./images/dropdown-arrow.svg" alt="dropdown" class="main__user-arrow">
+                <span class="header__user-email">desi...@proton.me</span>
+                <img src="./images/dropdown-arrow.svg" alt="dropdown" class="header__user-arrow">
               </div>
-              <div class="main__user-dropdown-menu">
-                <div class="main__user-option" data-value="applications">
-                  <span class="main__user-option-text">Мої заявки</span>
-                  <span class="main__user-option-badge">0</span>
+              <div class="header__user-dropdown-menu">
+                <div class="header__user-option" data-value="applications">
+                  <span class="header__user-option-text">Мої заявки</span>
+                  <span class="header__user-option-badge">0</span>
                 </div>
-                <div class="main__user-option" data-value="details">
-                  <span class="main__user-option-text">Мої реквізити</span>
+                <div class="header__user-option" data-value="details">
+                  <span class="header__user-option-text">Мої реквізити</span>
                 </div>
-                <div class="main__user-option" data-value="add-account" onclick="openAddAccountModal()">
-                  <span class="main__user-option-text">Додати рахунок</span>
+                <div class="header__user-option" data-value="add-account" onclick="openAddAccountModal()">
+                  <span class="header__user-option-text">Додати рахунок</span>
                 </div>
-                <div class="main__user-option" data-value="partners">
-                  <span class="main__user-option-text">Партнерам</span>
+                <div class="header__user-option" data-value="partners">
+                  <span class="header__user-option-text">Партнерам</span>
                 </div>
-                <div class="main__user-option" data-value="profile">
-                  <span class="main__user-option-text">Профіль</span>
+                <div class="header__user-option" data-value="profile">
+                  <span class="header__user-option-text">Профіль</span>
                 </div>
-                <div class="main__user-divider"></div>
-                <div class="main__user-option" data-value="logout">
-                  <span class="main__user-option-text">Вийти</span>
+                <div class="header__user-divider"></div>
+                <div class="header__user-option" data-value="logout">
+                  <span class="header__user-option-text">Вийти</span>
                 </div>
               </div>
             </div>
@@ -133,10 +158,10 @@
             </div>
           </div>
         </div>
-        <button class="main__burger main__burger--close" type="button">
-          <span class="main__burger-line"></span>
-          <span class="main__burger-line"></span>
-          <span class="main__burger-line"></span>
+        <button class="header__burger header__burger--close" type="button">
+          <span class="header__burger-line"></span>
+          <span class="header__burger-line"></span>
+          <span class="header__burger-line"></span>
         </button>
       </div>
     </div>
@@ -146,7 +171,7 @@
       </div>
       <div class="mobile-menu__user-info">
         <div class="mobile-menu__email">Design.change99@gmail.com</div>
-        <a href="./profile.html" class="mobile-menu__account">Мій аккаунт</a>
+        <a href="#" class="mobile-menu__account">Мій аккаунт</a>
       </div>
     </div>
     <nav class="mobile-menu__nav">
@@ -161,61 +186,62 @@
           <a class="mobile-menu__link" href="./contacts.html">Контакти</a>
         </li>
         <li class="mobile-menu__item">
-          <a class="mobile-menu__link" href="./profile.html">Профіль</a>
+          <a class="mobile-menu__link" href="#">Профіль</a>
         </li>
 
       </ul>
     </nav>
     <div class="mobile-menu__footer">
-      <button class="mobile-menu__logout">Вийти</button>
+      <button class="mobile-menu__logout purple-btn purple-btn">Вийти</button>
     </div>
   </div>
 
-  <main>
+  <main class="index-page">
     <div class="container">
-      <div class="main__inner">
-        <div class="main__content">
-          <h1 class="main__title">Автоматичний
+      <div class="index-page__inner">
+        <div class="index-page__hero">
+          <h1 class="index-page__title">Автоматичний
             обмін Tether USDT
             на Bitcoin BTC</h1>
-          <p class="main__text">
+          <p class="index-page__text">
             Меняйте свои средства быстро и безопасно. Наш сервис предлагает мгновенные транзакции и удобный интерфейс.
           </p>
-          <form class="main__form">
-            <input class="main__input" type="text" placeholder="Знайти заявку">
-            <button class="main__form-btn">
+          <form class="search-form">
+            <input class="input input--search" type="text" placeholder="Знайти заявку">
+            <button class="search-form__btn">
               <img src="./images/search.svg" alt="search">
             </button>
           </form>
         </div>
-        <div class="main__swapper">
-          <div class="swapper__tabs">
-            <button class="swapper__tab active">
+        <div class="index-page__exchange-form">
+          <div class="exchange-form__tabs">
+            <button class="exchange-form__tab active">
               Купити
             </button>
-            <button class="swapper__tab">
+            <button class="exchange-form__tab">
               Продати
             </button>
           </div>
-          <div class="swapper__content">
-            <div class="swapper__wrapper">
-              <label class="swapper__send">
-                <div class="swapper__send-wrapper">
-                  <span class="swapper__send-text">
+          <div class="exchange-form__content">
+            <div class="exchange-form__wrapper">
+
+              <label class="exchange-form__send">
+                <div class="exchange-form__send-wrapper">
+                  <span class="exchange-form__send-text">
                     Ви відправляєте
                   </span>
-                  <input class="swapper__send-input" type="number" placeholder="1000" value="1000">
+                  <input class="input input--transparent" type="number" placeholder="1000" value="1000">
                 </div>
 
-                <div class="swapper__select-wrapper">
-                  <div class="swapper__select-icon">
-                    <img src="./images/usdt.svg" alt="USDT" class="swapper__select-currency-icon">
+                <div class="exchange-form__select-wrapper">
+                  <div class="exchange-form__select-icon">
+                    <img src="./images/usdt.svg" alt="USDT" class="exchange-form__select-currency-icon">
                   </div>
-                  <img src="./images/dropdown-arrow.svg" alt="dropdown" class="swapper__select-arrow">
+                  <img src="./images/dropdown-arrow.svg" alt="dropdown" class="exchange-form__select-arrow">
                   <div class="currency__overlay">
                     <div class="currency__search">
                       <div class="currency__search-wrapper">
-                        <input type="text" class="currency__search-input" placeholder="Пошук валюти...">
+                        <input type="text" class="input input--currency-search" placeholder="Пошук валюти...">
                         <svg class="currency__search-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
                           viewBox="0 0 28 28" fill="none">
                           <path
@@ -283,7 +309,7 @@
                   </div>
                 </div>
               </label>
-              <button class="swapper__swap">
+              <button class="exchange-form__swap">
                 <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="44" height="44" rx="22" fill="#202941" />
                   <circle cx="22.5" cy="22.5" r="0.5" fill="#202941" />
@@ -292,22 +318,22 @@
                     fill="white" />
                 </svg>
               </button>
-              <label class="swapper__receive">
-                <div class="swapper__recieve-wrapper">
-                  <span class="swapper__receive-text">
+              <label class="exchange-form__receive">
+                <div class="exchange-form__receive-wrapper">
+                  <span class="exchange-form__receive-text">
                     Ви отримуєте
                   </span>
-                  <input class="swapper__receive-input" type="number" placeholder="43,72">
+                  <input class="input input--transparent" type="number" placeholder="43,72">
                 </div>
-                <div class="swapper__select-wrapper">
-                  <div class="swapper__select-icon">
-                    <img src="./images/uah.svg" alt="UAH" class="swapper__select-currency-icon">
+                <div class="exchange-form__select-wrapper">
+                  <div class="exchange-form__select-icon">
+                    <img src="./images/uah.svg" alt="UAH" class="exchange-form__select-currency-icon">
                   </div>
-                  <img src="./images/dropdown-arrow.svg" alt="dropdown" class="swapper__select-arrow">
+                  <img src="./images/dropdown-arrow.svg" alt="dropdown" class="exchange-form__select-arrow">
                   <div class="currency__overlay">
                     <div class="currency__search">
                       <div class="currency__search-wrapper">
-                        <input type="text" class="currency__search-input" placeholder="Пошук">
+                        <input type="text" class="input input--currency-search" placeholder="Пошук">
                         <svg class="currency__search-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28"
                           viewBox="0 0 28 28" fill="none">
                           <path
@@ -368,7 +394,7 @@
                           <p class="currency__text">Binance (BNB)</p>
                         </div>
                         <div class="currency__reserve">
-                          Резерв: 0
+                          Резерв: <span>0</span>
                         </div>
                       </div>
                     </div>
@@ -376,41 +402,47 @@
                 </div>
               </label>
             </div>
-            <div class="swapper__form-error" id="cardError" role="alert" aria-live="polite"
-              style="display: none !important;">
-              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
-                aria-hidden="true">
-                <path
-                  d="M7.5 1.40625C6.29477 1.40625 5.11661 1.76364 4.1145 2.43323C3.11238 3.10282 2.33133 4.05454 1.87011 5.16802C1.40889 6.28151 1.28821 7.50676 1.52334 8.68883C1.75847 9.8709 2.33884 10.9567 3.19107 11.8089C4.0433 12.6612 5.1291 13.2415 6.31117 13.4767C7.49324 13.7118 8.71849 13.5911 9.83198 13.1299C10.9455 12.6687 11.8972 11.8876 12.5668 10.8855C13.2364 9.88339 13.5938 8.70523 13.5938 7.5C13.592 5.88436 12.9495 4.33538 11.807 3.19295C10.6646 2.05052 9.11564 1.40796 7.5 1.40625ZM7.03125 4.6875C7.03125 4.56318 7.08064 4.44395 7.16855 4.35604C7.25645 4.26814 7.37568 4.21875 7.5 4.21875C7.62432 4.21875 7.74355 4.26814 7.83146 4.35604C7.91937 4.44395 7.96875 4.56318 7.96875 4.6875V7.96875C7.96875 8.09307 7.91937 8.2123 7.83146 8.30021C7.74355 8.38811 7.62432 8.4375 7.5 8.4375C7.37568 8.4375 7.25645 8.38811 7.16855 8.30021C7.08064 8.2123 7.03125 8.09307 7.03125 7.96875V4.6875ZM7.5 10.7812C7.36094 10.7812 7.225 10.74 7.10937 10.6628C6.99374 10.5855 6.90362 10.4757 6.8504 10.3472C6.79718 10.2187 6.78326 10.0773 6.81039 9.94095C6.83752 9.80456 6.90448 9.67927 7.00282 9.58094C7.10115 9.48261 7.22644 9.41564 7.36283 9.38851C7.49922 9.36138 7.6406 9.3753 7.76908 9.42852C7.89756 9.48174 8.00737 9.57186 8.08463 9.68749C8.16189 9.80312 8.20313 9.93906 8.20313 10.0781C8.20313 10.2646 8.12905 10.4434 7.99719 10.5753C7.86533 10.7072 7.68648 10.7812 7.5 10.7812Z"
-                  fill="#FD6B6B" />
-              </svg>
-              <span>Сума має бути не менше 36,72</span>
-            </div>
-            <div class="swapper__rate">
-              <p class="swapper__rate-text">
-                1 USDT = 41.123 UAH
-                <span>60</span>
+
+            <div class="exchange-form__rate">
+              <div class="exchange-form__rate-content">
+                <div class="form-error" id="cardError" role="alert" aria-live="polite">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
+                    aria-hidden="true">
+                    <path
+                      d="M7.5 1.40625C6.29477 1.40625 5.11661 1.76364 4.1145 2.43323C3.11238 3.10282 2.33133 4.05454 1.87011 5.16802C1.40889 6.28151 1.28821 7.50676 1.52334 8.68883C1.75847 9.8709 2.33884 10.9567 3.19107 11.8089C4.0433 12.6612 5.1291 13.2415 6.31117 13.4767C7.49324 13.7118 8.71849 13.5911 9.83198 13.1299C10.9455 12.6687 11.8972 11.8876 12.5668 10.8855C13.2364 9.88339 13.5938 8.70523 13.5938 7.5C13.592 5.88436 12.9495 4.33538 11.807 3.19295C10.6646 2.05052 9.11564 1.40796 7.5 1.40625ZM7.03125 4.6875C7.03125 4.56318 7.08064 4.44395 7.16855 4.35604C7.25645 4.26814 7.37568 4.21875 7.5 4.21875C7.62432 4.21875 7.74355 4.26814 7.83146 4.35604C7.91937 4.44395 7.96875 4.56318 7.96875 4.6875V7.96875C7.96875 8.09307 7.91937 8.2123 7.83146 8.30021C7.74355 8.38811 7.62432 8.4375 7.5 8.4375C7.37568 8.4375 7.25645 8.38811 7.16855 8.30021C7.08064 8.2123 7.03125 8.09307 7.03125 7.96875V4.6875ZM7.5 10.7812C7.36094 10.7812 7.225 10.74 7.10937 10.6628C6.99374 10.5855 6.90362 10.4757 6.8504 10.3472C6.79718 10.2187 6.78326 10.0773 6.81039 9.94095C6.83752 9.80456 6.90448 9.67927 7.00282 9.58094C7.10115 9.48261 7.22644 9.41564 7.36283 9.38851C7.49922 9.36138 7.6406 9.3753 7.76908 9.42852C7.89756 9.48174 8.00737 9.57186 8.08463 9.68749C8.16189 9.80312 8.20313 9.93906 8.20313 10.0781C8.20313 10.2646 8.12905 10.4434 7.99719 10.5753C7.86533 10.7072 7.68648 10.7812 7.5 10.7812Z"
+                      fill="#FD6B6B" />
+                  </svg>
+                  <span>Сума має бути не менше 36,72</span>
+                </div>
+                <div class="exchnage-form__rate-wrapper">
+                  <p class="exchange-form__rate-text">
+                    1 USDT = 41.123 UAH
+                  </p>
+                  <div id="loader-container" class="exchange-form__rate-loader">
+                    <div id="timer-text">60</div>
+                  </div>
+                </div>
+              </div>
+              <p class="exchange-form__rate-commission">
+                Комісія за обробку платежу <span onclick="openCommissionModal()" class="commission__number--clickable"
+                  title="Натисніть для зміни комісії">1,5 USDT</span>
               </p>
-              <p class="swapper__rate-commission">
-                Комісія за обробку платежу <span>1,5 USDT</span>
-              </p>
             </div>
-            <div class="swapper__details">
-              <p class="swapper__details-text">
+            <div class="exchange-form__details">
+              <p class="exchange-form__details-text">
                 Реквізити
               </p>
-              <div class="swapper__form">
-                <div class="swapper__form-columns">
-                  <div class="swapper__form-left">
-                    <div class="swapper__form-field">
+              <div class="exchange-form__form">
+                <div class="exchange-form__form-columns">
+                  <div class="exchange-form__form-left">
+                    <div class="exchange-form__form-field">
                       <div class="floating-label-wrapper">
-                        <input class="swapper__form-input swapper__form-card" type="text" id="cardNumberInput"
-                          name="cardNumber" placeholder=" " maxlength="23" autocomplete="cc-number"
-                          pattern="[0-9\s]{13,19}" aria-describedby="cardError" value="4441 2200 0000 0010"
-                          inputmode="numeric">
+                        <input class="input input--floating-label" type="text" id="cardNumberInput" name="cardNumber"
+                          placeholder=" " maxlength="23" autocomplete="cc-number" pattern="[0-9\s]{13,19}"
+                          aria-describedby="cardError" value="4441 2200 0000 0010" inputmode="numeric">
                         <label for="cardNumberInput" class="floating-label">Номер банківської карти</label>
                       </div>
-                      <div class="swapper__form-error" id="cardError" role="alert" aria-live="polite">
+                      <div class="form-error" id="cardError" role="alert" aria-live="polite">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
                           aria-hidden="true">
                           <path
@@ -420,13 +452,13 @@
                         <span>Поле обов'язкове до заповнення</span>
                       </div>
                     </div>
-                    <div class="swapper__form-field">
+                    <div class="exchange-form__form-field">
                       <div class="floating-label-wrapper">
-                        <input class="swapper__form-input" type="text" id="fullName" name="fullName" placeholder=" "
-                          required>
+                        <input class="input input--floating-label" type="text" id="fullName" name="fullName"
+                          placeholder=" " required>
                         <label for="fullName" class="floating-label">ПІБ</label>
                       </div>
-                      <div class="swapper__form-error" id="fullNameError" role="alert" aria-live="polite">
+                      <div class="form-error" id="fullNameError" role="alert" aria-live="polite">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
                           aria-hidden="true">
                           <path
@@ -437,14 +469,14 @@
                       </div>
                     </div>
                   </div>
-                  <div class="swapper__form-right">
-                    <div class="swapper__form-field">
+                  <div class="exchange-form__form-right">
+                    <div class="exchange-form__form-field">
                       <div class="floating-label-wrapper">
-                        <input class="swapper__form-input swapper__form-address" type="text" id="address" name="address"
+                        <input class="input input--floating-label" type="text" id="address" name="address"
                           placeholder=" " required>
                         <label for="address" class="floating-label">Адреса відправлення</label>
                       </div>
-                      <div class="swapper__form-error" id="addressError" role="alert" aria-live="polite">
+                      <div class="form-error" id="addressError" role="alert" aria-live="polite">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
                           aria-hidden="true">
                           <path
@@ -454,13 +486,13 @@
                         <span>Поле обов'язкове до заповнення</span>
                       </div>
                     </div>
-                    <div class="swapper__form-field">
+                    <div class="exchange-form__form-field">
                       <div class="floating-label-wrapper">
-                        <input class="swapper__form-input" type="email" id="email" name="email" placeholder=" "
+                        <input class="input input--floating-label" type="email" id="email" name="email" placeholder=" "
                           required>
                         <label for="email" class="floating-label">Email</label>
                       </div>
-                      <div class="swapper__form-error" id="emailError" role="alert" aria-live="polite">
+                      <div class="form-error" id="emailError" role="alert" aria-live="polite">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
                           aria-hidden="true">
                           <path
@@ -472,12 +504,13 @@
                     </div>
                   </div>
                 </div>
-                <div class="swapper__form-field swapper__form-phone">
+                <div class="exchange-form__form-field exchange-form__form-phone">
                   <div class="floating-label-wrapper">
-                    <input class="swapper__form-input" type="number" id="phone" name="phone" placeholder=" " required>
+                    <input class="input input--floating-label" type="number" id="phone" name="phone" placeholder=" "
+                      required>
                     <label for="phone" class="floating-label">Номер телефону</label>
                   </div>
-                  <div class="swapper__form-error" id="phoneError" role="alert" aria-live="polite">
+                  <div class="form-error" id="phoneError" role="alert" aria-live="polite">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
                       aria-hidden="true">
                       <path
@@ -489,44 +522,44 @@
                 </div>
               </div>
             </div>
-            <div class="swapper__description">
+            <div class="exchange-form__description">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path
                   d="M11.5 2C9.62108 2 7.78435 2.55717 6.22209 3.60104C4.65982 4.64491 3.44218 6.12861 2.72315 7.86451C2.00412 9.6004 1.81598 11.5105 2.18254 13.3534C2.5491 15.1962 3.45389 16.8889 4.78249 18.2175C6.11109 19.5461 7.80383 20.4509 9.64664 20.8175C11.4895 21.184 13.3996 20.9959 15.1355 20.2769C16.8714 19.5578 18.3551 18.3402 19.399 16.7779C20.4428 15.2156 21 13.3789 21 11.5C20.9973 8.98126 19.9956 6.56644 18.2146 4.78542C16.4336 3.0044 14.0187 2.00266 11.5 2ZM11.1346 6.38461C11.3514 6.38461 11.5633 6.4489 11.7436 6.56935C11.9239 6.6898 12.0644 6.86099 12.1473 7.06129C12.2303 7.26158 12.252 7.48198 12.2097 7.69462C12.1674 7.90725 12.063 8.10257 11.9097 8.25587C11.7564 8.40917 11.5611 8.51356 11.3485 8.55586C11.1358 8.59816 10.9154 8.57645 10.7151 8.49348C10.5148 8.41052 10.3436 8.27002 10.2232 8.08976C10.1028 7.9095 10.0385 7.69757 10.0385 7.48077C10.0385 7.19005 10.154 6.91124 10.3595 6.70567C10.5651 6.5001 10.8439 6.38461 11.1346 6.38461ZM12.2308 16.6154C11.8431 16.6154 11.4714 16.4614 11.1973 16.1873C10.9232 15.9132 10.7692 15.5415 10.7692 15.1538V11.5C10.5754 11.5 10.3895 11.423 10.2525 11.286C10.1155 11.1489 10.0385 10.963 10.0385 10.7692C10.0385 10.5754 10.1155 10.3895 10.2525 10.2525C10.3895 10.1155 10.5754 10.0385 10.7692 10.0385C11.1569 10.0385 11.5286 10.1924 11.8027 10.4665C12.0768 10.7406 12.2308 11.1124 12.2308 11.5V15.1538C12.4246 15.1538 12.6105 15.2308 12.7475 15.3679C12.8845 15.5049 12.9615 15.6908 12.9615 15.8846C12.9615 16.0784 12.8845 16.2643 12.7475 16.4013C12.6105 16.5384 12.4246 16.6154 12.2308 16.6154Z"
                   fill="#202941" />
               </svg>
-              <p class="swapper__description-text">
+              <p class="exchange-form__description-text">
                 Якщо сума обміну перевищує 500$, потрібно пройти реєстрацію та верифікацію особи на нашому сайті
               </p>
             </div>
-            <div class="swapper__description">
+            <div class="exchange-form__description">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path
                   d="M11.5 2C9.62108 2 7.78435 2.55717 6.22209 3.60104C4.65982 4.64491 3.44218 6.12861 2.72315 7.86451C2.00412 9.6004 1.81598 11.5105 2.18254 13.3534C2.5491 15.1962 3.45389 16.8889 4.78249 18.2175C6.11109 19.5461 7.80383 20.4509 9.64664 20.8175C11.4895 21.184 13.3996 20.9959 15.1355 20.2769C16.8714 19.5578 18.3551 18.3402 19.399 16.7779C20.4428 15.2156 21 13.3789 21 11.5C20.9973 8.98126 19.9956 6.56644 18.2146 4.78542C16.4336 3.0044 14.0187 2.00266 11.5 2ZM11.1346 6.38461C11.3514 6.38461 11.5633 6.4489 11.7436 6.56935C11.9239 6.6898 12.0644 6.86099 12.1473 7.06129C12.2303 7.26158 12.252 7.48198 12.2097 7.69462C12.1674 7.90725 12.063 8.10257 11.9097 8.25587C11.7564 8.40917 11.5611 8.51356 11.3485 8.55586C11.1358 8.59816 10.9154 8.57645 10.7151 8.49348C10.5148 8.41052 10.3436 8.27002 10.2232 8.08976C10.1028 7.9095 10.0385 7.69757 10.0385 7.48077C10.0385 7.19005 10.154 6.91124 10.3595 6.70567C10.5651 6.5001 10.8439 6.38461 11.1346 6.38461ZM12.2308 16.6154C11.8431 16.6154 11.4714 16.4614 11.1973 16.1873C10.9232 15.9132 10.7692 15.5415 10.7692 15.1538V11.5C10.5754 11.5 10.3895 11.423 10.2525 11.286C10.1155 11.1489 10.0385 10.963 10.0385 10.7692C10.0385 10.5754 10.1155 10.3895 10.2525 10.2525C10.3895 10.1155 10.5754 10.0385 10.7692 10.0385C11.1569 10.0385 11.5286 10.1924 11.8027 10.4665C12.0768 10.7406 12.2308 11.1124 12.2308 11.5V15.1538C12.4246 15.1538 12.6105 15.2308 12.7475 15.3679C12.8845 15.5049 12.9615 15.6908 12.9615 15.8846C12.9615 16.0784 12.8845 16.2643 12.7475 16.4013C12.6105 16.5384 12.4246 16.6154 12.2308 16.6154Z"
                   fill="#202941" />
               </svg>
-              <p class="swapper__description-text">
+              <p class="exchange-form__description-text">
                 Пожалуйста, убедитесь, что вывод производится в рамках сети TRC-20, в пр отивном случае, средства не
                 зачислятся на наш кошелек. Требуется 12 подтверждений от сети.
                 При переводе средств просим Вас учитывать комиссию сети.
               </p>
             </div>
-            <label class="swapper__agree swapper__agree-first">
-              <input class="swapper__agree-input" type="checkbox" checked>
-              <p class="swapper__agree-text">
+            <label class="exchange-form__agree exchange-form__agree-first">
+              <input class="agree-input" type="checkbox" checked>
+              <p class="exchange-form__agree-text">
                 Я згоден з <a href="#">регламентом сервісу</a> та правилами <a href="#">AML перевірки</a>
               </p>
             </label>
-            <label class="swapper__agree">
-              <input class="swapper__agree-input" type="checkbox">
-              <p class="swapper__agree-text">
+            <label class="exchange-form__agree">
+              <input class="agree-input" type="checkbox">
+              <p class="exchange-form__agree-text">
                 Запам'ятати мої дані
               </p>
             </label>
-            <div class="swapper__error-message swapper__error-general">
+            <div class="exchange-form__error-message exchange-form__error-general">
               <span>Ошибка! Указанные данные недействительны.</span>
             </div>
-            <button class="swapper__button">
+            <button class="exchange-form__button purple-btn" onclick="openNotificationModal()">
               Створити замовлення
             </button>
           </div>
@@ -556,8 +589,8 @@
           <h6 class="footer__title">
             Ми на зв'язку
           </h6>
-          <a class="footer__email" href="mailto:info@simpleexchange.com" aria-label="Написати на email">
-            info@simpleexchange.com
+          <a class="footer__email" href="mailto:Simple-Exchange@gmail.com" aria-label="Написати на email">
+            Simple-Exchange@gmail.com
           </a>
           <a class="footer__telegram" href="https://t.me/@simple" target="_blank" rel="noopener"
             aria-label="Написати в Telegram">
@@ -618,7 +651,7 @@
   <div class="auth-modal" id="authModal">
     <div class="auth-modal__overlay"></div>
     <div class="auth-modal__content">
-      <button class="auth-modal__close" id="authModalClose">
+      <button class=" modal-close" id="authModalClose">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" />
@@ -632,43 +665,46 @@
 
       <form class="auth-modal__form" id="authForm">
         <div class="auth-modal__field">
-          <input type="email" id="authEmail" class="auth-modal__input" placeholder="Електронна пошта" required>
-          <div class="auth-modal__error" id="authEmailError" role="alert" aria-live="polite">
+          <label class="auth-modal__label" for="authEmail">Електронна пошта</label>
+          <input type="email" id="authEmail" class="input" placeholder="Введіть електронну пошту">
+          <div class="form-error">
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
               aria-hidden="true">
               <path
                 d="M7.5 1.40625C6.29477 1.40625 5.11661 1.76364 4.1145 2.43323C3.11238 3.10282 2.33133 4.05454 1.87011 5.16802C1.40889 6.28151 1.28821 7.50676 1.52334 8.68883C1.75847 9.8709 2.33884 10.9567 3.19107 11.8089C4.0433 12.6612 5.1291 13.2415 6.31117 13.4767C7.49324 13.7118 8.71849 13.5911 9.83198 13.1299C10.9455 12.6687 11.8972 11.8876 12.5668 10.8855C13.2364 9.88339 13.5938 8.70523 13.5938 7.5C13.592 5.88436 12.9495 4.33538 11.807 3.19295C10.6646 2.05052 9.11564 1.40796 7.5 1.40625ZM7.03125 4.6875C7.03125 4.56318 7.08064 4.44395 7.16855 4.35604C7.25645 4.26814 7.37568 4.21875 7.5 4.21875C7.62432 4.21875 7.74355 4.26814 7.83146 4.35604C7.91937 4.44395 7.96875 4.56318 7.96875 4.6875V7.96875C7.96875 8.09307 7.91937 8.2123 7.83146 8.30021C7.74355 8.38811 7.62432 8.4375 7.5 8.4375C7.37568 8.4375 7.25645 8.38811 7.16855 8.30021C7.08064 8.2123 7.03125 8.09307 7.03125 7.96875V4.6875ZM7.5 10.7812C7.36094 10.7812 7.225 10.74 7.10937 10.6628C6.99374 10.5855 6.90362 10.4757 6.8504 10.3472C6.79718 10.2187 6.78326 10.0773 6.81039 9.94095C6.83752 9.80456 6.90448 9.67927 7.00282 9.58094C7.10115 9.48261 7.22644 9.41564 7.36283 9.38851C7.49922 9.36138 7.6406 9.3753 7.76908 9.42852C7.89756 9.48174 8.00737 9.57186 8.08463 9.68749C8.16189 9.80312 8.20313 9.93906 8.20313 10.0781C8.20313 10.2646 8.12905 10.4434 7.99719 10.5753C7.86533 10.7072 7.68648 10.7812 7.5 10.7812Z"
-                fill="#dc3545" />
+                fill="#FD6B6B" />
             </svg>
             <span>Поле обов'язкове до заповнення</span>
           </div>
         </div>
 
         <div class="auth-modal__field">
-          <input type="password" id="authPassword" class="auth-modal__input" placeholder="Пароль" required>
-          <div class="auth-modal__error" id="authPasswordError" role="alert" aria-live="polite">
+          <label class="auth-modal__label" for="authPassword">Пароль</label>
+          <input type="password" id="authPassword" class="input" placeholder="Введіть пароль">
+          <div class="form-error">
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
               aria-hidden="true">
               <path
                 d="M7.5 1.40625C6.29477 1.40625 5.11661 1.76364 4.1145 2.43323C3.11238 3.10282 2.33133 4.05454 1.87011 5.16802C1.40889 6.28151 1.28821 7.50676 1.52334 8.68883C1.75847 9.8709 2.33884 10.9567 3.19107 11.8089C4.0433 12.6612 5.1291 13.2415 6.31117 13.4767C7.49324 13.7118 8.71849 13.5911 9.83198 13.1299C10.9455 12.6687 11.8972 11.8876 12.5668 10.8855C13.2364 9.88339 13.5938 8.70523 13.5938 7.5C13.592 5.88436 12.9495 4.33538 11.807 3.19295C10.6646 2.05052 9.11564 1.40796 7.5 1.40625ZM7.03125 4.6875C7.03125 4.56318 7.08064 4.44395 7.16855 4.35604C7.25645 4.26814 7.37568 4.21875 7.5 4.21875C7.62432 4.21875 7.74355 4.26814 7.83146 4.35604C7.91937 4.44395 7.96875 4.56318 7.96875 4.6875V7.96875C7.96875 8.09307 7.91937 8.2123 7.83146 8.30021C7.74355 8.38811 7.62432 8.4375 7.5 8.4375C7.37568 8.4375 7.25645 8.38811 7.16855 8.30021C7.08064 8.2123 7.03125 8.09307 7.03125 7.96875V4.6875ZM7.5 10.7812C7.36094 10.7812 7.225 10.74 7.10937 10.6628C6.99374 10.5855 6.90362 10.4757 6.8504 10.3472C6.79718 10.2187 6.78326 10.0773 6.81039 9.94095C6.83752 9.80456 6.90448 9.67927 7.00282 9.58094C7.10115 9.48261 7.22644 9.41564 7.36283 9.38851C7.49922 9.36138 7.6406 9.3753 7.76908 9.42852C7.89756 9.48174 8.00737 9.57186 8.08463 9.68749C8.16189 9.80312 8.20313 9.93906 8.20313 10.0781C8.20313 10.2646 8.12905 10.4434 7.99719 10.5753C7.86533 10.7072 7.68648 10.7812 7.5 10.7812Z"
-                fill="#dc3545" />
+                fill="#FD6B6B" />
             </svg>
             <span>Поле обов'язкове до заповнення</span>
           </div>
         </div>
 
         <div class="auth-modal__options">
-          <label class="auth-modal__checkbox">
-            <input type="checkbox" id="authRemember">
-            <span class="auth-modal__checkbox-custom"></span>
-            <span class="auth-modal__checkbox-text">Запам'ятати мої дані</span>
+          <label class="auth-modal__agree">
+            <input class="agree-input" type="checkbox" id="authRemember">
+            <p class="exchange-form__agree-text">
+              Запам'ятати мої дані
+            </p>
           </label>
           <div class="auth-modal__links">
             <a href="#" class="auth-modal__forgot">Забули пароль?</a>
           </div>
         </div>
 
-        <button type="submit" class="auth-modal__submit">
+        <button type="submit" class="auth-modal__submit purple-btn">
           Увійти
         </button>
       </form>
@@ -676,7 +712,7 @@
       <div class="auth-modal__footer">
         <p class="auth-modal__register-text">
           Не маєте аккаунт?
-          <a href="#" class="auth-modal__register-link" id="showRegisterModal">Ви можете зареєструвати аккаунт</a>
+          Ви можете <a href="#" class="auth-modal__register-link" id="showRegisterModal">зареєструвати</a> аккаунт
         </p>
       </div>
     </div>
@@ -686,7 +722,7 @@
   <div class="register-modal" id="registerModal">
     <div class="register-modal__overlay"></div>
     <div class="register-modal__content">
-      <button class="register-modal__close" id="registerModalClose">
+      <button class="modal-close" id="registerModalClose">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" />
@@ -700,26 +736,34 @@
 
       <form class="register-modal__form" id="registerForm">
         <div class="register-modal__field">
-          <input type="email" id="registerEmail" class="register-modal__input" placeholder="Електронна пошта" required>
-          <div class="register-modal__error" id="registerEmailError" role="alert" aria-live="polite">
+          <label class="register-modal__label" for="registerEmail">Електронна пошта</label>
+          <input type="email" id="registerEmail" class="input" placeholder="Введіть електронну пошту">
+          <div class="form-error">
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
               aria-hidden="true">
               <path
                 d="M7.5 1.40625C6.29477 1.40625 5.11661 1.76364 4.1145 2.43323C3.11238 3.10282 2.33133 4.05454 1.87011 5.16802C1.40889 6.28151 1.28821 7.50676 1.52334 8.68883C1.75847 9.8709 2.33884 10.9567 3.19107 11.8089C4.0433 12.6612 5.1291 13.2415 6.31117 13.4767C7.49324 13.7118 8.71849 13.5911 9.83198 13.1299C10.9455 12.6687 11.8972 11.8876 12.5668 10.8855C13.2364 9.88339 13.5938 8.70523 13.5938 7.5C13.592 5.88436 12.9495 4.33538 11.807 3.19295C10.6646 2.05052 9.11564 1.40796 7.5 1.40625ZM7.03125 4.6875C7.03125 4.56318 7.08064 4.44395 7.16855 4.35604C7.25645 4.26814 7.37568 4.21875 7.5 4.21875C7.62432 4.21875 7.74355 4.26814 7.83146 4.35604C7.91937 4.44395 7.96875 4.56318 7.96875 4.6875V7.96875C7.96875 8.09307 7.91937 8.2123 7.83146 8.30021C7.74355 8.38811 7.62432 8.4375 7.5 8.4375C7.37568 8.4375 7.25645 8.38811 7.16855 8.30021C7.08064 8.2123 7.03125 8.09307 7.03125 7.96875V4.6875ZM7.5 10.7812C7.36094 10.7812 7.225 10.74 7.10937 10.6628C6.99374 10.5855 6.90362 10.4757 6.8504 10.3472C6.79718 10.2187 6.78326 10.0773 6.81039 9.94095C6.83752 9.80456 6.90448 9.67927 7.00282 9.58094C7.10115 9.48261 7.22644 9.41564 7.36283 9.38851C7.49922 9.36138 7.6406 9.3753 7.76908 9.42852C7.89756 9.48174 8.00737 9.57186 8.08463 9.68749C8.16189 9.80312 8.20313 9.93906 8.20313 10.0781C8.20313 10.2646 8.12905 10.4434 7.99719 10.5753C7.86533 10.7072 7.68648 10.7812 7.5 10.7812Z"
-                fill="#dc3545" />
+                fill="#FD6B6B" />
             </svg>
             <span>Поле обов'язкове до заповнення</span>
           </div>
         </div>
 
         <div class="register-modal__field">
-          <input type="password" id="registerPassword" class="register-modal__input" placeholder="Створіть пароль"
-            required>
-          <div class="register-modal__error" id="passwordError" role="alert" aria-live="polite">
+          <label class="register-modal__label" for="registerPassword">Створіть пароль</label>
+          <input type="password" id="registerPassword" class="input" placeholder="Створіть пароль">
+          <div class="form-error">
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
               aria-hidden="true">
               <path
                 d="M7.5 1.40625C6.29477 1.40625 5.11661 1.76364 4.1145 2.43323C3.11238 3.10282 2.33133 4.05454 1.87011 5.16802C1.40889 6.28151 1.28821 7.50676 1.52334 8.68883C1.75847 9.8709 2.33884 10.9567 3.19107 11.8089C4.0433 12.6612 5.1291 13.2415 6.31117 13.4767C7.49324 13.7118 8.71849 13.5911 9.83198 13.1299C10.9455 12.6687 11.8972 11.8876 12.5668 10.8855C13.2364 9.88339 13.5938 8.70523 13.5938 7.5C13.592 5.88436 12.9495 4.33538 11.807 3.19295C10.6646 2.05052 9.11564 1.40796 7.5 1.40625ZM7.03125 4.6875C7.03125 4.56318 7.08064 4.44395 7.16855 4.35604C7.25645 4.26814 7.37568 4.21875 7.5 4.21875C7.62432 4.21875 7.74355 4.26814 7.83146 4.35604C7.91937 4.44395 7.96875 4.56318 7.96875 4.6875V7.96875C7.96875 8.09307 7.91937 8.2123 7.83146 8.30021C7.74355 8.38811 7.62432 8.4375 7.5 8.4375C7.37568 8.4375 7.25645 8.38811 7.16855 8.30021C7.08064 8.2123 7.03125 8.09307 7.03125 7.96875V4.6875ZM7.5 10.7812C7.36094 10.7812 7.225 10.74 7.10937 10.6628C6.99374 10.5855 6.90362 10.4757 6.8504 10.3472C6.79718 10.2187 6.78326 10.0773 6.81039 9.94095C6.83752 9.80456 6.90448 9.67927 7.00282 9.58094C7.10115 9.48261 7.22644 9.41564 7.36283 9.38851C7.49922 9.36138 7.6406 9.3753 7.76908 9.42852C7.89756 9.48174 8.00737 9.57186 8.08463 9.68749C8.16189 9.80312 8.20313 9.93906 8.20313 10.0781C8.20313 10.2646 8.12905 10.4434 7.99719 10.5753C7.86533 10.7072 7.68648 10.7812 7.5 10.7812Z"
+                fill="#FD6B6B" />
+            </svg>
+            <span>Поле обов'язкове до заповнення</span>
+          </div>
+          <div class="register-modal__error" id="passwordError" style="display: none;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 1C4.13 1 1 4.13 1 8s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zM7.5 11.5h1v1h-1v-1zM7.5 5.5h1v4h-1v-4z"
                 fill="#dc3545" />
             </svg>
             <span>Паролі не співпадають, спробуйте ще раз</span>
@@ -727,20 +771,22 @@
         </div>
 
         <div class="register-modal__field">
-          <input type="password" id="registerPasswordConfirm" class="register-modal__input"
-            placeholder="Повторіть пароль" required>
-          <div class="register-modal__error" id="registerPasswordConfirmError" role="alert" aria-live="polite">
+          <label class="register-modal__label" for="registerPasswordConfirm">Повторіть пароль</label>
+          <input type="password" id="registerPasswordConfirm" class="input" placeholder="Повторіть пароль">
+          <div class="form-error">
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
               aria-hidden="true">
               <path
                 d="M7.5 1.40625C6.29477 1.40625 5.11661 1.76364 4.1145 2.43323C3.11238 3.10282 2.33133 4.05454 1.87011 5.16802C1.40889 6.28151 1.28821 7.50676 1.52334 8.68883C1.75847 9.8709 2.33884 10.9567 3.19107 11.8089C4.0433 12.6612 5.1291 13.2415 6.31117 13.4767C7.49324 13.7118 8.71849 13.5911 9.83198 13.1299C10.9455 12.6687 11.8972 11.8876 12.5668 10.8855C13.2364 9.88339 13.5938 8.70523 13.5938 7.5C13.592 5.88436 12.9495 4.33538 11.807 3.19295C10.6646 2.05052 9.11564 1.40796 7.5 1.40625ZM7.03125 4.6875C7.03125 4.56318 7.08064 4.44395 7.16855 4.35604C7.25645 4.26814 7.37568 4.21875 7.5 4.21875C7.62432 4.21875 7.74355 4.26814 7.83146 4.35604C7.91937 4.44395 7.96875 4.56318 7.96875 4.6875V7.96875C7.96875 8.09307 7.91937 8.2123 7.83146 8.30021C7.74355 8.38811 7.62432 8.4375 7.5 8.4375C7.37568 8.4375 7.25645 8.38811 7.16855 8.30021C7.08064 8.2123 7.03125 8.09307 7.03125 7.96875V4.6875ZM7.5 10.7812C7.36094 10.7812 7.225 10.74 7.10937 10.6628C6.99374 10.5855 6.90362 10.4757 6.8504 10.3472C6.79718 10.2187 6.78326 10.0773 6.81039 9.94095C6.83752 9.80456 6.90448 9.67927 7.00282 9.58094C7.10115 9.48261 7.22644 9.41564 7.36283 9.38851C7.49922 9.36138 7.6406 9.3753 7.76908 9.42852C7.89756 9.48174 8.00737 9.57186 8.08463 9.68749C8.16189 9.80312 8.20313 9.93906 8.20313 10.0781C8.20313 10.2646 8.12905 10.4434 7.99719 10.5753C7.86533 10.7072 7.68648 10.7812 7.5 10.7812Z"
-                fill="#dc3545" />
+                fill="#FD6B6B" />
             </svg>
             <span>Поле обов'язкове до заповнення</span>
           </div>
         </div>
 
-        <button type="submit" class="register-modal__submit">
+
+
+        <button type="submit" class="purple-btn purple-btn">
           Створити акаунт
         </button>
       </form>
@@ -758,7 +804,7 @@
   <div class="forgot-modal" id="forgotModal">
     <div class="forgot-modal__overlay"></div>
     <div class="forgot-modal__content">
-      <button class="forgot-modal__close" id="forgotModalClose">
+      <button class="modal-close" id="forgotModalClose">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" />
@@ -772,19 +818,24 @@
 
       <form class="forgot-modal__form" id="forgotForm">
         <div class="forgot-modal__field">
-          <input type="email" id="forgotEmail" class="forgot-modal__input" placeholder="Електронна пошта" required>
+          <label class="forgot-modal__label" for="forgotEmail">Електронна пошта</label>
+          <input type="email" id="forgotEmail" class="input" placeholder="Введіть електронну пошту">
+          <div class="form-error">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
+              aria-hidden="true">
+              <path
+                d="M7.5 1.40625C6.29477 1.40625 5.11661 1.76364 4.1145 2.43323C3.11238 3.10282 2.33133 4.05454 1.87011 5.16802C1.40889 6.28151 1.28821 7.50676 1.52334 8.68883C1.75847 9.8709 2.33884 10.9567 3.19107 11.8089C4.0433 12.6612 5.1291 13.2415 6.31117 13.4767C7.49324 13.7118 8.71849 13.5911 9.83198 13.1299C10.9455 12.6687 11.8972 11.8876 12.5668 10.8855C13.2364 9.88339 13.5938 8.70523 13.5938 7.5C13.592 5.88436 12.9495 4.33538 11.807 3.19295C10.6646 2.05052 9.11564 1.40796 7.5 1.40625ZM7.03125 4.6875C7.03125 4.56318 7.08064 4.44395 7.16855 4.35604C7.25645 4.26814 7.37568 4.21875 7.5 4.21875C7.62432 4.21875 7.74355 4.26814 7.83146 4.35604C7.91937 4.44395 7.96875 4.56318 7.96875 4.6875V7.96875C7.96875 8.09307 7.91937 8.2123 7.83146 8.30021C7.74355 8.38811 7.62432 8.4375 7.5 8.4375C7.37568 8.4375 7.25645 8.38811 7.16855 8.30021C7.08064 8.2123 7.03125 8.09307 7.03125 7.96875V4.6875ZM7.5 10.7812C7.36094 10.7812 7.225 10.74 7.10937 10.6628C6.99374 10.5855 6.90362 10.4757 6.8504 10.3472C6.79718 10.2187 6.78326 10.0773 6.81039 9.94095C6.83752 9.80456 6.90448 9.67927 7.00282 9.58094C7.10115 9.48261 7.22644 9.41564 7.36283 9.38851C7.49922 9.36138 7.6406 9.3753 7.76908 9.42852C7.89756 9.48174 8.00737 9.57186 8.08463 9.68749C8.16189 9.80312 8.20313 9.93906 8.20313 10.0781C8.20313 10.2646 8.12905 10.4434 7.99719 10.5753C7.86533 10.7072 7.68648 10.7812 7.5 10.7812Z"
+                fill="#FD6B6B" />
+            </svg>
+            <span>Поле обов'язкове до заповнення</span>
+          </div>
         </div>
 
-        <button type="submit" class="forgot-modal__submit">
+        <button type="submit" class="purple-btn purple-btn">
           Продовжити
         </button>
       </form>
 
-      <div class="forgot-modal__footer">
-        <p class="forgot-modal__back-text">
-          <a href="#" class="forgot-modal__back-link" id="showAuthModalFromForgot">Повернутися до авторизації</a>
-        </p>
-      </div>
     </div>
   </div>
 
@@ -792,7 +843,7 @@
   <div class="change-password-modal" id="changePasswordModal">
     <div class="change-password-modal__overlay"></div>
     <div class="change-password-modal__content">
-      <button class="change-password-modal__close" id="changePasswordModalClose">
+      <button class="modal-close" id="changePasswordModalClose">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" />
@@ -806,33 +857,46 @@
 
       <form class="change-password-modal__form" id="changePasswordForm">
         <div class="change-password-modal__field">
-          <input type="password" id="newPassword" class="change-password-modal__input"
-            placeholder="Введіть новий пароль" required>
+          <label class="change-password-modal__label" for="newPassword">Введіть новий пароль</label>
+          <input type="password" id="newPassword" class="input" placeholder="Введіть новий пароль">
+          <div class="form-error">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
+              aria-hidden="true">
+              <path
+                d="M7.5 1.40625C6.29477 1.40625 5.11661 1.76364 4.1145 2.43323C3.11238 3.10282 2.33133 4.05454 1.87011 5.16802C1.40889 6.28151 1.28821 7.50676 1.52334 8.68883C1.75847 9.8709 2.33884 10.9567 3.19107 11.8089C4.0433 12.6612 5.1291 13.2415 6.31117 13.4767C7.49324 13.7118 8.71849 13.5911 9.83198 13.1299C10.9455 12.6687 11.8972 11.8876 12.5668 10.8855C13.2364 9.88339 13.5938 8.70523 13.5938 7.5C13.592 5.88436 12.9495 4.33538 11.807 3.19295C10.6646 2.05052 9.11564 1.40796 7.5 1.40625ZM7.03125 4.6875C7.03125 4.56318 7.08064 4.44395 7.16855 4.35604C7.25645 4.26814 7.37568 4.21875 7.5 4.21875C7.62432 4.21875 7.74355 4.26814 7.83146 4.35604C7.91937 4.44395 7.96875 4.56318 7.96875 4.6875V7.96875C7.96875 8.09307 7.91937 8.2123 7.83146 8.30021C7.74355 8.38811 7.62432 8.4375 7.5 8.4375C7.37568 8.4375 7.25645 8.38811 7.16855 8.30021C7.08064 8.2123 7.03125 8.09307 7.03125 7.96875V4.6875ZM7.5 10.7812C7.36094 10.7812 7.225 10.74 7.10937 10.6628C6.99374 10.5855 6.90362 10.4757 6.8504 10.3472C6.79718 10.2187 6.78326 10.0773 6.81039 9.94095C6.83752 9.80456 6.90448 9.67927 7.00282 9.58094C7.10115 9.48261 7.22644 9.41564 7.36283 9.38851C7.49922 9.36138 7.6406 9.3753 7.76908 9.42852C7.89756 9.48174 8.00737 9.57186 8.08463 9.68749C8.16189 9.80312 8.20313 9.93906 8.20313 10.0781C8.20313 10.2646 8.12905 10.4434 7.99719 10.5753C7.86533 10.7072 7.68648 10.7812 7.5 10.7812Z"
+                fill="#FD6B6B" />
+            </svg>
+            <span>Поле обов'язкове до заповнення</span>
+          </div>
         </div>
 
         <div class="change-password-modal__field">
-          <input type="password" id="confirmNewPassword" class="change-password-modal__input"
-            placeholder="Введіть новий пароль ще раз" required>
+          <label class="change-password-modal__label" for="confirmNewPassword">Введіть новий пароль ще раз</label>
+          <input type="password" id="confirmNewPassword" class="input" placeholder="Повторіть новий пароль">
+          <div class="form-error">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
+              aria-hidden="true">
+              <path
+                d="M7.5 1.40625C6.29477 1.40625 5.11661 1.76364 4.1145 2.43323C3.11238 3.10282 2.33133 4.05454 1.87011 5.16802C1.40889 6.28151 1.28821 7.50676 1.52334 8.68883C1.75847 9.8709 2.33884 10.9567 3.19107 11.8089C4.0433 12.6612 5.1291 13.2415 6.31117 13.4767C7.49324 13.7118 8.71849 13.5911 9.83198 13.1299C10.9455 12.6687 11.8972 11.8876 12.5668 10.8855C13.2364 9.88339 13.5938 8.70523 13.5938 7.5C13.592 5.88436 12.9495 4.33538 11.807 3.19295C10.6646 2.05052 9.11564 1.40796 7.5 1.40625ZM7.03125 4.6875C7.03125 4.56318 7.08064 4.44395 7.16855 4.35604C7.25645 4.26814 7.37568 4.21875 7.5 4.21875C7.62432 4.21875 7.74355 4.26814 7.83146 4.35604C7.91937 4.44395 7.96875 4.56318 7.96875 4.6875V7.96875C7.96875 8.09307 7.91937 8.2123 7.83146 8.30021C7.74355 8.38811 7.62432 8.4375 7.5 8.4375C7.37568 8.4375 7.25645 8.38811 7.16855 8.30021C7.08064 8.2123 7.03125 8.09307 7.03125 7.96875V4.6875ZM7.5 10.7812C7.36094 10.7812 7.225 10.74 7.10937 10.6628C6.99374 10.5855 6.90362 10.4757 6.8504 10.3472C6.79718 10.2187 6.78326 10.0773 6.81039 9.94095C6.83752 9.80456 6.90448 9.67927 7.00282 9.58094C7.10115 9.48261 7.22644 9.41564 7.36283 9.38851C7.49922 9.36138 7.6406 9.3753 7.76908 9.42852C7.89756 9.48174 8.00737 9.57186 8.08463 9.68749C8.16189 9.80312 8.20313 9.93906 8.20313 10.0781C8.20313 10.2646 8.12905 10.4434 7.99719 10.5753C7.86533 10.7072 7.68648 10.7812 7.5 10.7812Z"
+                fill="#FD6B6B" />
+            </svg>
+            <span>Поле обов'язкове до заповнення</span>
+          </div>
         </div>
 
-        <button type="submit" class="change-password-modal__submit">
+        <button type="submit" class="change-password-modal__submit purple-btn">
           Створити пароль
         </button>
       </form>
 
-      <div class="change-password-modal__footer">
-        <p class="change-password-modal__back-text">
-          <a href="#" class="change-password-modal__back-link" id="showAuthModalFromChangePassword">Скасувати</a>
-        </p>
-      </div>
     </div>
   </div>
 
   <!-- Попап зміни комісії мережі TRX TRC20 -->
   <div class="commission-modal" id="commissionModal">
-    <div class="commission-modal__overlay"></div>
+    <div class="commission-modal__overlay" onclick="closeCommissionModal()"></div>
     <div class="commission-modal__content">
-      <button class="commission-modal__close" id="commissionModalClose">
+      <button class="modal-close" id="commissionModalClose" onclick="closeCommissionModal()">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" />
@@ -844,18 +908,21 @@
         <p class="commission-modal__subtitle">Комісія мережі впливає на швидкість обробки транзакції виплати</p>
       </div>
 
-      <div class="commission__dots">
-        <img class="commission__dots-img" src="./images/dot.svg" alt="">
-        <img class="commission__dots-img line" src="./images/line.svg" alt="">
-        <img class="commission__dots-img" src="./images/dot-inactive.svg" alt="">
-        <img class="commission__dots-img line" src="./images/line.svg" alt="">
-        <img class="commission__dots-img" src="./images/dot-inactive.svg" alt="">
+      <div class="commission-modal__slider-container">
+        <div class="commission-modal__slider-track" id="sliderTrack">
+          <div class="commission-modal__slider-fill" id="sliderFill"></div>
+          <div class="commission-modal__slider-thumb" id="sliderThumb"></div>
+          <div class="commission-modal__slider-stop" data-value="1.0" style="left: 0%"></div>
+          <div class="commission-modal__slider-stop" data-value="1.5" style="left: 50%"></div>
+          <div class="commission-modal__slider-stop" data-value="2.0" style="left: 100%"></div>
+        </div>
+        <div class="commission-modal__slider-labels">
+          <div class="commission-modal__slider-label">1.0 USDT</div>
+          <div class="commission-modal__slider-label">1.5 USDT</div>
+          <div class="commission-modal__slider-label">2.0 USDT</div>
+        </div>
       </div>
-      <div class="commission__numbers">
-        <div class="commission__number">1.0 USDT</div>
-        <div class="commission__number">1.5 USDT</div>
-        <div class="commission__number">2.0 USDT</div>
-      </div>
+
     </div>
   </div>
 
@@ -863,7 +930,7 @@
   <div class="add-account-modal" id="addAccountModal">
     <div class="add-account-modal__overlay"></div>
     <div class="add-account-modal__content">
-      <button class="add-account-modal__close" id="addAccountModalClose">
+      <button class="modal-close" id="addAccountModalClose">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" />
@@ -889,7 +956,7 @@
 
             <div class="add-account-modal__currency-dropdown" id="currencyDropdown">
               <div class="add-account-modal__currency-search">
-                <input type="text" class="add-account-modal__currency-search-input" placeholder="Пошук валюти..."
+                <input type="text" class="input input--modal-search" placeholder="Пошук валюти..."
                   id="currencySearchInput">
                 <svg class="add-account-modal__currency-search-icon" xmlns="http://www.w3.org/2000/svg" width="20"
                   height="20" viewBox="0 0 20 20" fill="none">
@@ -965,8 +1032,8 @@
 
         <div class="add-account-modal__field">
           <label class="add-account-modal__label" for="accountNumber">Рахунок</label>
-          <input class="add-account-modal__input" type="text" id="accountNumber" name="accountNumber"
-            placeholder="Введіть номер рахунку" required>
+          <input class="input" type="text" id="accountNumber" name="accountNumber" placeholder="Введіть номер рахунку"
+            required>
           <div class="add-account-modal__error" id="accountNumberError" role="alert" aria-live="polite">
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none"
               aria-hidden="true">
@@ -1007,9 +1074,9 @@
           <a href="#" class="cookie-notice__link">політикою використання файлів cookies</a>.
         </p>
       </div>
-      <button class="cookie-notice__close" id="cookieNoticeClose" aria-label="Закрити повідомлення">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+      <button class="modal-close" id="cookieNoticeClose" aria-label="Закрити повідомлення">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round" />
         </svg>
       </button>
@@ -1020,8 +1087,11 @@
   <div class="notification-modal" id="notificationModal">
     <div class="notification-modal__overlay"></div>
     <div class="notification-modal__content">
-      <button class="notification-modal__close" id="notificationModalClose">
-        <div class="notification-modal__close-icon"></div>
+      <button class="modal-close" id="notificationModalClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
       </button>
 
       <div class="notification-modal__main">
@@ -1035,7 +1105,7 @@
       </div>
 
       <div class="notification-modal__footer">
-        <button class="notification-modal__button" id="notificationModalOk">
+        <button class="notification-modal__button purple-btn" id="notificationModalOk">
           Хорошо
         </button>
       </div>
@@ -1043,6 +1113,40 @@
   </div>
 
   <script src="./js/main.js"></script>
+  <script>
+    const DURATION = 60;
+    const text = document.getElementById('timer-text');
+
+    const bar = new ProgressBar.Circle('#loader-container', {
+      color: '#6B8FFD',
+      trailColor: '#E7E7E7',
+      trailWidth: 10,
+      strokeWidth: 10,
+      easing: 'linear',
+      duration: DURATION * 1000,
+      from: { color: '#6B8FFD' },
+      to: { color: '#6B8FFD' },
+      step: function (state, circle) {
+        const progress = 1 - circle.value();
+        const seconds = Math.ceil(progress * DURATION);
+        text.textContent = seconds;
+      }
+    });
+
+    function updateRates() {
+      console.log('updateRates() called');
+    }
+
+    function startTimer() {
+      bar.set(1);
+      bar.animate(0.0, {}, () => {
+        updateRates();
+        startTimer();
+      });
+    }
+
+    startTimer();
+  </script>
 </body>
 
 </html>

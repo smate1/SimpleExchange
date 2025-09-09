@@ -1,5 +1,75 @@
 console.log('JavaScript файл main.js завантажено')
 
+// Функція для встановлення viewport height для мобільних пристроїв
+function setViewportHeight() {
+	// Отримуємо висоту вікна перегляду
+	let vh = window.innerHeight * 0.01
+	// Встановлюємо значення CSS-змінної
+	document.documentElement.style.setProperty('--vh', `${vh}px`)
+}
+
+// Встановлюємо початкове значення
+setViewportHeight()
+
+// Оновлюємо значення при зміні розміру вікна
+window.addEventListener('resize', setViewportHeight)
+
+// Додатково оновлюємо при зміні орієнтації на мобільних пристроях
+window.addEventListener('orientationchange', function () {
+	setTimeout(setViewportHeight, 100)
+})
+
+// Функціональність для показу exchangeRateTooltip
+function initExchangeRateTooltip() {
+	const exchangeRateBtn = document.getElementById('exchangeRateBtn')
+	const exchangeRateTooltip = document.getElementById('exchangeRateTooltip')
+
+	if (!exchangeRateBtn || !exchangeRateTooltip) {
+		console.log('Елементи exchangeRateBtn або exchangeRateTooltip не знайдено')
+		return
+	}
+
+	console.log('Ініціалізація exchangeRateTooltip')
+
+	// Показ тултіпа при кліку на кнопку
+	exchangeRateBtn.addEventListener('click', function (e) {
+		e.preventDefault()
+		e.stopPropagation()
+
+		console.log('Клік на exchangeRateBtn')
+
+		// Перемикаємо видимість тултіпа
+		const isVisible = exchangeRateTooltip.classList.contains('active')
+
+		if (isVisible) {
+			exchangeRateTooltip.classList.remove('active')
+			console.log('Тултіп приховано')
+		} else {
+			exchangeRateTooltip.classList.add('active')
+			console.log('Тултіп показано')
+		}
+	})
+
+	// Приховуємо тултіп при кліку поза ним
+	document.addEventListener('click', function (e) {
+		if (
+			!exchangeRateBtn.contains(e.target) &&
+			!exchangeRateTooltip.contains(e.target)
+		) {
+			exchangeRateTooltip.classList.remove('active')
+			console.log('Тултіп приховано по кліку поза ним')
+		}
+	})
+
+	// Приховуємо тултіп при натисканні Escape
+	document.addEventListener('keydown', function (e) {
+		if (e.key === 'Escape') {
+			exchangeRateTooltip.classList.remove('active')
+			console.log('Тултіп приховано по Escape')
+		}
+	})
+}
+
 // Функціональність для табів на сторінці замовлень
 function initOrdersTabs() {
 	const tabs = document.querySelectorAll('.orders__tab')
@@ -38,7 +108,9 @@ window.isValidEmail = isValidEmail
 function updateCurrencyIcon(selectElement, iconContainer) {
 	const selectedValue = selectElement.value
 	const iconPath = `./uploads/SimpleExchange/images/${selectedValue}.svg`
-	const iconImg = iconContainer.querySelector('.swapper__select-currency-icon')
+	const iconImg = iconContainer.querySelector(
+		'.exchange-form__select-currency-icon'
+	)
 
 	if (iconImg) {
 		iconImg.src = iconPath
@@ -48,15 +120,17 @@ function updateCurrencyIcon(selectElement, iconContainer) {
 
 // Функція для роботи з currency overlay
 function initCurrencyOverlay() {
-	const selectWrappers = document.querySelectorAll('.swapper__select-wrapper')
+	const selectWrappers = document.querySelectorAll(
+		'.exchange-form__select-wrapper'
+	)
 	console.log('Знайдено selectWrappers:', selectWrappers.length)
 
 	selectWrappers.forEach((wrapper, index) => {
 		const overlay = wrapper.querySelector('.currency__overlay')
-		const arrow = wrapper.querySelector('.swapper__select-arrow')
+		const arrow = wrapper.querySelector('.exchange-form__select-arrow')
 		const searchInput = wrapper.querySelector('.currency__search-input')
 		const currencyItems = wrapper.querySelectorAll('.currency__item')
-		const iconContainer = wrapper.querySelector('.swapper__select-icon')
+		const iconContainer = wrapper.querySelector('.exchange-form__select-icon')
 
 		console.log(`Wrapper ${index}:`, {
 			overlay: !!overlay,
@@ -438,15 +512,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Ініціалізація бургер меню
 	initBurgerMenu()
+
+	// Ініціалізація exchangeRateTooltip
+	initExchangeRateTooltip()
 })
 
 // Функція для роботи з кастомним dropdown вибору мови
 function initLanguageDropdown() {
-	const languageSelector = document.querySelector('.main__language-selector')
-	const languageCurrent = document.querySelector('.main__language-current')
-	const languageDropdown = document.querySelector('.main__language-dropdown')
-	const languageOptions = document.querySelectorAll('.main__language-option')
-	const languageText = document.querySelector('.main__language-text')
+	const languageSelector = document.querySelector('.header__language-selector')
+	const languageCurrent = document.querySelector('.header__language-current')
+	const languageDropdown = document.querySelector('.header__language-dropdown')
+	const languageOptions = document.querySelectorAll('.header__language-option')
+	const languageText = document.querySelector('.header__language-text')
 
 	if (!languageSelector) return
 
@@ -455,7 +532,7 @@ function initLanguageDropdown() {
 		e.stopPropagation()
 
 		// Закриваємо user dropdown якщо він відкритий
-		const userSelector = document.querySelector('.main__user-selector')
+		const userSelector = document.querySelector('.header__user-selector')
 		if (userSelector && userSelector.classList.contains('active')) {
 			userSelector.classList.remove('active')
 		}
@@ -482,7 +559,7 @@ function initLanguageDropdown() {
 		option.addEventListener('click', () => {
 			const value = option.getAttribute('data-value')
 			const text = option.querySelector(
-				'.main__language-option-text'
+				'.header__language-option-text'
 			)?.textContent
 
 			// Оновлюємо відображуваний текст
@@ -512,7 +589,7 @@ function initLanguageDropdown() {
 
 	// Встановлюємо початковий активний стан для української мови
 	const ukrainianOption = document.querySelector(
-		'.main__language-option[data-value="ua"]'
+		'.header__language-option[data-value="ua"]'
 	)
 	if (ukrainianOption) {
 		ukrainianOption.classList.add('active')
@@ -528,14 +605,16 @@ function changeLanguage(languageCode) {
 
 // Функція для роботи з табами купити/продати
 function initBuySellTabs() {
-	const tabs = document.querySelectorAll('.swapper__tab')
-	const sendWrapper = document.querySelector('.swapper__send')
-	const receiveWrapper = document.querySelector('.swapper__receive')
-	const sendInput = document.querySelector('.swapper__send-input')
-	const receiveInput = document.querySelector('.swapper__receive-input')
-	const rateText = document.querySelector('.swapper__rate-text')
-	const commissionText = document.querySelector('.swapper__rate-commission')
-	const buttonText = document.querySelector('.swapper__button')
+	const tabs = document.querySelectorAll('.exchange-form__tab')
+	const sendWrapper = document.querySelector('.exchange-form__send')
+	const receiveWrapper = document.querySelector('.exchange-form__receive')
+	const sendInput = document.querySelector('.exchange-form__send-input')
+	const receiveInput = document.querySelector('.exchange-form__receive-input')
+	const rateText = document.querySelector('.exchange-form__rate-text')
+	const commissionText = document.querySelector(
+		'.exchange-form__rate-commission'
+	)
+	const buttonText = document.querySelector('.exchange-form__button')
 
 	if (!tabs.length) {
 		console.log('Таби не знайдено')
@@ -688,31 +767,6 @@ function initBuySellTabs() {
 		if (receiveInput) {
 			receiveInput.value = receiveAmount > 0 ? receiveAmount.toFixed(2) : ''
 		}
-	}
-
-	// Додаємо обробник для кнопки створення замовлення
-	if (buttonText) {
-		buttonText.addEventListener('click', function (e) {
-			e.preventDefault()
-
-			const sendAmount = parseFloat(sendInput?.value) || 0
-			const receiveAmount = parseFloat(receiveInput?.value) || 0
-
-			if (sendAmount <= 0) {
-				alert('Будь ласка, введіть суму для обміну')
-				return
-			}
-
-			if (currentTab === 'buy') {
-				alert(
-					`Замовлення на купівлю створено!\nВи відправляєте: ${sendAmount} USDT\nВи отримуєте: ${receiveAmount} UAH`
-				)
-			} else {
-				alert(
-					`Замовлення на продаж створено!\nВи відправляєте: ${sendAmount} UAH\nВи отримуєте: ${receiveAmount} USDT`
-				)
-			}
-		})
 	}
 
 	console.log('Таби купити/продати ініціалізовані')
@@ -904,7 +958,7 @@ function initAuthModal() {
 	authModal = document.getElementById('authModal')
 	authModalClose = document.getElementById('authModalClose')
 	authForm = document.getElementById('authForm')
-	loginButton = document.querySelector('.main__button')
+	loginButton = document.querySelector('.header__button')
 
 	if (!authModal || !authModalClose || !authForm || !loginButton) {
 		console.log('Не знайдено елементи для попапу авторизації')
@@ -1016,33 +1070,6 @@ function initAuthModal() {
 				clearFieldError(this)
 			}
 		})
-	}
-
-	// Функція для показу помилки поля
-	function showFieldError(input, message) {
-		input.style.borderColor = '#dc3545'
-		input.style.boxShadow = '0 0 0 4px rgba(220, 53, 69, 0.1)'
-
-		// Знаходимо іконку помилки та текст
-		const errorElement = input.parentNode.querySelector('.auth-modal__error')
-		if (errorElement) {
-			const span = errorElement.querySelector('span')
-			if (span) {
-				span.textContent = message
-			}
-			errorElement.style.display = 'flex'
-		}
-	}
-
-	// Функція для очищення помилки поля
-	function clearFieldError(input) {
-		input.style.borderColor = 'rgba(32, 41, 65, 0.1)'
-		input.style.boxShadow = 'none'
-
-		const errorElement = input.parentNode.querySelector('.auth-modal__error')
-		if (errorElement) {
-			errorElement.style.display = 'none'
-		}
 	}
 
 	// Функція для показу стану завантаження
@@ -2021,10 +2048,6 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 {
 	const commissionModal = document.getElementById('commissionModal')
 	const commissionModalClose = document.getElementById('commissionModalClose')
-	const commissionModalCancel = document.getElementById('commissionModalCancel')
-	const commissionModalConfirm = document.getElementById(
-		'commissionModalConfirm'
-	)
 	const sliderThumb = document.getElementById('sliderThumb')
 	const sliderFill = document.querySelector('.commission-modal__slider-fill')
 	const sliderStops = document.querySelectorAll(
@@ -2067,11 +2090,17 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 		}, 100)
 	}
 
+	// Робимо функцію доступною глобально
+	window.openCommissionModal = openCommissionModal
+
 	// Функція для закриття попапа комісії
 	function closeCommissionModal() {
 		commissionModal.classList.remove('active')
 		document.body.classList.remove('no-scroll')
 	}
+
+	// Робимо функцію доступною глобально
+	window.closeCommissionModal = closeCommissionModal
 
 	// Функція для оновлення позиції слайдера
 	function updateSliderPosition(commission) {
@@ -2093,11 +2122,13 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 		sliderThumb.style.left = `${position}px`
 		sliderFill.style.width = `${position}px`
 
-		// Оновлюємо активний стоп
+		// Оновлюємо активні стопи - попередні залишаються активними
 		sliderStops.forEach(stop => {
-			stop.classList.remove('active')
-			if (parseFloat(stop.dataset.value) === commission) {
+			const stopValue = parseFloat(stop.dataset.value)
+			if (stopValue <= commission) {
 				stop.classList.add('active')
+			} else {
+				stop.classList.remove('active')
 			}
 		})
 	}
@@ -2114,7 +2145,6 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 
 	// Обробники подій для кнопок закриття
 	commissionModalClose.addEventListener('click', closeCommissionModal)
-	commissionModalCancel.addEventListener('click', closeCommissionModal)
 
 	// Закриття при кліку на оверлей
 	commissionModal
@@ -2134,6 +2164,34 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 			const commission = parseFloat(stop.dataset.value)
 			currentCommission = commission
 			updateSliderPosition(commission)
+
+			// Оновлюємо текст комісії в основному попапі
+			const commissionSpans = document.querySelectorAll(
+				'.swapper__rate-commission span'
+			)
+			commissionSpans.forEach(span => {
+				span.textContent = `${currentCommission} USDT`
+			})
+		})
+	})
+
+	// Обробник для кліків на підписи слайдера
+	const sliderLabels = document.querySelectorAll(
+		'.commission-modal__slider-label'
+	)
+	sliderLabels.forEach((label, index) => {
+		label.addEventListener('click', () => {
+			const commission = [1.0, 1.5, 2.0][index]
+			currentCommission = commission
+			updateSliderPosition(commission)
+
+			// Оновлюємо текст комісії в основному попапі
+			const commissionSpans = document.querySelectorAll(
+				'.swapper__rate-commission span'
+			)
+			commissionSpans.forEach(span => {
+				span.textContent = `${currentCommission} USDT`
+			})
 		})
 	})
 
@@ -2158,11 +2216,13 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 		const commission = getCommissionByPosition(position)
 		currentCommission = commission
 
-		// Оновлюємо активний стоп
+		// Оновлюємо активні стопи - попередні залишаються активними
 		sliderStops.forEach(stop => {
-			stop.classList.remove('active')
-			if (parseFloat(stop.dataset.value) === commission) {
+			const stopValue = parseFloat(stop.dataset.value)
+			if (stopValue <= commission) {
 				stop.classList.add('active')
+			} else {
+				stop.classList.remove('active')
 			}
 		})
 	})
@@ -2193,11 +2253,13 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 		const commission = getCommissionByPosition(position)
 		currentCommission = commission
 
-		// Оновлюємо активний стоп
+		// Оновлюємо активні стопи - попередні залишаються активними
 		sliderStops.forEach(stop => {
-			stop.classList.remove('active')
-			if (parseFloat(stop.dataset.value) === commission) {
+			const stopValue = parseFloat(stop.dataset.value)
+			if (stopValue <= commission) {
 				stop.classList.add('active')
+			} else {
+				stop.classList.remove('active')
 			}
 		})
 	})
@@ -2214,6 +2276,14 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 
 		currentCommission = commission
 		updateSliderPosition(commission)
+
+		// Оновлюємо текст комісії в основному попапі
+		const commissionSpans = document.querySelectorAll(
+			'.swapper__rate-commission span'
+		)
+		commissionSpans.forEach(span => {
+			span.textContent = `${currentCommission} USDT`
+		})
 	})
 
 	// Обробник для сенсорних пристроїв на трек слайдера
@@ -2225,10 +2295,7 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 
 		currentCommission = commission
 		updateSliderPosition(commission)
-	})
 
-	// Обробник для підтвердження зміни комісії
-	commissionModalConfirm.addEventListener('click', () => {
 		// Оновлюємо текст комісії в основному попапі
 		const commissionSpans = document.querySelectorAll(
 			'.swapper__rate-commission span'
@@ -2236,12 +2303,6 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 		commissionSpans.forEach(span => {
 			span.textContent = `${currentCommission} USDT`
 		})
-
-		// Закриваємо попап
-		closeCommissionModal()
-
-		// Показуємо повідомлення про успішну зміну
-		showCommissionChangeSuccess()
 	})
 
 	// Функція для показу повідомлення про успішну зміну комісії
@@ -2336,10 +2397,10 @@ console.log('=== ПОПАП ЗМІНИ ПАРОЛЯ ІНІЦІАЛІЗОВАНО
 
 // Функція для роботи з dropdown меню користувача
 function initUserDropdown() {
-	const userSelector = document.querySelector('.main__user-selector')
-	const userCurrent = document.querySelector('.main__user-current')
-	const userDropdownMenu = document.querySelector('.main__user-dropdown-menu')
-	const userOptions = document.querySelectorAll('.main__user-option')
+	const userSelector = document.querySelector('.header__user-selector')
+	const userCurrent = document.querySelector('.header__user-current')
+	const userDropdownMenu = document.querySelector('.header__user-dropdown-menu')
+	const userOptions = document.querySelectorAll('.header__user-option')
 
 	if (!userSelector) {
 		console.log('Dropdown меню користувача не знайдено')
@@ -2351,7 +2412,9 @@ function initUserDropdown() {
 		e.stopPropagation()
 
 		// Закриваємо language dropdown якщо він відкритий
-		const languageSelector = document.querySelector('.main__language-selector')
+		const languageSelector = document.querySelector(
+			'.header__language-selector'
+		)
 		if (languageSelector && languageSelector.classList.contains('active')) {
 			languageSelector.classList.remove('active')
 		}
@@ -2374,7 +2437,7 @@ function initUserDropdown() {
 			}
 			// Також закриваємо language dropdown якщо він відкритий
 			const languageSelector = document.querySelector(
-				'.main__language-selector'
+				'.header__language-selector'
 			)
 			if (languageSelector && languageSelector.classList.contains('active')) {
 				languageSelector.classList.remove('active')
@@ -2450,10 +2513,10 @@ function initUserDropdown() {
 
 	// Функція для заміни dropdown на кнопку "Увійти" (при виході)
 	function replaceUserDropdownWithLoginButton() {
-		const userDropdown = document.querySelector('.main__user-dropdown')
+		const userDropdown = document.querySelector('.header__user-dropdown')
 		if (userDropdown) {
 			const loginButton = document.createElement('button')
-			loginButton.className = 'main__button'
+			loginButton.className = 'header__button'
 			loginButton.textContent = 'Увійти'
 
 			// Додаємо обробник для кнопки "Увійти"
@@ -2473,36 +2536,36 @@ function initUserDropdown() {
 
 	// Функція для заміни кнопки "Увійти" на dropdown меню користувача (при авторизації)
 	function replaceLoginButtonWithUserDropdown() {
-		const loginButton = document.querySelector('.main__button')
+		const loginButton = document.querySelector('.header__button')
 		if (loginButton) {
 			const userDropdown = document.createElement('div')
-			userDropdown.className = 'main__user-dropdown'
+			userDropdown.className = 'header__user-dropdown'
 			userDropdown.innerHTML = `
-				<div class="main__user-selector">
-					<div class="main__user-current">
-						<div class="main__user-avatar">
-							<span class="main__user-avatar-text">D</span>
+				<div class="header__user-selector">
+					<div class="header__user-current">
+						<div class="header__user-avatar">
+							<span class="header__user-avatar-text">D</span>
 						</div>
-						<span class="main__user-email">desi...@proton.me</span>
-						<img src="./images/dropdown-arrow.svg" alt="dropdown" class="main__user-arrow">
+						<span class="header__user-email">desi...@proton.me</span>
+						<img src="./images/dropdown-arrow.svg" alt="dropdown" class="header__user-arrow">
 					</div>
-					<div class="main__user-dropdown-menu">
-						<div class="main__user-option" data-value="applications">
-							<span class="main__user-option-text">Мої заявки</span>
-							<span class="main__user-option-text">0</span>
+					<div class="header__user-dropdown-menu">
+						<div class="header__user-option" data-value="applications">
+							<span class="header__user-option-text">Мої заявки</span>
+							<span class="header__user-option-text">0</span>
 						</div>
-						<div class="main__user-option" data-value="details">
-							<span class="main__user-option-text">Мої реквізити</span>
+						<div class="header__user-option" data-value="details">
+							<span class="header__user-option-text">Мої реквізити</span>
 						</div>
-						<div class="main__user-option" data-value="partners">
-							<span class="main__user-option-text">Партнерам</span>
+						<div class="header__user-option" data-value="partners">
+							<span class="header__user-option-text">Партнерам</span>
 						</div>
-						<div class="main__user-option" data-value="profile">
-							<span class="main__user-option-text">Профіль</span>
+						<div class="header__user-option" data-value="profile">
+							<span class="header__user-option-text">Профіль</span>
 						</div>
-						<div class="main__user-divider"></div>
-						<div class="main__user-option" data-value="logout">
-							<span class="main__user-option-text">Вийти</span>
+						<div class="header__user-divider"></div>
+						<div class="header__user-option" data-value="logout">
+							<span class="header__user-option-text">Вийти</span>
 						</div>
 					</div>
 				</div>
@@ -2530,25 +2593,15 @@ function initCookieNotice() {
 		return
 	}
 
-	// Перевіряємо, чи користувач вже прийняв cookies
-	const cookiesAccepted = localStorage.getItem('cookiesAccepted')
-
-	if (!cookiesAccepted) {
-		// Показуємо плашку через 1 секунду після завантаження сторінки
-		setTimeout(() => {
-			cookieNotice.classList.add('active')
-		}, 1000)
-	}
+	// Показуємо плашку одразу при завантаженні (блок вже видимий по дефолту в CSS)
+	console.log('Плашка cookies відображається по дефолту')
 
 	// Обробник для кнопки закриття
 	cookieCloseBtn.addEventListener('click', function () {
-		// Зберігаємо в localStorage, що користувач прийняв cookies
-		localStorage.setItem('cookiesAccepted', 'true')
-
 		// Приховуємо плашку з анімацією
-		cookieNotice.classList.remove('active')
+		cookieNotice.classList.add('hidden')
 
-		console.log('Користувач прийняв cookies')
+		console.log('Плашка cookies закрита користувачем')
 	})
 
 	// Обробник для посилання на політику cookies
@@ -2571,12 +2624,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Функція для ініціалізації бургер меню
 function initBurgerMenu() {
-	const burgerButton = document.querySelector('.main__burger')
+	const burgerButton = document.querySelector('.header__burger')
 	const mobileMenu = document.querySelector('.mobile-menu')
 	const mobileMenuClose = document.querySelector('.mobile-menu__close')
 	const mobileMenuLinks = document.querySelectorAll('.mobile-menu__link')
 	const mobileMenuLogout = document.querySelector('.mobile-menu__logout')
-	const mobileMenuBurger = document.querySelector('.mobile-menu .main__burger')
+	const mobileMenuBurger = document.querySelector(
+		'.mobile-menu .header__burger'
+	)
+
+	// Створюємо overlay елемент
+	let mobileMenuOverlay = document.querySelector('.mobile-menu-overlay')
+	if (!mobileMenuOverlay) {
+		mobileMenuOverlay = document.createElement('div')
+		mobileMenuOverlay.className = 'mobile-menu-overlay'
+		document.body.appendChild(mobileMenuOverlay)
+	}
 
 	if (!burgerButton || !mobileMenu) {
 		console.log('Елементи бургер меню не знайдено')
@@ -2593,6 +2656,7 @@ function initBurgerMenu() {
 		} else {
 			mobileMenu.classList.add('active')
 			burgerButton.classList.add('active')
+			mobileMenuOverlay.classList.add('active')
 			document.body.classList.add('no-scroll')
 			console.log('Мобільне меню відкрито')
 		}
@@ -2658,11 +2722,16 @@ function initBurgerMenu() {
 				!element.classList.contains('mobile-menu__logout') &&
 				!element.classList.contains('mobile-menu__account') &&
 				!element.classList.contains('mobile-menu__link') &&
-				!element.classList.contains('main__burger')
+				!element.classList.contains('header__burger')
 			) {
 				closeMobileMenu()
 			}
 		})
+	})
+
+	// Закриття мобільного меню при кліку на overlay
+	mobileMenuOverlay.addEventListener('click', function (e) {
+		closeMobileMenu()
 	})
 
 	// Закриття мобільного меню при кліку поза ним
@@ -2670,7 +2739,8 @@ function initBurgerMenu() {
 		if (
 			mobileMenu.classList.contains('active') &&
 			!mobileMenu.contains(e.target) &&
-			!burgerButton.contains(e.target)
+			!burgerButton.contains(e.target) &&
+			!mobileMenuOverlay.contains(e.target)
 		) {
 			closeMobileMenu()
 		}
@@ -2724,6 +2794,7 @@ function initBurgerMenu() {
 	function closeMobileMenu() {
 		mobileMenu.classList.remove('active')
 		burgerButton.classList.remove('active')
+		mobileMenuOverlay.classList.remove('active')
 		document.body.classList.remove('no-scroll')
 		console.log('Мобільне меню закрито')
 	}
@@ -2801,7 +2872,9 @@ function initMobileLanguageDropdown() {
 			mobileLanguageSelector.classList.remove('active')
 
 			// Синхронізуємо з десктопним вибором мови
-			const desktopLanguageText = document.querySelector('.main__language-text')
+			const desktopLanguageText = document.querySelector(
+				'.header__language-text'
+			)
 			if (desktopLanguageText) {
 				desktopLanguageText.textContent = value.toUpperCase()
 			}
@@ -3252,30 +3325,6 @@ console.log(
 	!!document.getElementById('exchangeRateTooltip')
 )
 
-// Додаємо простий тестовий tooltip
-setTimeout(function () {
-	const btn = document.getElementById('exchangeRateBtn')
-	const tooltip = document.getElementById('exchangeRateTooltip')
-
-	if (btn && tooltip) {
-		console.log('✅ Елементи знайдено!')
-		btn.style.border = '2px solid red'
-		tooltip.style.border = '2px solid blue'
-		console.log('Додано червоні рамки для тестування')
-
-		// Активуємо тестовий режим tooltip
-		tooltip.classList.add('test-mode')
-		console.log('🎯 ТЕСТОВИЙ TOOLTIP АКТИВОВАНО!')
-		console.log(
-			'Тепер tooltip має бути видимий завжди (червоний з жовтою рамкою)'
-		)
-	} else {
-		console.log('❌ Елементи НЕ знайдено!')
-		console.log('btn:', btn)
-		console.log('tooltip:', tooltip)
-	}
-}, 1000)
-
 // Функціональність для QR попапу
 function initQRModal() {
 	const qrModal = document.getElementById('qrModal')
@@ -3574,26 +3623,6 @@ function initOrdersTableToggle() {
 		console.log('Показано таблицю з даними')
 	}
 
-	// Додаємо кнопку для демонстрації (можна видалити в продакшені)
-	const demoButton = document.createElement('button')
-	demoButton.textContent = 'Перемкнути стан'
-	demoButton.className = 'orders__demo-toggle'
-	demoButton.style.cssText = `
-		position: fixed;
-		top: 100px;
-		right: 20px;
-		z-index: 1000;
-		padding: 10px 16px;
-		background: #202941;
-		color: white;
-		border: none;
-		border-radius: 8px;
-		cursor: pointer;
-		font-family: Montserrat, sans-serif;
-		font-size: 14px;
-		transition: background 0.2s;
-	`
-
 	demoButton.addEventListener('mouseenter', () => {
 		demoButton.style.background = '#374151'
 	})
@@ -3713,6 +3742,19 @@ window.addEventListener('load', function () {
 })
 
 // Функції для роботи з попапом пошуку заявок
+function handleSearchClick() {
+	// Перевіряємо ширину екрану
+	if (window.innerWidth <= 650) {
+		console.log('Відкриваю попап пошуку на мобільному пристрої...')
+		openOrdersSearchModal()
+	} else {
+		console.log(
+			'Екран занадто широкий для попапу, використовуємо звичайний пошук'
+		)
+		// Тут можна додати логіку для звичайного пошуку на великих екранах
+	}
+}
+
 function openOrdersSearchModal() {
 	console.log('Функція openOrdersSearchModal викликана')
 	const modal = document.getElementById('ordersSearchModal')
@@ -3820,12 +3862,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	} else {
 		console.error('Модальне вікно ordersSearchModal не знайдено!')
 	}
-
-	// Тестовий виклик функції через 2 секунди
-	setTimeout(() => {
-		console.log('Тестовий виклик функції відкриття попапу...')
-		openOrdersSearchModal()
-	}, 2000)
 })
 
 // Функціональність копіювання для сторінки referal
@@ -4287,3 +4323,419 @@ function initSettingsValidation() {
 		})
 	}
 }
+
+// Функція для відкриття попапа комісії
+function openCommissionModal() {
+	// Оновлюємо поточне значення комісії з DOM
+	currentCommission = getCurrentCommissionFromDOM()
+
+	commissionModal.classList.add('active')
+	document.body.classList.add('no-scroll')
+
+	// Невелика затримка для коректного розрахунку розмірів
+	setTimeout(() => {
+		updateSliderPosition(currentCommission)
+	}, 100)
+}
+
+// Робимо функцію доступною глобально
+window.openCommissionModal = openCommissionModal
+
+// Функціональність для аккордеона в описі обміну
+function initExchangeDescriptionAccordion() {
+	const toggleButtons = document.querySelectorAll(
+		'.exchange__description-toggle'
+	)
+
+	if (toggleButtons.length === 0) {
+		console.log('Кнопки аккордеона не знайдено')
+		return
+	}
+
+	console.log('Ініціалізація аккордеона для опису обміну')
+
+	toggleButtons.forEach((button, index) => {
+		button.addEventListener('click', function (e) {
+			e.preventDefault()
+			e.stopPropagation()
+
+			console.log(`Клік на кнопку аккордеона ${index}`)
+
+			const descriptionContent = this.closest('.exchange__description-content')
+			const expandedContent = descriptionContent.querySelector(
+				'.exchange__description-expanded'
+			)
+			const isExpanded = expandedContent.classList.contains('show')
+
+			if (isExpanded) {
+				// Закриваємо аккордеон
+				expandedContent.classList.remove('show')
+				this.textContent = ' ещё...'
+				console.log('Аккордеон закрито')
+			} else {
+				// Відкриваємо аккордеон
+				expandedContent.classList.add('show')
+				this.textContent = ' згорнути'
+				console.log('Аккордеон відкрито')
+			}
+		})
+	})
+}
+
+// Робимо функцію доступною глобально
+window.initExchangeDescriptionAccordion = initExchangeDescriptionAccordion
+
+// Функція для відкриття модального вікна виведення коштів
+function openWithdrawModal() {
+	const withdrawModal = document.getElementById('addAccountModal')
+	if (withdrawModal) {
+		withdrawModal.classList.add('active')
+		document.body.classList.add('no-scroll')
+
+		// Фокус на поле суми
+		setTimeout(() => {
+			const amountInput = document.getElementById('withdrawAmount')
+			if (amountInput) {
+				amountInput.focus()
+			}
+		}, 100)
+	}
+}
+
+// Функція для закриття модального вікна виведення коштів
+function closeWithdrawModal() {
+	const withdrawModal = document.getElementById('addAccountModal')
+	if (withdrawModal) {
+		withdrawModal.classList.remove('active')
+		document.body.classList.remove('no-scroll')
+
+		// Очищаємо форму
+		const withdrawForm = document.getElementById('addAccountForm')
+		if (withdrawForm) {
+			withdrawForm.reset()
+		}
+	}
+}
+
+// Ініціалізація модального вікна виведення коштів
+function initWithdrawModal() {
+	// Перевіряємо, чи вже ініціалізовано
+	if (window.withdrawModalInitialized) {
+		return
+	}
+
+	const withdrawModal = document.getElementById('addAccountModal')
+	const withdrawModalClose = document.getElementById('addAccountModalClose')
+	const withdrawForm = document.getElementById('addAccountForm')
+	const withdrawCurrencySelector = document.getElementById(
+		'withdrawCurrencySelector'
+	)
+	const withdrawCurrencyOverlay = document.getElementById(
+		'withdrawCurrencyDropdown'
+	)
+	const withdrawCurrencyDropdownArrow = document.getElementById(
+		'withdrawCurrencyDropdownArrow'
+	)
+	const withdrawCurrencyItems = document.querySelectorAll(
+		'.add-account-modal__currency-item'
+	)
+
+	if (!withdrawModal || !withdrawModalClose || !withdrawForm) {
+		console.log('Елементи модального вікна виведення коштів не знайдено')
+		return
+	}
+
+	console.log('Знайдені елементи модального вікна:', {
+		modal: !!withdrawModal,
+		close: !!withdrawModalClose,
+		form: !!withdrawForm,
+		currencySelector: !!withdrawCurrencySelector,
+		currencyOverlay: !!withdrawCurrencyOverlay,
+		currencyArrow: !!withdrawCurrencyDropdownArrow,
+		currencyItems: withdrawCurrencyItems.length,
+	})
+
+	// Закриття модального вікна при кліку на кнопку закриття
+	withdrawModalClose.addEventListener('click', closeWithdrawModal)
+
+	// Закриття модального вікна при кліку на overlay
+	withdrawModal.addEventListener('click', function (e) {
+		if (
+			e.target === withdrawModal ||
+			e.target.classList.contains('add-account-modal__overlay')
+		) {
+			closeWithdrawModal()
+		}
+	})
+
+	// Закриття модального вікна при натисканні Escape
+	document.addEventListener('keydown', function (e) {
+		if (e.key === 'Escape' && withdrawModal.classList.contains('active')) {
+			closeWithdrawModal()
+		}
+	})
+
+	// Функціональність вибору валюти
+	if (
+		withdrawCurrencySelector &&
+		withdrawCurrencyOverlay &&
+		withdrawCurrencyDropdownArrow
+	) {
+		withdrawCurrencySelector.addEventListener('click', function (e) {
+			e.preventDefault()
+			e.stopPropagation()
+
+			const isActive = withdrawCurrencyOverlay.classList.contains('active')
+			console.log('Клік по селектору валюти, isActive:', isActive)
+
+			// Переключаємо overlay
+			if (isActive) {
+				withdrawCurrencyOverlay.classList.remove('active')
+				withdrawCurrencyDropdownArrow.classList.remove('active')
+				withdrawCurrencySelector.classList.remove('active')
+				console.log('Випадаючий список закрито')
+			} else {
+				withdrawCurrencyOverlay.classList.add('active')
+				withdrawCurrencyDropdownArrow.classList.add('active')
+				withdrawCurrencySelector.classList.add('active')
+				console.log('Випадаючий список відкрито')
+			}
+		})
+
+		// Закриття overlay при кліку поза ним
+		document.addEventListener('click', function (e) {
+			if (!withdrawCurrencySelector.contains(e.target)) {
+				withdrawCurrencyOverlay.classList.remove('active')
+				withdrawCurrencyDropdownArrow.classList.remove('active')
+				withdrawCurrencySelector.classList.remove('active')
+			}
+		})
+
+		// Обробка вибору валюти
+		withdrawCurrencyItems.forEach(item => {
+			item.addEventListener('click', function () {
+				const value = this.dataset.value
+				const icon = this.dataset.icon
+				const text = this.dataset.text
+
+				// Оновлюємо вибрану валюту
+				const selectedIcon = document.getElementById(
+					'withdrawSelectedCurrencyIcon'
+				)
+				const selectedText = document.getElementById(
+					'withdrawSelectedCurrencyText'
+				)
+
+				if (selectedIcon && selectedText) {
+					selectedIcon.src = icon
+					selectedText.textContent = text
+				}
+
+				// Закриваємо overlay
+				withdrawCurrencyOverlay.classList.remove('active')
+				withdrawCurrencyDropdownArrow.classList.remove('active')
+				withdrawCurrencySelector.classList.remove('active')
+			})
+		})
+
+		// Функціональність пошуку валют
+		const withdrawCurrencySearchInput = document.getElementById(
+			'withdrawCurrencySearchInput'
+		)
+		if (withdrawCurrencySearchInput) {
+			withdrawCurrencySearchInput.addEventListener('input', function () {
+				const searchTerm = this.value.toLowerCase()
+
+				withdrawCurrencyItems.forEach(item => {
+					const currencyText = item
+						.querySelector('.add-account-modal__currency-item-text')
+						.textContent.toLowerCase()
+					if (currencyText.includes(searchTerm)) {
+						item.style.display = 'flex'
+					} else {
+						item.style.display = 'none'
+					}
+				})
+			})
+
+			// Фокус на пошукове поле при відкритті overlay
+			withdrawCurrencySelector.addEventListener('click', function () {
+				if (!withdrawCurrencyOverlay.classList.contains('active')) {
+					setTimeout(() => {
+						withdrawCurrencySearchInput.focus()
+					}, 100)
+				}
+			})
+		}
+	}
+
+	// Обробка відправки форми
+	withdrawForm.addEventListener('submit', function (e) {
+		e.preventDefault()
+
+		const amount = document.getElementById('withdrawAmount').value
+		const account = document.getElementById('withdrawAccount').value
+
+		// Проста валідація
+		if (!amount || amount <= 0) {
+			alert('Введіть коректну суму')
+			return
+		}
+
+		if (!account) {
+			alert('Введіть номер рахунку')
+			return
+		}
+
+		// Тут можна додати логіку відправки даних на сервер
+		console.log('Заявка на виведення коштів:', {
+			amount: amount,
+			account: account,
+		})
+
+		// Закриваємо модальне вікно
+		closeWithdrawModal()
+
+		// Показуємо повідомлення про успіх
+		alert('Заявка на виведення коштів відправлена')
+	})
+
+	console.log('Модальне вікно виведення коштів ініціалізовано')
+	window.withdrawModalInitialized = true
+}
+
+// Робимо функції доступними глобально
+window.openWithdrawModal = openWithdrawModal
+window.closeWithdrawModal = closeWithdrawModal
+
+// Ініціалізація модального вікна виведення коштів при завантаженні сторінки
+document.addEventListener('DOMContentLoaded', function () {
+	// Ініціалізуємо з невеликою затримкою, щоб переконатися, що всі елементи завантажені
+	setTimeout(() => {
+		// Перевіряємо, чи існує модальне вікно на сторінці
+		const modal = document.getElementById('addAccountModal')
+		if (modal) {
+			initWithdrawModal()
+		}
+	}, 100)
+})
+
+// Функціональність для контекстного меню замовлень
+function initOrdersContextMenu() {
+	const moreButtons = document.querySelectorAll('.orders-table__more')
+	const contextMenus = document.querySelectorAll('.orders-table__context-menu')
+
+	console.log('Знайдено кнопок orders-table__more:', moreButtons.length)
+	console.log('Знайдено контекстних меню:', contextMenus.length)
+
+	// Функція для закриття всіх контекстних меню
+	function closeAllContextMenus() {
+		contextMenus.forEach(menu => {
+			menu.classList.remove('orders-table__context-menu--active')
+		})
+	}
+
+	// Обробка кліків на кнопки "більше"
+	moreButtons.forEach(button => {
+		button.addEventListener('click', function (e) {
+			e.preventDefault()
+			e.stopPropagation()
+
+			console.log('Клік на кнопку orders-table__more')
+
+			const orderId = this.dataset.orderId
+			console.log('ID замовлення:', orderId)
+
+			const contextMenu = document.querySelector(
+				`.orders-table__context-menu[data-order-id="${orderId}"]`
+			)
+
+			console.log('Знайдено контекстне меню:', contextMenu)
+
+			if (contextMenu) {
+				// Закриваємо всі інші меню
+				closeAllContextMenus()
+
+				// Перемикаємо поточне меню
+				const isActive = contextMenu.classList.contains(
+					'orders-table__context-menu--active'
+				)
+				console.log('Меню активне:', isActive)
+
+				if (isActive) {
+					contextMenu.classList.remove('orders-table__context-menu--active')
+					console.log('Меню закрито')
+				} else {
+					contextMenu.classList.add('orders-table__context-menu--active')
+					console.log('Меню відкрито')
+				}
+			} else {
+				console.log('Контекстне меню не знайдено!')
+			}
+		})
+	})
+
+	// Обробка кліків на пункти меню
+	contextMenus.forEach(menu => {
+		menu.addEventListener('click', function (e) {
+			const menuItem = e.target.closest('.orders-table__context-menu-item')
+			if (menuItem) {
+				const action = menuItem.dataset.action
+				const orderId = menu.dataset.orderId
+
+				console.log(`Дія: ${action}, ID замовлення: ${orderId}`)
+
+				// Тут можна додати логіку для кожної дії
+				switch (action) {
+					case 'edit':
+						// Логіка редагування
+						console.log('Редагування замовлення:', orderId)
+						break
+					case 'view':
+						// Логіка перегляду
+						console.log('Перегляд замовлення:', orderId)
+						break
+					case 'delete':
+						// Логіка видалення
+						console.log('Видалення замовлення:', orderId)
+						if (confirm('Ви впевнені, що хочете видалити це замовлення?')) {
+							// Тут можна додати логіку видалення
+							console.log('Замовлення видалено:', orderId)
+						}
+						break
+					case 'repeat':
+						// Логіка повторення
+						console.log('Повторення замовлення:', orderId)
+						break
+				}
+
+				// Закриваємо меню після виконання дії
+				closeAllContextMenus()
+			}
+		})
+	})
+
+	// Закриваємо меню при кліку поза ним
+	document.addEventListener('click', function (e) {
+		if (
+			!e.target.closest('.orders-table__more') &&
+			!e.target.closest('.orders-table__context-menu')
+		) {
+			closeAllContextMenus()
+		}
+	})
+
+	// Закриваємо меню при натисканні Escape
+	document.addEventListener('keydown', function (e) {
+		if (e.key === 'Escape') {
+			closeAllContextMenus()
+		}
+	})
+
+	console.log('Контекстне меню замовлень ініціалізовано')
+}
+
+// Ініціалізація контекстного меню замовлень при завантаженні сторінки
+document.addEventListener('DOMContentLoaded', function () {
+	initOrdersContextMenu()
+})
